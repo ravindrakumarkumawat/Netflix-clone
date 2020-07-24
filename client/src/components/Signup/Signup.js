@@ -54,7 +54,7 @@ function Signup (props) {
               <label>Confirm password</label>
             </div>
 
-            <input type="submit" name="submitButton" value="SUBMIT" />
+            <input type="submit" value="SUBMIT" />
           </form>
 
           <div className="signup_link">

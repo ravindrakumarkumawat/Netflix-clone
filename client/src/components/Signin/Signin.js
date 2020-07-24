@@ -1,12 +1,13 @@
 import React from 'react'
 import './Signin.css'
+import Jioflix from '../../assets/images/jioflix.png'
 
 function Signin (props) {
   return (
     <div className="Container">
     <div className="column">
       <div className="header">        
-        <img src={ process.env.PUBLIC_URL + "images/jioflix.png" } title="logo" alt="logo" />
+        <img src={ Jioflix } title="logo" alt="logo" />
         <h3>Sign In</h3>
       </div>
       <form action="" method="POST">
