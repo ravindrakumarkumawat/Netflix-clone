@@ -8,7 +8,7 @@ function Signup (props) {
 
           <div className="header">        
             <img src={ process.env.PUBLIC_URL + "images/jioflix.png" } title="logo" alt="logo" />
-            <h3>Sign Up</h3>
+            <h3>Ready to watch? Create an account</h3>
           </div>
 
           <form>
@@ -61,7 +61,7 @@ function Signup (props) {
             <a href="#" className="signInMessage">Already have an account? Sign in here!</a>
           </div>
         </div>
-        
+
     </div>
   )
 }
