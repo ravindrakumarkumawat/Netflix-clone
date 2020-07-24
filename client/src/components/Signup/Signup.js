@@ -8,7 +8,6 @@ function Signup (props) {
       <div className="header">        
         <img src={ process.env.PUBLIC_URL + "images/jioflix.png" } title="logo" alt="logo" />
         <h3>Sign Up</h3>
-        <span>New to Netflix</span>
       </div>
       <form action="" method="POST">
 
