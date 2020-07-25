@@ -1,12 +1,29 @@
 import React, { useState } from 'react'
 import './Signup.css'
 
+const API_SIGN_UP = 'http://localhost:5000/signup'
+
 function Signup (props) {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    fetch(API_SIGN_UP, {
+      method: 'POST',
+      body: JSON.stringify({ firstName, lastName, username, email, password }),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then((res) => {
+         console.log({frontend: res})
+      })
+  }
 
   return (
     <div className="Container">
@@ -15,7 +32,7 @@ function Signup (props) {
             <h3>Ready to watch? Create an account</h3>
           </div>
 
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="txt_field">
               <input 
                 type="text" 
