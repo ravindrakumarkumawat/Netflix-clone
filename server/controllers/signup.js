@@ -3,9 +3,8 @@ const { pool } = require('../config')
 
 exports.get_users = async (req, res) => {
   try {
-      // const allLists = await pool.query("SELECT * FROM lists ORDER BY list_id desc")
-      res.json({ name: 'This is signup page...' })
-      //res.json(allLists.rows)
+      const allUsers = await pool.query("SELECT * FROM users ORDER BY user_id desc")
+      res.json(allUsers.rows)
   } catch (err) {
       console.log(err.message)
  }
@@ -19,13 +18,12 @@ exports.add_user = async (req, res) => {
       username = sanitizerUsername(username)
       email = sanitizerEmail(email)
       password = sanitizerPassword(password)
-      // const { list_name }  = req.body
-      // const newList = await pool.query("INSERT INTO lists (list_name) VALUES ($1) RETURNING *", [list_name])
-      // const allLists = await pool.query("SELECT * FROM lists ORDER BY list_id desc")
-      // res.render('lists', {data: {lists: allLists.rows}})
-      // console.log(req.body)
-      console.log({ firstName, lastName, username, password, email })
-      res.json({ firstName, lastName, username, email, password })
+      const is_subscribed = 1
+      await pool.query(
+        "INSERT INTO users (first_name, last_name, username, email, password, is_subscribed) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+        [firstName, lastName, username, email, password, is_subscribed]
+      )
+      res.status(200).json({ firstName, lastName, username, email, password })
   } catch (err) {
       console.log(err.message)
  }
