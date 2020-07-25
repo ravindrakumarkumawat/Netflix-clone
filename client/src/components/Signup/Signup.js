@@ -22,6 +22,11 @@ function Signup (props) {
       .then(response => response.json())
       .then((res) => {
          console.log({frontend: res})
+         setFirstName('')
+         setLastName('')
+         setUsername('')
+         setEmail('')
+         setPassword('')
       })
   }
 

@@ -4,7 +4,7 @@ const { pool } = require('../config')
 exports.get_users = async (req, res) => {
   try {
       const allUsers = await pool.query("SELECT * FROM users ORDER BY user_id desc")
-      res.json(allUsers.rows)
+      res.status(200).json(allUsers.rows)
   } catch (err) {
       console.log(err.message)
  }
