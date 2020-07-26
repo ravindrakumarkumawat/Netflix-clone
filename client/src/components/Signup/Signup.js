@@ -4,17 +4,28 @@ import './Signup.css'
 const API_SIGN_UP = 'http://localhost:5000/signup'
 
 function Signup (props) {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [user, setUser] = useState({
+    firstName: '', 
+    lastName: '',
+    username: '',
+    email: '',
+    password: ''
+  })
+
+  const updateUser = (event) => {
+    setUser({ ...user, [event.target.name]: event.target.value })
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault()
     fetch(API_SIGN_UP, {
       method: 'POST',
-      body: JSON.stringify({ firstName, lastName, username, email, password }),
+      body: JSON.stringify({ 
+        firstName: user.firstName, 
+        lastName: user.lastName, 
+        username: user.username, 
+        email: user.email,
+        password: user.password }),
       headers: {
         'content-type': 'application/json'
       }
@@ -22,11 +33,13 @@ function Signup (props) {
       .then(response => response.json())
       .then((res) => {
          console.log({frontend: res})
-         setFirstName('')
-         setLastName('')
-         setUsername('')
-         setEmail('')
-         setPassword('')
+         setUser({
+          firstName: '', 
+          lastName: '',
+          username: '',
+          email: '',
+          password: ''
+        })
       })
   }
 
@@ -40,9 +53,10 @@ function Signup (props) {
           <form onSubmit={handleSubmit}>
             <div className="txt_field">
               <input 
-                type="text" 
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                type="text"
+                name='firstName' 
+                value={user.firstName}
+                onChange={updateUser}
                 required />
               <span></span>
               <label>First name</label>
@@ -51,8 +65,9 @@ function Signup (props) {
             <div className="txt_field">
               <input 
                 type="text" 
-                value={lastName} 
-                onChange={(e) => setLastName(e.target.value)}
+                name='lastName'
+                value={user.lastName} 
+                onChange={updateUser}
                 required />
               <span></span>
               <label>Last name</label>
@@ -60,9 +75,10 @@ function Signup (props) {
 
             <div className="txt_field">
               <input 
-                type="text" 
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                type="text"
+                name='username' 
+                value={user.username}
+                onChange={updateUser}
                 required />
               <span></span>
               <label>Username</label>
@@ -70,9 +86,10 @@ function Signup (props) {
 
             <div className="txt_field">
               <input 
-                type="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                name='email' 
+                value={user.email}
+                onChange={updateUser}
               required />
               <span></span>
               <label>Email</label>
@@ -81,8 +98,9 @@ function Signup (props) {
             <div className="txt_field">
               <input 
                 type="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name='password'
+                value={user.password}
+                onChange={updateUser}
                 required />
               <span></span>
               <label>Password</label>
