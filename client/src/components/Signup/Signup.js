@@ -11,6 +11,14 @@ function Signup (props) {
     email: '',
     password: ''
   })
+  
+  const [error, setError] = useState({
+    firstName: '', 
+    lastName: '',
+    username: '',
+    email: '',
+    password: ''
+  })
 
   const updateUser = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
@@ -48,6 +56,16 @@ function Signup (props) {
         <div className="column">
           <div className="header">
             <h3>Ready to watch? Create an account</h3>
+          </div>
+
+          <div className="error">
+            <ul>
+              <li>{error.firstName}</li>
+              <li>{error.lastName}</li>
+              <li>{error.username}</li>
+              <li>{error.email}</li>
+              <li>{error.password}</li>
+            </ul>
           </div>
 
           <form onSubmit={handleSubmit}>

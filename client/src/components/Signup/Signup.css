@@ -27,6 +27,19 @@
   text-align: center;
 }
 
+.column .error ul{
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.column .error ul li {  
+  color: #e87c03;
+  padding-bottom: 6px;
+}
+
 .column form {
   display: flex;
   flex-direction: column;
