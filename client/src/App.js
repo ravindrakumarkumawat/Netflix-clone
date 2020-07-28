@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css'
-// import Signup from './components/Signup/Signup.js'
-// import Signin from './components/Signin/Signin.js'
+import Preview from './components/video/Preview'
+
+const baseURL = 'https://www.googleapis.com/youtube/v3/'
+const key = '[YOUTUBE_API_KEY]'
+const part= 'snippet' 
+const chart='mostPopular' 
+const maxResults= 15
 
 function App() {
+  const [preview, setPreview] = useState([])
+  const [entities, setEntities] = useState([])
+
+
   return (
     <div className="App">
-      
+      <Preview />
     </div>
   );
 }
