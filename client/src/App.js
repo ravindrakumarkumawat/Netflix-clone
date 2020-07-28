@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import './App.css'
 import Preview from './components/video/Preview'
 
-const baseURL = 'https://www.googleapis.com/youtube/v3/'
 const key = '[YOUTUBE_API_KEY]'
-const part= 'snippet' 
-const chart='mostPopular' 
-const maxResults= 15
+
+const videoCategories = {
+  baseURL: `https://www.googleapis.com/youtube/v3/videoCategories?key=${key}`,
+  part: 'snippet',
+  h1 : 'in',
+  regionCode: 'IN'
+}
 
 function App() {
   const [preview, setPreview] = useState([])
