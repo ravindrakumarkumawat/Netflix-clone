@@ -1,24 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import Preview from './components/video/Preview'
 
-const key = '[YOUTUBE_API_KEY]'
+const videoCategories = 'https://www.googleapis.com/youtube/v3/videoCategories?key=AIzaSyATFWDHJZBoY2oKFZf_9zw8N0yCGQF6Z2I&part=snippet&h1=in&regionCode=IN'
+                           
 
-const videoCategories = {
-  baseURL: `https://www.googleapis.com/youtube/v3/videoCategories?key=${key}`,
-  part: 'snippet',
-  h1 : 'in',
-  regionCode: 'IN'
-}
 
 function App() {
-  const [preview, setPreview] = useState([])
-  const [entities, setEntities] = useState([])
+  const [categories, setCategories] = useState([])
+  
+  useEffect(() => {
+    all_categories()
+  }, [])
 
+  const all_categories = async () => {
+    await fetch(videoCategories).then(response => response.json()).then(res => {
+      setCategories(res.items)
+    })
+  }
 
   return (
     <div className="App">
-      <Preview />
+      <Preview categories={categories} />
     </div>
   );
 }

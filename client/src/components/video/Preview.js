@@ -1,9 +1,10 @@
 import React from 'react'
 
 function Preview (props) {
-  return (
+  const { categories } = props
+  return (    
     <div>
-      <h1>This is Preview...</h1>
+       <ul>{categories.map(item => <li key={item.id}>{item.snippet.title}</li>) }</ul>
     </div>
   )
 }
