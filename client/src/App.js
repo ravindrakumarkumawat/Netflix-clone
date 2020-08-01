@@ -18,6 +18,7 @@ const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statist
 function App() {
   const [categories, setCategories] = useState([])
   const [mostPopularVideos, setMostPopularVideos] = useState([])
+  const [randomUrl, setRandomUrl] = useState('')
 
   useEffect(() => {
     get_categories()
@@ -37,20 +38,16 @@ function App() {
       console.log('videos API...')
       const url = res.items.map(item => `https://www.youtube.com/embed/${item.id}`)
       setMostPopularVideos(url)
+      setRandomUrl(url[Math.floor(Math.random() * url.length)])
     }).catch(error => console.log(error))
-  }
 
-  // const random = () => {
-  //   const index = Math.floor(Math.random() * mostPopularVideos.length)
-  //   setRandomUrl(mostPopularVideos[index])
-  //   console.log(randomUrl)
-  // }
+  }
 
   // mostPopularVideos()
   // console.log(mostPopularVideos)
   return (
     <div className="App">
-      <Preview url={mostPopularVideos}/>
+      <Preview url={randomUrl}/>
     </div>
   );
 }
