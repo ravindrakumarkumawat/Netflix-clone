@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import Preview from './components/video/Preview'
+import Navbar from './components/navbar/Navbar'
 
 const baseUrl = 'https://www.googleapis.com/youtube/v3'
 const key = 'AIzaSyATFWDHJZBoY2oKFZf_9zw8N0yCGQF6Z2I'
@@ -36,7 +37,7 @@ function App() {
   const get_videos = async () => {
     await fetch(videos).then(response => response.json()).then(res => {      
       console.log('videos API...')
-      const url = res.items.map(item => `https://www.youtube.com/embed/${item.id}`)
+      const url = res.items.map(item => item.id)
       setMostPopularVideos(url)
       setRandomUrl(url[Math.floor(Math.random() * url.length)])
     }).catch(error => console.log(error))
@@ -47,7 +48,12 @@ function App() {
   // console.log(mostPopularVideos)
   return (
     <div className="App">
-      <Preview url={randomUrl}/>
+    <header>
+      <div className='header'>
+        <Navbar />
+        <Preview url={randomUrl}/>
+      </div>
+    </header>
     </div>
   );
 }
