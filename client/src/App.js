@@ -4,8 +4,8 @@ import Preview from './components/video/Preview'
 
 const baseUrl = 'https://www.googleapis.com/youtube/v3'
 const key = 'AIzaSyATFWDHJZBoY2oKFZf_9zw8N0yCGQF6Z2I'
-const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snippet&h1=in&regionCode=IN`
-const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&regionCode=IN&chart=mostPopular&maxResults=10`                           
+const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snippet&h1=us&regionCode=US`
+const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&regionCode=US&chart=mostPopular&maxResults=20`                           
 // const channelsById = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw'
 // const channelsByUsername = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&forUsername=GoogleDevelopers'
 // const channelSectionsById = 'https://www.googleapis.com/youtube/v3/channelSections?key=&part=snippet,contentDetails&channelId=UC_x5XG1OV2P6uZZ5FSM9Ttw'

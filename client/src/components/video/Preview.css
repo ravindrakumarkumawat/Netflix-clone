@@ -1,10 +1,30 @@
-.player-wrapper {
-  position: relative;
-  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+.preview-container{
+  width:100vw;
+  height:100vh;
+  overflow:hidden;
+  position:relative;
 }
- 
-.react-player {
+
+.preview-container iframe {
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.preview-container iframe {
+  pointer-events: none;
+}
+
+.preview-container iframe {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 120px);
+}
+
+.preview-foreground{
+  pointer-events:none;
 }
