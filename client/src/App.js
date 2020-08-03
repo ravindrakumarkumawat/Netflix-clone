@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import Preview from './components/video/Preview'
+import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
 
 const baseUrl = 'https://www.googleapis.com/youtube/v3'
