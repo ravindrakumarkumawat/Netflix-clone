@@ -6,7 +6,6 @@ import Categories from './components/Categories/Categories'
 
 const baseUrl = 'https://www.googleapis.com/youtube/v3'
 const key = 'AIzaSyATFWDHJZBoY2oKFZf_9zw8N0yCGQF6Z2I'
-const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snippet&h1=us&regionCode=US`
 const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&regionCode=US&chart=mostPopular&maxResults=20`                           
 // const channelsById = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw'
 // const channelsByUsername = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&forUsername=GoogleDevelopers'
@@ -18,23 +17,12 @@ const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statist
 
 
 function App() {
-  const [categories, setCategories] = useState([])
   const [mostPopularVideos, setMostPopularVideos] = useState([])
   const [randomUrl, setRandomUrl] = useState('')
 
   useEffect(() => {
-    get_categories()
     get_videos()
   }, [])
- 
-  const get_categories = async () => {
-    await fetch(videoCategories).then(response => response.json()).then(res => {      
-      console.log('videoCategories API...')
-      console.log(res.items)
-      const catItems = res.items.map((item) => {return {id: item.id, title:item.snippet.title}})
-      setCategories(catItems)
-    }).catch(error => console.log(error))
-  }
 
   const get_videos = async () => {
     await fetch(videos).then(response => response.json()).then(res => {      
@@ -55,7 +43,7 @@ function App() {
           <Preview url={randomUrl}/>
         </div>
       </header>
-      <Categories categories={categories} />
+      <Categories />
       </div>
   );
 }
