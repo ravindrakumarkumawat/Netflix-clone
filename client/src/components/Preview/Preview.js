@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 import './Preview.css'
 
 function Preview ({url}) { 
@@ -20,7 +20,11 @@ function Preview ({url}) {
           <h3>Video Title</h3>
           <p>Video Subtitle</p>
           <div className='preview-overlay-buttons'>
-            <button onClick={() => togglePlay()}><FontAwesomeIcon icon={faPlay}></FontAwesomeIcon> Play</button>
+            <button onClick={() => togglePlay()}>
+            { !autoPlay ? <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
+              : <FontAwesomeIcon icon={faPause}></FontAwesomeIcon>
+            } 
+            </button>
             <button onClick={() => toggleMute()}> {
               (mute ? <FontAwesomeIcon icon={faVolumeMute}></FontAwesomeIcon>
               : <FontAwesomeIcon icon={faVolumeUp}></FontAwesomeIcon>
