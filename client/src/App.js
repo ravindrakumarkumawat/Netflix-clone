@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
+import Categories from './components/Categories/Categories'
 
 const baseUrl = 'https://www.googleapis.com/youtube/v3'
 const key = 'AIzaSyATFWDHJZBoY2oKFZf_9zw8N0yCGQF6Z2I'
@@ -29,7 +30,8 @@ function App() {
   const get_categories = async () => {
     await fetch(videoCategories).then(response => response.json()).then(res => {      
       console.log('videoCategories API...')
-      const catItems = res.items.map((item) => item.snippet.title)
+      console.log(res.items)
+      const catItems = res.items.map((item) => {return {id: item.id, title:item.snippet.title}})
       setCategories(catItems)
     }).catch(error => console.log(error))
   }
@@ -53,6 +55,7 @@ function App() {
           <Preview url={randomUrl}/>
         </div>
       </header>
+      <Categories categories={categories} />
       </div>
   );
 }
