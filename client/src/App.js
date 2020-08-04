@@ -37,24 +37,23 @@ function App() {
   const get_videos = async () => {
     await fetch(videos).then(response => response.json()).then(res => {      
       console.log('videos API...')
-      const url = res.items.map(item => item.id)
+      const url = res.items.map(item => { return {id: item.id, title: item.snippet.localized.title} })
       setMostPopularVideos(url)
       setRandomUrl(url[Math.floor(Math.random() * url.length)])
     }).catch(error => console.log(error))
-
   }
 
   // mostPopularVideos()
   // console.log(mostPopularVideos)
   return (
     <div className="App">
-    <header>
-      <div className='header'>
-        <Navbar />
-        <Preview url={randomUrl}/>
+      <header>
+        <div className='header'>
+          <Navbar />
+          <Preview url={randomUrl}/>
+        </div>
+      </header>
       </div>
-    </header>
-    </div>
   );
 }
 

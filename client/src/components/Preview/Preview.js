@@ -14,10 +14,10 @@ function Preview ({url}) {
   }
   return (
     <div className='preview-container'>
-      <iframe src={`https://www.youtube.com/embed/${url}?vq=hd1080&controls=0&autoplay=${autoPlay}&loop=1&mute=${mute}&cc_load_policy=0&playlist=${url}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+      <iframe src={`https://www.youtube.com/embed/${url.id}?vq=hd1080&controls=0&autoplay=${autoPlay}&loop=1&mute=${mute}&cc_load_policy=0&playlist=${url.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
       <div className='preview-overlay'>
         <div className='preview-main-details'>
-          <h3>Video Title</h3>
+          <h3>{url.title}</h3>
           <p>Video Subtitle</p>
           <div className='preview-overlay-buttons'>
             <button onClick={() => togglePlay()}>
