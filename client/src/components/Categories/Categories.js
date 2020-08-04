@@ -12,7 +12,6 @@ function Categories(props) {
   const get_categories = async () => {
     await fetch(videoCategories).then(response => response.json()).then(res => {      
       console.log('videoCategories API...')
-      console.log(res.items)
       const catItems = res.items.map((item) => {return {id: item.id, title:item.snippet.title}})
       setCategories(catItems)
     }).catch(error => console.log(error))
