@@ -15,7 +15,7 @@ function Preview (props) {
   }, [])
 
   const get_videos = async () => {
-    await fetch(`${videos}&videoCategoryId=10`).then(response => response.json()).then(res => {      
+    await fetch(`${videos}&maxResults=20&videoCategoryId=10`).then(response => response.json()).then(res => {      
       console.log('videos API...')
       const url = res.items.map(item => { return {id: item.id, title: item.snippet.localized.title} })
       setMostPopularVideos(url)
@@ -32,7 +32,7 @@ function Preview (props) {
 
   return (
     <div className='preview-container'>
-      <iframe src={`https://www.youtube.com/embed/${randomUrl.id}?vq=hd1080&controls=0&autoplay=${autoPlay}&loop=1&mute=${mute}&cc_load_policy=0&playlist=${randomUrl.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+      <iframe title={randomUrl.title} src={`https://www.youtube.com/embed/${randomUrl.id}?vq=hd1080&controls=0&autoplay=${autoPlay}&loop=1&mute=${mute}&cc_load_policy=0&playlist=${randomUrl.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
       <div className='preview-overlay'>
         <div className='preview-main-details'>
           <h3>{randomUrl.title}</h3>

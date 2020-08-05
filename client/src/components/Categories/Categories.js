@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import './Categories.css'
-import { videoCategories } from '../../YoutubeApi'
+import { videos, videoCategories } from '../../YoutubeApi'
 
 function Categories(props) {  
   const [categories, setCategories] = useState([])
+  const [video, setVideo] = useState([])
+  // const [selectCat, setSelectCat] = useState({})
 
   useEffect(() => {
     get_categories()
+    get_videos()
   }, [])
 
   const get_categories = async () => {
@@ -17,12 +20,16 @@ function Categories(props) {
     }).catch(error => console.log(error))
   }
 
+  const get_videos = async () => {
+    await fetch(`${videos}&maxResults=50`).then(response => response.json()).then(res => { 
+      const vid = res.items   
+      setVideo(vid)
+    }).catch(error => console.log(error))
+  }
+
   return (
     <div className='preview-categories-container'>      
       <h1>Something about categories.......</h1>
-      {
-        categories.map(cat => <h2 key={cat.id}>{cat.title}</h2>)
-      }
     </div>
   )
 }
