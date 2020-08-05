@@ -15,7 +15,7 @@ function Preview (props) {
   }, [])
 
   const get_videos = async () => {
-    await fetch(videos).then(response => response.json()).then(res => {      
+    await fetch(`${videos}&videoCategoryId=10`).then(response => response.json()).then(res => {      
       console.log('videos API...')
       const url = res.items.map(item => { return {id: item.id, title: item.snippet.localized.title} })
       setMostPopularVideos(url)
