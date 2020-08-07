@@ -1,0 +1,21 @@
+h3 {
+  color: #e5e5e5;
+}
+a h3:hover {
+  color: #fff;
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.entity {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}

@@ -17,7 +17,6 @@ function Categories(props) {
                     .catch(error => console.log(error))
 
       let cat_videos = res.items
-      console.log(cat_videos[0])
       let nextPageToken = res.nextPageToken
       let count = 0
       while(count < 3) {
@@ -32,14 +31,13 @@ function Categories(props) {
       const vi = {}
       for(let item of cat_videos) {
         if(vi.hasOwnProperty(item.snippet.categoryId)) {
-          vi[item.snippet.categoryId].push({id: item.id, thumbnail: item.snippet.thumbnails.high})
+          vi[item.snippet.categoryId].push({id: item.id, title:item.snippet.title, thumbnail: item.snippet.thumbnails.high})
         }
         else {
           vi[item.snippet.categoryId] = []
         }
       }
       
-      console.log(vi)
       const cat_video_list = []
       for(let cat of categories) {
         if(vi.hasOwnProperty(cat.id)) {
@@ -70,20 +68,15 @@ function Categories(props) {
 
   return (
     <div className='preview-categories-container'> 
-    <h1>Something is going to be here...</h1>
       {
-        catVideo.map((cat, index) => 
-          <div key={index}>
-            <h2 key={cat.c_id}>{cat.c_title}</h2>
-            <Entity entity={cat.v_lists} />
-            {/*<ul>
-              {
-                cat.v_lists.map((list, index) => 
-                <li key={index}>{list}</li>)
-              }
-            </ul>*/}
-          </div>
-          
+        catVideo.map((cat, index) =>  
+        <div className='category' key={index}>  
+            {/** h3 should route to category page */}      
+            <h3 key={cat.c_id}>{cat.c_title}</h3>
+            <div className='entity'>
+              <Entity entity={cat.v_lists} />
+            </div>
+        </div>          
         )
       }
     </div>
