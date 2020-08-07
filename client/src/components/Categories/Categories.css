@@ -15,7 +15,18 @@ a h3:hover {
   overflow-y: hidden;
   white-space: nowrap;
 }
-
+.preview-categories-container{
+  padding: 0 50px;
+}
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 0, 0, 0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f00; 
 }
