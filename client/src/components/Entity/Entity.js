@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 
-function Entity(props) {
+function Entity({ entity }) {
   return (
-    <h1>This is Entity...</h1>
+    entity.map(list => <p key={list.id}>{list.id}</p>)
   )
 } 
+
+export default Entity

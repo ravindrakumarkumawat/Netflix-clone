@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Categories.css'
 import { videos, videoCategories } from '../../YoutubeApi'
+import Entity from '../Entity/Entity'
 
 function Categories(props) {  
   const [catVideo, setCatVideo] = useState([])
@@ -16,6 +17,7 @@ function Categories(props) {
                     .catch(error => console.log(error))
 
       let cat_videos = res.items
+      console.log(cat_videos[0])
       let nextPageToken = res.nextPageToken
       let count = 0
       while(count < 3) {
@@ -30,13 +32,14 @@ function Categories(props) {
       const vi = {}
       for(let item of cat_videos) {
         if(vi.hasOwnProperty(item.snippet.categoryId)) {
-          vi[item.snippet.categoryId].push(item.id)
+          vi[item.snippet.categoryId].push({id: item.id, thumbnail: item.snippet.thumbnails.high})
         }
         else {
           vi[item.snippet.categoryId] = []
         }
       }
-
+      
+      console.log(vi)
       const cat_video_list = []
       for(let cat of categories) {
         if(vi.hasOwnProperty(cat.id)) {
@@ -69,15 +72,16 @@ function Categories(props) {
     <div className='preview-categories-container'> 
     <h1>Something is going to be here...</h1>
       {
-        catVideo.map((cat) => 
-          <div>
+        catVideo.map((cat, index) => 
+          <div key={index}>
             <h2 key={cat.c_id}>{cat.c_title}</h2>
-            <ul>
+            <Entity entity={cat.v_lists} />
+            {/*<ul>
               {
                 cat.v_lists.map((list, index) => 
                 <li key={index}>{list}</li>)
               }
-            </ul>
+            </ul>*/}
           </div>
           
         )
