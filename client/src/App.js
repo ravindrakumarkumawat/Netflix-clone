@@ -7,14 +7,10 @@ import Categories from './components/Categories/Categories'
 function App() {
   return (
     <div className="App">
-      <header>
-        <div className='header'>
-          <Navbar />
-          <Preview />
-        </div>
-      </header>
+      <Navbar />
+      <Preview />
       <Categories />
-      </div>
+    </div>
   );
 }
 
