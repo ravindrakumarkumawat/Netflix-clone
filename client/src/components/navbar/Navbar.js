@@ -7,10 +7,10 @@ function Navbar (props) {
     <nav className="navigation">
       <img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/>
       <div className="navbar-right">
-        <a href="#">Home</a>
-        <a href="#">TV Shows</a>
-        <a href="#">Movies</a>
-        <a href="#">Recently Added</a>
+        <a href="/">Home</a>
+        <a href="/tv-shows">TV Shows</a>
+        <a href="/movies">Movies</a>
+        <a href="/recently-added">Recently Added</a>
       </div>
     </nav>
   )

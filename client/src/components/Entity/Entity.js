@@ -4,7 +4,7 @@ import './Entity.css'
 function Entity({ entity }) {
   return (
    
-    <h1>Entity</h1>
+    <h1>Entity....</h1>
   )
 } 
 
