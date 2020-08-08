@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Categories.css'
 import { videos, videoCategories } from '../../YoutubeApi'
-import Entity from '../Entity/Entity'
 
 function Categories(props) {  
   const [catVideo, setCatVideo] = useState([])
@@ -74,7 +73,7 @@ function Categories(props) {
             {/** h3 should route to category page */}      
             <h3 key={cat.c_id}>{cat.c_title}</h3>
             <div className='entity'>
-              <Entity entity={cat.v_lists} />
+              <EntityProvider entity={cat.v_lists} />
             </div>
         </div>          
         )
@@ -82,5 +81,18 @@ function Categories(props) {
     </div>
   )
 }
+
+function EntityProvider({ entity }) {
+  return (
+    <div className='entity-provider-container small'>
+    {
+      entity.map((list, index)=>
+      <img key={list.id} src={list.thumbnail.url} alt={list.title} title={list.title}/>  
+      )
+    }
+    </div> 
+    
+  )
+} 
 
 export default Categories
