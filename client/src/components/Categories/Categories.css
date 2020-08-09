@@ -13,7 +13,8 @@ a h3:hover {
 .entity {
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap;
+  white-space: nowrap;  
+  border-radius: 8px;
 }
 .preview-categories-container{
   padding: 0 50px;
@@ -24,7 +25,7 @@ a h3:hover {
 
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 0, 0, 0.3); 
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -46,5 +47,6 @@ entity-provider-container {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  margin-right: 6px;
+  margin-right: 6px;  
+  border-radius: 8px;
 }
