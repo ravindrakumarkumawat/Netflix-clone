@@ -1,27 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faPause, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 import './Preview.css'
-import {videos} from '../../YoutubeApi'
 
-function Preview (props) {   
-  const [mostPopularVideos, setMostPopularVideos] = useState([])
-  const [randomUrl, setRandomUrl] = useState('')
+function Preview ({ randomUrl }) {   
   const [mute, setMute] = useState(1)
   const [autoPlay, setAutoPlay] = useState(1)
-
-  useEffect(() => {
-    get_videos()
-  }, [])
-
-  const get_videos = async () => {
-    await fetch(`${videos}&maxResults=20&videoCategoryId=10`).then(response => response.json()).then(res => {      
-      console.log('videos API...')
-      const url = res.items.map(item => { return {id: item.id, title: item.snippet.localized.title} })
-      setMostPopularVideos(url)
-      setRandomUrl(url[Math.floor(Math.random() * url.length)])
-    }).catch(error => console.log(error))
-  }
 
   const toggleMute = () => {
     setMute(Number(!mute))

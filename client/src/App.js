@@ -7,6 +7,8 @@ import { videos, videoCategories } from './YoutubeApi'
 
 function App() {
   const [catVideo, setCatVideo] = useState([])
+  const [selectedVideo, setSelectedVideo] = useState('')
+  const [randomUrl, setRandomUrl] = useState('')
 
   useEffect(() => {   
     get_videos()  
@@ -50,19 +52,21 @@ function App() {
           })
         }
       }
+      const url = cat_video_list[Math.floor(Math.random() * cat_video_list.length)].v_lists
+      setRandomUrl(url[Math.floor(Math.random() * url.length)])
       setCatVideo(cat_video_list)
   }
 
-  const get_categories = async () => {
+  const get_categories = () => {
 
-    return await fetch(videoCategories).then(response => response.json()).then(res => {      
+    return fetch(videoCategories).then(response => response.json()).then(res => {      
       console.log('videoCategories API...')
       return res.items.map((item) => {return {id: item.id, title:item.snippet.title}})
     }).catch(error => console.log(error))  
   }
 
-  const get_videos_by_pageToken = async (nextPageToken) => {
-    return  await fetch(`${videos}&maxResults=50&pageToken=${nextPageToken}`)
+  const get_videos_by_pageToken = (nextPageToken) => {
+    return fetch(`${videos}&maxResults=50&pageToken=${nextPageToken}`)
                     .then(response => response.json())
                     .then(res => res)
                     .catch(error => console.log(error))
@@ -70,7 +74,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Preview />
+      <Preview randomUrl={randomUrl} />
       <Categories catVideo={catVideo}/>
     </div>
   );
