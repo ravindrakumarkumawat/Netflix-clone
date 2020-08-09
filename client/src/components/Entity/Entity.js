@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import './Entity.css'
+import Preview from '../Preview/Preview'
 
 function Entity({ entity }) {
   return (
-   
-    <h1>Entity....</h1>
+    <Preview randomUrl={entity} />
   )
 } 
 

@@ -3,12 +3,14 @@ import './App.css'
 import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
 import Categories from './components/Categories/Categories'
+import Entity from './components/Entity/Entity'
 import { videos, videoCategories } from './YoutubeApi'
 
 function App() {
   const [catVideo, setCatVideo] = useState([])
   const [selectedVideo, setSelectedVideo] = useState('')
   const [randomUrl, setRandomUrl] = useState('')
+  const [entitySelected, setEntitySelected] = useState(false)
 
   useEffect(() => {   
     get_videos()  
@@ -27,7 +29,7 @@ function App() {
         const res = await get_videos_by_pageToken(nextPageToken)
         nextPageToken = res.nextPageToken
         cat_videos = [...cat_videos, ...res.items]
-        count++
+        count++ 
       }
       
       const categories = await get_categories()
@@ -71,11 +73,24 @@ function App() {
                     .then(res => res)
                     .catch(error => console.log(error))
   }
+
+  const entity_selected = (list) => {
+    setSelectedVideo(list)
+    setEntitySelected(true)
+  }
+
   return (
-    <div className="App">
-      <Navbar />
-      <Preview randomUrl={randomUrl} />
-      <Categories catVideo={catVideo}/>
+    <div className="App">        
+          {
+          !entitySelected ?
+          <>           
+            <Navbar />
+            <Preview randomUrl={randomUrl} />
+            <Categories catVideo={catVideo} onClick={(list) => entity_selected(list)} /> 
+          </>
+          :               
+          <Entity entity={selectedVideo} />  
+        }     
     </div>
   );
 }

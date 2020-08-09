@@ -2,9 +2,7 @@ import React from 'react'
 import './Categories.css'
 // import { videos, videoCategories } from '../../YoutubeApi'
 
-function Categories({catVideo}) {  
-  
-
+function Categories({catVideo, onClick}) {  
   return (
     <div className='preview-categories-container'> 
       {
@@ -13,7 +11,7 @@ function Categories({catVideo}) {
             {/** h3 should route to category page */}      
             <h3 key={cat.c_id}>{cat.c_title}</h3>
             <div className='entity'>
-              <EntityProvider entity={cat.v_lists} />
+              <EntityProvider entity={cat.v_lists} onClick={onClick} />
             </div>
         </div>          
         )
@@ -22,12 +20,12 @@ function Categories({catVideo}) {
   )
 }
 
-function EntityProvider({ entity }) {
+function EntityProvider({ entity, onClick }) {
   return (
     <div className='entity-provider-container small'>
     {
       entity.map((list, index)=>
-      <img key={list.id} src={list.thumbnail.url} alt={list.title} title={list.title}/>  
+      <img key={list.id} src={list.thumbnail.url} alt={list.title} title={list.title} onClick={() => onClick(list)} />  
       )
     }
     </div> 
