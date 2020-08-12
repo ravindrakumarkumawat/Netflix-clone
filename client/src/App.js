@@ -5,6 +5,12 @@ import Navbar from './components/navbar/Navbar'
 import Categories from './components/Categories/Categories'
 import Entity from './components/Entity/Entity'
 import { videos, videoCategories } from './YoutubeApi'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom' 
 
 function App() {
   const [catVideo, setCatVideo] = useState([])
@@ -80,18 +86,26 @@ function App() {
   }
 
   return (
-    <div className="App">        
-          {
-          !entitySelected ?
-          <>           
-            <Navbar />
+    <Router>
+      <div className="App">  
+        <Navbar /> 
+        <Switch>
+          <Route path="/" exact>          
             <Preview randomUrl={randomUrl} />
             <Categories catVideo={catVideo} onClick={(list) => entity_selected(list)} /> 
-          </>
-          :               
-          <Entity entity={selectedVideo} />  
-        }     
-    </div>
+          </Route>
+          <Route path="/tv-shows" exact>                         
+            <Entity entity={selectedVideo} />
+          </Route>
+          <Route path="/movies">
+            <h2>lhis is movies page</h2>
+          </Route>
+          <Route path="/recently-added">
+            <h2>lhis is recently page</h2>
+          </Route>
+        </Switch>     
+      </div>
+    </Router>
   );
 }
 

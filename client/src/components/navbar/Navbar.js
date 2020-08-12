@@ -1,16 +1,17 @@
 import React from 'react'
 import './Navbar.css'
 import Jioflix from '../../assets/images/jioflix.png'
+import { Link } from 'react-router-dom'
 
 function Navbar (props) {
   return (
     <nav className="navigation">
-      <img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/>
+      <Link to="/"><img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/></Link>
       <div className="navbar-right">
-        <a href="/">Home</a>
-        <a href="/tv-shows">TV Shows</a>
-        <a href="/movies">Movies</a>
-        <a href="/recently-added">Recently Added</a>
+        <Link to="/">Home</Link>
+        <Link to="/tv-shows">TV Shows</Link>
+        <Link to="/movies">Movies</Link>
+        <Link to="/recently-added">Recently Added</Link>
       </div>
     </nav>
   )
