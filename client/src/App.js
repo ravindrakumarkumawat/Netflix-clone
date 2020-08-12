@@ -50,11 +50,13 @@ function App() {
       const cat_video_list = []
       for(let cat of categories) {
         if(vi.hasOwnProperty(cat.id)) {
-          cat_video_list.push({
-            v_lists: vi[cat.id],
-            c_id: cat.id,
-            c_title: cat.title
-          })
+          if(vi[cat.id].length > 0) {            
+            cat_video_list.push({
+              v_lists: vi[cat.id],
+              c_id: cat.id,
+              c_title: cat.title
+            })
+          }
         }
       }
       const url = cat_video_list[Math.floor(Math.random() * cat_video_list.length)].v_lists
