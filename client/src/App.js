@@ -40,7 +40,7 @@ function App() {
       const vi = {}
       for(let item of cat_videos) {
         if(vi.hasOwnProperty(item.snippet.categoryId)) {
-          vi[item.snippet.categoryId].push({id: item.id, title:item.snippet.title, thumbnail: item.snippet.thumbnails.high})
+          vi[item.snippet.categoryId].push({id: item.id, title:item.snippet.title, thumbnail: item.snippet.thumbnails.high, channelId: item.snippet.channelId})
         }
         else {
           vi[item.snippet.categoryId] = []
