@@ -37,16 +37,16 @@ entity-provider-container {
   display: flex;
 }
 
-.entity-provider-container.small {
+.entity-provider-container.small a{
   width: 306px;
   height: 171px;
-  display: inline-flex;
+  display: inline-flex;  
+  margin-right: 8px; 
 }
 
 .entity-provider-container.small img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  margin-right: 6px;  
+  object-fit: cover; 
   border-radius: 8px;
 }

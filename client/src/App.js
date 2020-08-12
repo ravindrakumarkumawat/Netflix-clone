@@ -8,15 +8,12 @@ import { videos, videoCategories } from './YoutubeApi'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom' 
 
 function App() {
   const [catVideo, setCatVideo] = useState([])
-  const [selectedVideo, setSelectedVideo] = useState('')
   const [randomUrl, setRandomUrl] = useState('')
-  const [entitySelected, setEntitySelected] = useState(false)
 
   useEffect(() => {   
     get_videos()  
@@ -80,11 +77,6 @@ function App() {
                     .catch(error => console.log(error))
   }
 
-  const entity_selected = (list) => {
-    setSelectedVideo(list)
-    setEntitySelected(true)
-  }
-
   return (
     <Router>
       <div className="App">  
@@ -92,16 +84,19 @@ function App() {
         <Switch>
           <Route path="/" exact>          
             <Preview randomUrl={randomUrl} />
-            <Categories catVideo={catVideo} onClick={(list) => entity_selected(list)} /> 
+            <Categories catVideo={catVideo} /> 
           </Route>
-          <Route path="/tv-shows" exact>                         
-            <Entity entity={selectedVideo} />
+          <Route path="/tv-shows" exact>  
+            <h2>This is tv-shows</h2> 
           </Route>
           <Route path="/movies">
             <h2>lhis is movies page</h2>
           </Route>
           <Route path="/recently-added">
             <h2>lhis is recently page</h2>
+          </Route>
+          <Route path="/details/:v_id">                      
+            <Entity />
           </Route>
         </Switch>     
       </div>
