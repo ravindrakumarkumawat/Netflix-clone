@@ -89,16 +89,19 @@ function App() {
             <Categories catVideo={catVideo} /> 
           </Route>
           <Route path="/tv-shows" exact>  
-            <h2>This is tv-shows</h2> 
+            <h2 className='ErrorMessage'>This is tv-shows</h2> 
           </Route>
-          <Route path="/movies">
-            <h2>lhis is movies page</h2>
+          <Route path="/movies" exact>
+            <h2 className='ErrorMessage'>This is movies page</h2>
           </Route>
-          <Route path="/recently-added">
-            <h2>lhis is recently page</h2>
+          <Route path="/recently-added" exact>
+            <h2 className='ErrorMessage'>This is recently page</h2>
           </Route>
-          <Route path="/details/:v_id">                      
+          <Route path="/details/:v_id" exact>                      
             <Entity />
+          </Route>
+          <Route path="/details" exact>                      
+            <h2 className='ErrorMessage'>No id is passed in url</h2>
           </Route>
         </Switch>     
       </div>
