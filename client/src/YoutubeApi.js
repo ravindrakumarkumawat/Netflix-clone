@@ -4,7 +4,8 @@ export const key = 'AIzaSyAvGLSY3CgEMRMdgEbzR2Zd8tR8P1uRDB0'
 export const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snippet&h1=us&regionCode=US`
 export const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&h1=us&regionCode=US&chart=mostPopular`
 export const video = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&id=`
-
+export const playlists = `${baseUrl}/playlists?key=${key}&part=snippet,contentDetails&maxResults=5&channelId=`
+export const playlistItems = `${baseUrl}/playlistItems?key=${key}&part=snippet,contentDetails&maxResults=10&playlistId=`
 
 // const channelsById = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw'
 // const channelsByUsername = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&forUsername=GoogleDevelopers'

@@ -3,6 +3,7 @@ import './Entity.css'
 import Preview from '../Preview/Preview'
 import { useParams } from 'react-router-dom'
 import {video} from '../../YoutubeApi'
+import Playlists from '../Playlists/Playlists'
 
 function Entity() {
   const {v_id} = useParams()
@@ -13,7 +14,10 @@ function Entity() {
     })
   }, [])
   return (
-    <Preview randomUrl={randomUrl} />
+    <>
+      <Preview randomUrl={randomUrl} />
+      <Playlists channelId={randomUrl.channelId} />
+    </>
   )
 } 
 
