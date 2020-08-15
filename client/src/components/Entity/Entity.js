@@ -13,10 +13,11 @@ function Entity() {
       setRandomUrl({id: res.items[0].id, title: res.items[0].snippet.title, thumbnails: res.items[0].snippet.thumbnails.high, channelId: res.items[0].snippet.channelId})
     })
   }, [])
+
   return (
     <>
       <Preview randomUrl={randomUrl} />
-      <Playlists channelId={randomUrl.channelId} />
+      <Playlists v_id={v_id} />
     </>
   )
 } 

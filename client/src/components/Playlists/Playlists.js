@@ -2,20 +2,32 @@ import React, { useState, useEffect } from 'react'
 import './Playlists.css'
 import { playlists, playlistItems, video } from '../../YoutubeApi'
 
-function Playlists({ channelId }) {
+function Playlists({ v_id }) {
   const [lists, setLists] = useState([])
 
   useEffect(() => {
-    fetch(`${playlists}${channelId}`).then((response)=> response.json()).then((res) => {
-      const resPlaylist = res.items((item) => {
-        return { playlistId: item.id, playlistTitle: item.snippet.title } 
-      })
-      setLists(resPlaylist)
-    })
+    get_playlist()
   }, [])
+  
+  const get_playlist = async () => {
+    const randomUrl = await fetch(`${video}${v_id}`).then((response)=> response.json()).then(res => {
+      return {id: res.items[0].id, title: res.items[0].snippet.title, thumbnails: res.items[0].snippet.thumbnails.high, channelId: res.items[0].snippet.channelId}
+    })
 
+    const res = await fetch(`${playlists}${randomUrl.channelId}`).then((response)=> response.json()).then((res) => res)
+    const playList = res.items.map((item) => {
+      return {playlistId: item.id, playlistTitle: item.snippet.title}
+    })
+    setLists(playList)
+  }
+  
   return (
-    <h1>This is playlists provider</h1>
+    <div className="playlists">
+    {
+      lists.map((playlist) => <h3 key={playlist.playlistId}>{playlist.playlistTitle}</h3>)
+    }
+    </div>
+    
   )
 }
 
