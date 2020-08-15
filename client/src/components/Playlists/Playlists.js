@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './Playlists.css'
-import { playlists, playlistItems } from '../../YoutubeApi'
+import { playlists, playlistItems, video } from '../../YoutubeApi'
 
 function Playlists({ channelId }) {
-  const [lists, setLists, video] = useState([])
+  const [lists, setLists] = useState([])
 
   useEffect(() => {
     fetch(`${playlists}${channelId}`).then((response)=> response.json()).then((res) => {
