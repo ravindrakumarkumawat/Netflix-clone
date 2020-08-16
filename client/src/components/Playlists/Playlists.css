@@ -1,0 +1,43 @@
+.playlists {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 50px;
+}
+
+.videos {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  border-radius: 8px;
+}
+
+.playlistItem-container {
+  display: inline-flex;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.playlistItem-container .contents {
+  display: flex;
+  flex-direction: column;
+  width: 306px;  
+  border-radius: 8px;
+}
+
+.playlistItem-container img {
+  width: 306px;
+  height: 171px;
+  object-fit: cover;
+}
+
+.playlistItem-container .videoInfo span,
+.playlistItem-container .videoInfo h4 {
+  color: #fff;
+  width: 100%;
+  white-space: normal;
+}
+
+.playlistItem-container .videoInfo {
+  max-height: 200px;
+  overflow-y: auto;
+}

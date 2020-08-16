@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Playlists.css'
 import { playlists, playlistItems, video } from '../../YoutubeApi'
+import { Link } from 'react-router-dom'
 
 function Playlists({ v_id }) {
   const [lists, setLists] = useState([])
@@ -22,12 +23,16 @@ function Playlists({ v_id }) {
   }
   
   return (
-    <div className="playlists">
+    <>
     {
-      lists.map((playlist) => <h3 key={playlist.playlistId}>{playlist.playlistTitle}</h3>)
+      lists.map((playlist) => 
+        <div className='playlists' key={playlist.playlistId}>
+          <h3 key={playlist.playlistId}>{playlist.playlistTitle}</h3>
+          <PlaylistItems playlistId={playlist.playlistId} />
+        </div>
+      )
     }
-    </div>
-    
+    </>
   )
 }
 
@@ -36,26 +41,46 @@ function PlaylistItems({ playlistId }) {
 
   useEffect(() => {
     fetch(`${playlistItems}${playlistId}`).then((response)=> response.json()).then((res) => {
-      const resPlayItemsVideo = res.items((item) => item.contentDetails.videoId)
+      const resPlayItemsVideo = res.items.map((item) => item.contentDetails.videoId)
       setItems(resPlayItemsVideo)
     })
   }, [])
 
-  return (
-    <h1>This shows the Item inside playlist</h1>
+  return (     
+    <div className='videos'>
+      {
+        items.map((item) => 
+          <PlaylistItemProvider videoId={item} key={item} />        
+        )
+      }
+    </div>
   )
 }
 
 function PlaylistItemProvider({ videoId }) {
-  const [playItemVideo, setPlayItemVideo] = useState([])
+  const [playItemVideo, setPlayItemVideo] = useState({})
   useEffect(() => {
     fetch(`${video}${videoId}`).then((response)=> response.json()).then((res) => {
-      setPlayItemVideo({id: res.items[0].id, title: res.items[0].snippet.title, thumbnails: res.items[0].snippet.thumbnails.high, channelId: res.items[0].snippet.channelId})
+      setPlayItemVideo({id: res.items[0].id, title: res.items[0].snippet.title, thumbnail: res.items[0].snippet.thumbnails.high.url, channelId: res.items[0].snippet.channelId, description: res.items[0].snippet.description})
     })
   }, [])
 
   return (
-    <h1>This is particular video based on the id</h1>
+    <>
+    {
+      <Link to={`/watch/${playItemVideo.id}`} key={playItemVideo.id}>
+        <div className='playlistItem-container'>
+          <div className='contents'>          
+            <img src={playItemVideo.thumbnail} alt={playItemVideo.title} title={playItemVideo.title} />
+            <div className='videoInfo'>
+              <h4>{playItemVideo.title}</h4>
+              <span>{playItemVideo.description}</span>
+            </div>
+          </div>
+        </div> 
+      </Link>
+    }
+    </>
   )
 }
 
