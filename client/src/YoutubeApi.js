@@ -6,6 +6,7 @@ export const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,
 export const video = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&id=`
 export const playlists = `${baseUrl}/playlists?key=${key}&part=snippet,contentDetails&maxResults=5&channelId=`
 export const playlistItems = `${baseUrl}/playlistItems?key=${key}&part=snippet,contentDetails&maxResults=10&playlistId=`
+export const relatedVideo = `${baseUrl}/search?key=${key}&part=snippet&maxResults=10&type=video&relatedToVideoId=`
 
 // const channelsById = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw'
 // const channelsByUsername = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&forUsername=GoogleDevelopers'
