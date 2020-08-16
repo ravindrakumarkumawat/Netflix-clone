@@ -4,6 +4,7 @@ import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
 import Categories from './components/Categories/Categories'
 import Entity from './components/Entity/Entity'
+import Watch from './components/Watch/Watch'
 import { videos, videoCategories } from './YoutubeApi'
 import {
   BrowserRouter as Router,
@@ -16,7 +17,7 @@ function App() {
   const [randomUrl, setRandomUrl] = useState('')
 
   useEffect(() => {   
-    get_videos()  
+    // get_videos()  
   }, [])
 
   const get_videos = async () => {
@@ -101,6 +102,12 @@ function App() {
             <Entity />
           </Route>
           <Route path="/details" exact>                      
+            <h2 className='ErrorMessage'>No id is passed in url</h2>
+          </Route>
+          <Route path="/watch/:v_id" exact>                      
+            <Watch />
+          </Route>
+          <Route path="/watch" exact>                      
             <h2 className='ErrorMessage'>No id is passed in url</h2>
           </Route>
         </Switch>     
