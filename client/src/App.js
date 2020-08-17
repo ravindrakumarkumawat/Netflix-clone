@@ -5,6 +5,7 @@ import Navbar from './components/navbar/Navbar'
 import Categories from './components/Categories/Categories'
 import Entity from './components/Entity/Entity'
 import Watch from './components/Watch/Watch'
+import Search from './components/Search/Search'
 import { videos, videoCategories } from './YoutubeApi'
 import {
   BrowserRouter as Router,
@@ -109,6 +110,9 @@ function App() {
           </Route>
           <Route path="/watch" exact>                      
             <h2 className='ErrorMessage'>No id is passed in url</h2>
+          </Route>
+          <Route path="/Search" exact>                      
+            <Search />
           </Route>
         </Switch>     
       </div>
