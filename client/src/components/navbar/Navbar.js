@@ -28,19 +28,22 @@ function Navbar (props) {
           <img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/>
         </Link>
       </div>
-      <ul className="navbar-right nav-links">
+     {/* <ul className="navbar-right nav-links">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/tv-shows">TV Shows</Link></li>
         <li><Link to="/movies">Movies</Link></li>
         <li><Link to="/recently-added">Recently Added</Link></li>
       </ul>
+  */}
       <div className='right-items'>
         <Link to="/Search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>
-        <Link to="/">
+        {/*
+          <Link to="/">
           <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
         </Link>
+        */}        
       </div>
     </nav>
   )
