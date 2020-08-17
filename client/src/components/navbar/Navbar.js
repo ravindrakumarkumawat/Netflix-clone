@@ -38,7 +38,7 @@ function Navbar (props) {
         <Link to="/Search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>
-        <Link to="/Profile">
+        <Link to="/">
           <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
         </Link>
       </div>
