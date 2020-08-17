@@ -90,7 +90,7 @@ function App() {
             <Preview randomUrl={randomUrl} />
             <Categories catVideo={catVideo} /> 
           </Route>
-          <Route path="/tv-shows" exact>  
+          {/*<Route path="/tv-shows" exact>  
             <h2 className='ErrorMessage'>This is tv-shows</h2> 
           </Route>
           <Route path="/movies" exact>
@@ -98,7 +98,7 @@ function App() {
           </Route>
           <Route path="/recently-added" exact>
             <h2 className='ErrorMessage'>This is recently page</h2>
-          </Route>
+          </Route>*/}
           <Route path="/details/:v_id" exact>                      
             <Entity />
           </Route>
