@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react'
 import './Navbar.css'
 import Jioflix from '../../assets/images/jioflix.png'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 
 function Navbar (props) {
   const [show, setShow] = useState(false);
@@ -36,11 +36,10 @@ function Navbar (props) {
       </ul>
   */}
       <div className='right-items'>
-        <Link to="/Search">
+        {/*<Link to="/Search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-        </Link>
-        {/*
-          <Link to="/">
+        </Link>        
+        <Link to="/">
           <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
         </Link>
         */}        
