@@ -18,7 +18,7 @@ function App() {
   const [randomUrl, setRandomUrl] = useState('')
 
   useEffect(() => {   
-    // get_videos()  
+    get_videos()  
   }, [])
 
   const get_videos = async () => {
