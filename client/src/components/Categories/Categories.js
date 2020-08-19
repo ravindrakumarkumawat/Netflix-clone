@@ -23,15 +23,15 @@ function Categories({catVideo}) {
 
 function EntityProvider({ entity }) {
   return (
-    <div className='entity-provider-container small'>
+    <>
     {
       entity.map((list, index)=>
-        <Link to={`/details/${list.id}`} key={list.id}>
+        <Link to={`/details/${list.id}`} key={list.id} className='item'>
           <img src={list.thumbnail.url} alt={list.title} title={list.title} />
         </Link>  
       )
     }
-    </div> 
+    </> 
     
   )
 } 

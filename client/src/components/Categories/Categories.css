@@ -4,6 +4,11 @@ h3 {
 a h3:hover {
   color: #fff;
 }
+
+.preview-categories-container{
+  padding: 0 50px;
+}
+
 .category {
   display: flex;
   flex-direction: column;
@@ -16,9 +21,21 @@ a h3:hover {
   white-space: nowrap;  
   border-radius: 8px;
 }
-.preview-categories-container{
-  padding: 0 50px;
+
+.entity .item{
+  width: 306px;
+  height: 171px;
+  display: inline-flex;  
+  margin-right: 8px; 
 }
+
+.entity img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 8px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -30,23 +47,4 @@ a h3:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #f00; 
-}
-
-entity-provider-container {
-  position: relative;
-  display: flex;
-}
-
-.entity-provider-container.small a{
-  width: 306px;
-  height: 171px;
-  display: inline-flex;  
-  margin-right: 8px; 
-}
-
-.entity-provider-container.small img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 8px;
 }
