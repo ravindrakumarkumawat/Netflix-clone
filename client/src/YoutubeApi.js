@@ -1,5 +1,5 @@
 export const baseUrl = 'https://www.googleapis.com/youtube/v3'
-export const key = 'AIzaSyBNJl0IjTii3xiWLE60tondz7QftfXeh5U'
+export const key = 'AIzaSyBP80ACJ3HRGpTiu24IgkayomPHfE5BGe8'
 
 export const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snippet&h1=us&regionCode=US`
 export const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&h1=us&regionCode=US&chart=mostPopular`
