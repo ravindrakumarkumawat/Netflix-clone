@@ -32,9 +32,9 @@ function EntityProvider({ entity, setActive, category }) {
       : setHovered(false)
   }, [])
 
-  const getPos = useCallback(e => {
+  const getPos = useCallback((e, id) => {
     const pos = e.target.parentElement.getBoundingClientRect()
-    setActive({ category, pos })
+    setActive({ category, pos, id })
   }, [])
 
   return (
@@ -50,7 +50,7 @@ function EntityProvider({ entity, setActive, category }) {
         { list.id === hovered && (
           <div className='content'> 
             <FontAwesomeIcon icon={faPlay} className='Icon'></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faInfoCircle} onClick={getPos} className='Icon'></FontAwesomeIcon>            
+            <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getPos(e, list.id)} className='Icon'></FontAwesomeIcon>            
           </div>
         )
         }          

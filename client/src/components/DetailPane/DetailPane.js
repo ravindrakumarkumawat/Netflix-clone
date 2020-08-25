@@ -8,7 +8,7 @@ import Playlists from '../Playlists/Playlists'
 
 const TABS = ['Overview', 'Playlists']
 
-function DetailPane ({ category, top, setActive }) {
+function DetailPane ({ category, top, setActive, id }) {
   const [tab, setTab] = useState()
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function DetailPane ({ category, top, setActive }) {
       {(() => {
         switch (tab) {
           case 'Playlists':
-            return <Playlists v_id={'vRFS0MYTC1I'} />
+            return <Playlists v_id={id} />
           default:
             return <Overview />
         }

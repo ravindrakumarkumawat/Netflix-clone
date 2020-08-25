@@ -16,7 +16,8 @@ import {
 
 const initialRow = {
   category: '',
-  pos: {top: '', bottom: ''}
+  pos: {top: '', bottom: ''},
+  id: ''
 }
 
 function App() {
@@ -26,7 +27,8 @@ function App() {
 
   const {
     category,
-    pos: {top, bottom}
+    pos: {top, bottom},
+    id
   } = activeRow
 
   const navRef = createRef()
@@ -118,7 +120,7 @@ function App() {
           <Route path="/" exact>          
             <Preview randomUrl={randomUrl} />
             <Categories catVideo={catVideo} setActive={setActive} /> 
-            <DetailPane category={category} top={bottom+window.scrollY} setActive={setActive} />
+            <DetailPane category={category} top={bottom+window.scrollY} id={id} setActive={setActive} />
           </Route>
           {/*<Route path="/tv-shows" exact>  
             <h2 className='ErrorMessage'>This is tv-shows</h2> 
