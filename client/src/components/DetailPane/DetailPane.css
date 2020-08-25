@@ -19,3 +19,15 @@
 .detailPane-container .pane-wrapper {
   padding: 2vw 4vw 0;
 }
+
+.detailPane-container .pane-wrapper .max-overview{
+  max-width: 375px;
+}
+
+.detailPane-container .pane-wrapper .max-playlist{
+  max-width: 175px;
+}
+
+.detailPane-container .pane-wrapper img {
+  margin-bottom: 20px;
+}

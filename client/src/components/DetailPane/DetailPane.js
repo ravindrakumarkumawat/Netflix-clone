@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Playlists from '../Playlists/Playlists'
 
-const TABS = ['Overview', 'Playlists', 'Details']
+const TABS = ['Overview', 'Playlists']
 
 function DetailPane ({ category, top, setActive }) {
   const [tab, setTab] = useState()
@@ -22,10 +22,18 @@ function DetailPane ({ category, top, setActive }) {
     category && (        
     <div className='detailPane-container' style={style}>
       <div className='pane-wrapper'>
+      <img className={`${tab==='Overview' ? 'max-overview': 'max-playlist'}`} src='https://res.cloudinary.com/diqcnmefm/image/upload/v1598366227/Jioflix/jioflix_mh8n2t.png'
+      />
+      {(() => {
+        switch (tab) {
+          case 'Playlists':
+            return <Playlists v_id={'vRFS0MYTC1I'} />
+          default:
+            return <Overview />
+        }
+      })()}
         <FontAwesomeIcon icon={faTimes} className='Icon' onClick={setActive}></FontAwesomeIcon>
-        <DetailPaneNav tabs={TABS} tab={tab} setTab={setTab}/>
-        {/*<Overview />*/}
-        <Playlists v_id={'vRFS0MYTC1I'} />
+        <DetailPaneNav tabs={TABS} tab={tab} setTab={setTab}/>        
       </div>
     </div>
     )
