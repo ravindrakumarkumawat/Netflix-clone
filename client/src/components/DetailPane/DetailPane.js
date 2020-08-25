@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './DetailPane.css'
 import DetailPaneNav from '../DetailPaneNav/DetailPaneNav'
+import Overview from '../Overview/Overview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -20,8 +21,11 @@ function DetailPane ({ category, top, setActive }) {
   return (
     category && (        
     <div className='detailPane-container' style={style}>
-      <FontAwesomeIcon icon={faTimes} className='Icon' onClick={setActive}></FontAwesomeIcon>
-      <DetailPaneNav tabs={TABS} tab={tab} setTab={setTab}/>
+      <div className='pane-wrapper'>
+        <FontAwesomeIcon icon={faTimes} className='Icon' onClick={setActive}></FontAwesomeIcon>
+        <DetailPaneNav tabs={TABS} tab={tab} setTab={setTab}/>
+        <Overview />
+      </div>
     </div>
     )
   )
