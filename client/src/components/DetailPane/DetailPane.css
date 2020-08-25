@@ -5,6 +5,7 @@
   position: absolute;
   border: 2px solid white;
   z-index: 99;
+  overflow-y: auto;
 }
 
 .detailPane-container .Icon {
