@@ -1,28 +1,26 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, forwardRef} from 'react'
 import './Navbar.css'
 import Jioflix from '../../assets/images/jioflix.png'
 import { Link } from 'react-router-dom'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
 
-function Navbar (props) {
-  const [show, setShow] = useState(false);
+const Navbar = forwardRef((props, ref) => {
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        setShow(true);
-      } else {
-        setShow(false);
-      }
-    })
+    const handleScroll = () =>
+      window.pageYOffset > 75 ? setShow(true) : setShow(false)
+
+    const onScroll = window.addEventListener('scroll', handleScroll)
+
     return () => {
-      window.removeEventListener("scroll");
+      window.removeEventListener('scroll', onScroll)
     }
   }, [])
 
   return (
-    <nav className={`navigation top-bar ${show && 'scrolled'}`}>
+    <nav ref={ref} className={`navigation top-bar ${show && 'scrolled'}`}>
       <div className='logo-container'>
         <Link to="/">
           <img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/>
@@ -47,5 +45,5 @@ function Navbar (props) {
     </nav>
   )
 }
-
+)
 export default Navbar

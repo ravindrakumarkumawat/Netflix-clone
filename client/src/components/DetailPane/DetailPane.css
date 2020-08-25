@@ -1,0 +1,17 @@
+.detailPane-container {
+  height: 475px;
+  background: black;
+  width: 100%;
+  position: absolute;
+  border: 2px solid white;
+  z-index: 99;
+}
+
+.detailPane-container .Icon {
+  font-size: 32px;
+  color: white;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}

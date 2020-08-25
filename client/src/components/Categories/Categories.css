@@ -5,7 +5,7 @@ a h3:hover {
   color: #fff;
 }
 
-.preview-categories-container{
+/* .preview-categories-container{
   padding: 0 50px;
 }
 
@@ -34,7 +34,7 @@ a h3:hover {
   height: 100%;
   object-fit: cover; 
   border-radius: 8px;
-}
+} */
 
 ::-webkit-scrollbar {
   width: 8px;
@@ -47,4 +47,51 @@ a h3:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #f00; 
+}
+
+.preview-categories-container {
+  /* ContentRow */
+  padding-left: 50px;
+  overflow-x: hidden;
+}
+
+.entity {
+  /* block-wrapper */
+  display: flex;
+  width: 100%;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  border-radius: 8px;
+}
+
+.item {
+  position: relative; 
+  margin-right: 8px;
+}
+
+.item .content {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  transition: background-color ease 0.2s;
+}
+
+.item .content:hover {
+  background-color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+}
+.item .content .Icon {
+  font-size: 32px;
+}
+.item .content .Icon:first-of-type {
+  color: red;
+  margin-right: 25px;
+}
+.item .content .Icon:last-of-type {
+  color: white;
 }

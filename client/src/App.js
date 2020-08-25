@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createRef } from 'react'
 import './App.css'
 import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
@@ -6,6 +6,7 @@ import Categories from './components/Categories/Categories'
 import Entity from './components/Entity/Entity'
 import Watch from './components/Watch/Watch'
 import Search from './components/Search/Search'
+import DetailPane from './components/DetailPane/DetailPane'
 import { videos, videoCategories } from './YoutubeApi'
 import {
   BrowserRouter as Router,
@@ -13,13 +14,41 @@ import {
   Route
 } from 'react-router-dom' 
 
+const initialRow = {
+  category: '',
+  pos: {top: '', bottom: ''}
+}
+
 function App() {
   const [catVideo, setCatVideo] = useState([])
   const [randomUrl, setRandomUrl] = useState('')
+  const [activeRow, setActiveRow] = useState(initialRow)
+
+  const {
+    category,
+    pos: {top, bottom}
+  } = activeRow
+
+  const navRef = createRef()
 
   useEffect(() => {   
     get_videos()  
   }, [])
+  
+  const setActive = (activeRow) => {
+    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
+  }
+
+  useEffect(() => {
+    if (!category) return
+    const navHeight = navRef.current.offsetHeight
+
+    window.scrollTo({
+      top: top + window.scrollY - navHeight,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }, [category])
 
   const get_videos = async () => {
       const res = await fetch(`${videos}&maxResults=50`)
@@ -84,11 +113,12 @@ function App() {
   return (
     <Router>
       <div className="App">  
-        <Navbar /> 
+        <Navbar ref={navRef}/> 
         <Switch>
           <Route path="/" exact>          
             <Preview randomUrl={randomUrl} />
-            <Categories catVideo={catVideo} /> 
+            <Categories catVideo={catVideo} setActive={setActive} /> 
+            <DetailPane category={category} top={bottom+window.scrollY} setActive={setActive} />
           </Route>
           {/*<Route path="/tv-shows" exact>  
             <h2 className='ErrorMessage'>This is tv-shows</h2> 
