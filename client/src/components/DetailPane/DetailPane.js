@@ -22,16 +22,16 @@ function DetailPane ({ category, top, setActive, id }) {
     category && (        
     <div className='detailPane-container' style={style}>
       <div className='pane-wrapper'>
-      <img className={`${tab==='Overview' ? 'max-overview': 'max-playlist'}`} src='https://res.cloudinary.com/diqcnmefm/image/upload/v1598366227/Jioflix/jioflix_mh8n2t.png'
-      />
-      {(() => {
-        switch (tab) {
-          case 'Playlists':
-            return <Playlists v_id={id} />
-          default:
-            return <Overview />
-        }
-      })()}
+        <img className={`${tab==='Overview' ? 'max-overview': 'max-playlist'}`} src='https://res.cloudinary.com/diqcnmefm/image/upload/v1598366227/Jioflix/jioflix_mh8n2t.png'
+        />
+        {(() => {
+          switch (tab) {
+            case 'Playlists':
+              return <Playlists v_id={id} />
+            default:
+              return <Overview />
+          }
+        })()}
         <FontAwesomeIcon icon={faTimes} className='Icon' onClick={setActive}></FontAwesomeIcon>
         <DetailPaneNav tabs={TABS} tab={tab} setTab={setTab}/>        
       </div>
