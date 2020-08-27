@@ -7,7 +7,7 @@ a h3:hover {
 
 .preview-categories-container h3 {
   /* border: 2px solid white; */
-  margin: 35px 0;
+  /* margin: 35px 0; */
 }
 /* .preview-categories-container{
   padding: 0 50px;
@@ -57,13 +57,14 @@ a h3:hover {
 .preview-categories-container {
   /* ContentRow */
   padding-left: 50px;
-  overflow-x: hidden;
   width: 100%;
   /* border: 2px solid red; */
 }
 
 .entity {
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   /* border: 6px solid green; */
 }
 
@@ -71,6 +72,8 @@ a h3:hover {
   transition: 450ms transform;
   font-size: 0;
   white-space: nowrap;
+  margin: 35px 0;
+  /* padding-bottom: 10px; */
   /* border: 4px solid whitesmoke; */
 }
 
@@ -127,7 +130,7 @@ a h3:hover {
 }
 
 
-.item__details:before {
+/* .item__details:before {
   content: '▶';
   left: 0;
   width: 100%;
@@ -144,7 +147,7 @@ a h3:hover {
   position: absolute;
   bottom: 0;
   padding: 10px;
-}
+} */
 
 .entity__inner:hover {
   transform: translate3d(-62.5px, 0, 0);
@@ -164,7 +167,8 @@ a h3:hover {
 .item:hover ~ .item {
   transform: translate3d(125px, 0, 0);
 }
-/* .item .content {
+
+.item .item__details {
   position: absolute;
   display: flex;
   align-items: center;
@@ -174,27 +178,24 @@ a h3:hover {
   transition: background-color ease 0.2s;  
 }
 
-.item .content:hover {
+/* .item .item__details:hover {
   background-color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
-}
-.item .content .Icon {
+} */
+
+.item .item__details .Icon {
   font-size: 32px;
 }
-.item .content .Icon:first-of-type {
+.item .item__details .Icon:first-of-type {
   color: red;
   margin-right: 25px;
 }
-.item .content .Icon:last-of-type {
+.item .item__details .Icon:last-of-type {
   color: white;
 }
 
 .item iframe {
-  border: 2px solid red;
-  width: 320px;
-  height: 180px;
+  /* border: 2px solid red; */
+  width: 250px;
+  height: 140.625px;
 }
-
-.item iframe {
-  border: 2px solid red;
-} */
