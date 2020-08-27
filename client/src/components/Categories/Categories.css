@@ -37,17 +37,18 @@ a h3:hover {
 } */
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 0, 0, 0.3); 
+  background: rgba(14, 14, 14, 0.7); 
+  border: 1px solid #e5e5e5;
   border-radius: 8px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
   background: #f00; 
-}
+} */
 
 .preview-categories-container {
   /* ContentRow */
@@ -69,6 +70,7 @@ a h3:hover {
 .item {
   position: relative; 
   margin-right: 8px;
+  cursor: pointer;  
 }
 
 .item .content {
@@ -78,11 +80,11 @@ a h3:hover {
   height: 100%;
   width: 100%;
   justify-content: center;
-  transition: background-color ease 0.2s;
+  transition: background-color ease 0.2s;  
 }
 
 .item .content:hover {
-  background-color: rgba(0, 0, 0, 0.65);
+  /* background-color: rgba(0, 0, 0, 0.65); */
   cursor: pointer;
 }
 .item .content .Icon {
@@ -94,4 +96,14 @@ a h3:hover {
 }
 .item .content .Icon:last-of-type {
   color: white;
+}
+
+.item iframe {
+  border: 2px solid red;
+  width: 320px;
+  height: 180px;
+}
+
+.item iframe {
+  border: 2px solid red;
 }
