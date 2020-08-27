@@ -63,14 +63,7 @@ a h3:hover {
 }
 
 .entity {
-  /* block-wrapper */
-  display: flex;
   width: 100%;
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  border-radius: 8px;
   /* border: 6px solid green; */
 }
 
