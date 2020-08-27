@@ -130,26 +130,6 @@ a h3:hover {
   z-index: 1;
 }
 
-
-/* .item__details:before {
-  content: '▶';
-  left: 0;
-  width: 100%;
-  font-size: 30px;
-  margin-left: 7px;
-  margin-top: -18px;
-  text-align: center;
-  z-index: 2;
-}
-.item:hover .item__details {
-  opacity: 1;
-}
-.item__title {
-  position: absolute;
-  bottom: 0;
-  padding: 10px;
-} */
-
 .entity__inner:hover {
   transform: translate3d(-62.5px, 0, 0);
 }
@@ -179,10 +159,9 @@ a h3:hover {
   transition: background-color ease 0.2s;  
 }
 
-/* .item .item__details:hover {
-  background-color: rgba(0, 0, 0, 0.65);
-  cursor: pointer;
-} */
+.item:hover .item__details {
+  opacity: 1;
+}
 
 .item .item__details .Icon {
   font-size: 32px;
