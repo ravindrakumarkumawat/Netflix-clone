@@ -62,7 +62,9 @@
 .preview-overlay-buttons {  
   padding-left: 12px;
 }
-
+.preview-overlay-detail {
+  width: 40%;
+}
 .preview-overlay-buttons button {
   color: #000;
   background-color: #fff;
