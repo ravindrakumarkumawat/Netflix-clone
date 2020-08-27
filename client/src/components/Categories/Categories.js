@@ -38,7 +38,7 @@ function EntityProvider({ entity, setActive, category }) {
   }
 
   return (
-    <>
+    <div className='entity__inner'>
     {
       entity.map((list, index)=>
         <div 
@@ -47,21 +47,22 @@ function EntityProvider({ entity, setActive, category }) {
           onMouseEnter={(e)=> handleHover(e, list.id)}
           onMouseLeave={handleHover}>
         { list.id === hovered && (
-          <div className='content'> 
+          <div className='item__details'> 
             <FontAwesomeIcon icon={faPlay} className='Icon'></FontAwesomeIcon>
             <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getPos(e, list.id)} className='Icon'></FontAwesomeIcon>            
           </div>
         )
-        }  
-        { list.id === hovered
-          ? <iframe title={list.title} src={`https://www.youtube.com/embed/${list.id}?vq=hd1080&controls=0&autoplay=1&loop=1&mute=0&cc_load_policy=0&playlist=${list.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
-          : <img src={list.thumbnail.url} alt={list.title} />
-        }        
-          
+        } 
+        <div className='item__media'> 
+          { list.id === hovered
+            ? <iframe title={list.title} src={`https://www.youtube.com/embed/${list.id}?vq=hd1080&controls=0&autoplay=1&loop=1&mute=0&cc_load_policy=0&playlist=${list.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
+            : <img src={list.thumbnail.url} alt={list.title} className='item__img' />
+          }        
+        </div> 
         </div>  
       )
     }
-    </> 
+    </div> 
     
   )
 } 

@@ -5,6 +5,10 @@ a h3:hover {
   color: #fff;
 }
 
+.preview-categories-container h3 {
+  /* border: 2px solid white; */
+  margin: 35px 0;
+}
 /* .preview-categories-container{
   padding: 0 50px;
 }
@@ -54,6 +58,8 @@ a h3:hover {
   /* ContentRow */
   padding-left: 50px;
   overflow-x: hidden;
+  width: 100%;
+  /* border: 2px solid red; */
 }
 
 .entity {
@@ -65,22 +71,107 @@ a h3:hover {
   overflow-y: hidden;
   white-space: nowrap;
   border-radius: 8px;
-  border: 6px solid green;
+  /* border: 6px solid green; */
+}
+
+.entity__inner {
+  transition: 450ms transform;
+  font-size: 0;
+  white-space: nowrap;
+  /* border: 4px solid whitesmoke; */
 }
 
 .item {
-  position: relative; 
+  position: relative;
+  display: inline-block; 
+  width: 250px;
+  height: 140.625px;
+  font-size: 20px;
   margin-right: 8px;
   cursor: pointer;
-  border: 3px dotted blue;
-  transition: all .25s ease-in-out;  
+  transition: 450ms all;
+  transform-origin: center left;
+  /* border: 2px dashed black;  */
 }
 
-.item:hover {
-  transform: scale(1.3);
+.item__img {
+  width: 250px;
+  height: 140.625px;
+  object-fit: cover;
 }
 
-.item .content {
+.item__details {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  font-size: 10px;
+  opacity: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  transition: 450ms opacity;
+}
+
+.item__details:after
+.item__details:before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: black;
+}
+.item__details:after {
+  margin-top: -25px;
+  margin-left: -25px;
+  width: 50px;
+  height: 50px;
+  border: 3px solid #ecf0f1;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
+
+.item__details:before {
+  content: '▶';
+  left: 0;
+  width: 100%;
+  font-size: 30px;
+  margin-left: 7px;
+  margin-top: -18px;
+  text-align: center;
+  z-index: 2;
+}
+.item:hover .item__details {
+  opacity: 1;
+}
+.item__title {
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
+}
+
+.entity__inner:hover {
+  transform: translate3d(-62.5px, 0, 0);
+}
+.entity__inner:hover .item {
+
+  /* // Fade out every tile */
+  opacity: .3;
+}
+  /* // And then grow the current tile and make it opaque again */
+  .entity__inner:hover .item:hover{
+    transform: scale(1.5);
+    opacity: 1;
+}
+/* // And finally move all tiles right of the current tile to the right,
+// so its flush against the hovered tile */
+.item:hover ~ .item {
+  transform: translate3d(125px, 0, 0);
+}
+/* .item .content {
   position: absolute;
   display: flex;
   align-items: center;
@@ -91,7 +182,7 @@ a h3:hover {
 }
 
 .item .content:hover {
-  /* background-color: rgba(0, 0, 0, 0.65); */
+  background-color: rgba(0, 0, 0, 0.65);
   cursor: pointer;
 }
 .item .content .Icon {
@@ -113,4 +204,4 @@ a h3:hover {
 
 .item iframe {
   border: 2px solid red;
-}
+} */
