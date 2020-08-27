@@ -65,12 +65,19 @@ a h3:hover {
   overflow-y: hidden;
   white-space: nowrap;
   border-radius: 8px;
+  border: 6px solid green;
 }
 
 .item {
   position: relative; 
   margin-right: 8px;
-  cursor: pointer;  
+  cursor: pointer;
+  border: 3px dotted blue;
+  transition: all .25s ease-in-out;  
+}
+
+.item:hover {
+  transform: scale(1.3);
 }
 
 .item .content {
