@@ -6,7 +6,7 @@ import Categories from './components/Categories/Categories'
 import Entity from './components/Entity/Entity'
 import Watch from './components/Watch/Watch'
 import Search from './components/Search/Search'
-import DetailPane from './components/DetailPane/DetailPane'
+// import DetailPane from './components/DetailPane/DetailPane'
 import { videos, videoCategories } from './YoutubeApi'
 import {
   BrowserRouter as Router,
@@ -120,7 +120,7 @@ function App() {
           <Route path="/" exact>          
             <Preview randomUrl={randomUrl} />
             <Categories catVideo={catVideo} setActive={setActive} /> 
-            <DetailPane category={category} top={bottom+window.scrollY} id={id} setActive={setActive} />
+  {/*<DetailPane category={category} top={bottom+window.scrollY} id={id} setActive={setActive} />*/}
           </Route>
           {/*<Route path="/tv-shows" exact>  
             <h2 className='ErrorMessage'>This is tv-shows</h2> 

@@ -8,20 +8,21 @@ import Playlists from '../Playlists/Playlists'
 
 const TABS = ['Overview', 'Playlists']
 
-function DetailPane ({ category, top, setActive, id }) {
+function DetailPane ({ category, setActive, id }) {
   const [tab, setTab] = useState()
 
   useEffect(() => {
     setTab(TABS[0])
   }, [!category])
 
-  const style = {
-    top: top + 'px'
-  }
+  // const style = {
+  //   top: top + 'px'
+  // }
   return (
     category && (        
-    <div className='detailPane-container' style={style}>
+    <div className='detailPane-container'>
       <div className='pane-wrapper'>
+        <h1>{id}</h1>
         <img className={`${tab==='Overview' ? 'max-overview': 'max-playlist'}`} src='https://res.cloudinary.com/diqcnmefm/image/upload/v1598366227/Jioflix/jioflix_mh8n2t.png'
         />
         {(() => {

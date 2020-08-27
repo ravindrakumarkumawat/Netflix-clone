@@ -6,7 +6,9 @@
   border: 2px solid white;
   z-index: 99;
 }
-
+.detailPane-container h1 {
+  color: white;
+}
 .detailPane-container .Icon {
   font-size: 32px;
   color: white;

@@ -4,18 +4,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 // import { videos, videoCategories } from '../../YoutubeApi'
 import { Link } from 'react-router-dom'
+import DetailPane from '../DetailPane/DetailPane'
 
-function Categories({catVideo , setActive}) {  
+const initialRow = {
+  category: '',
+  id: ''
+}
+
+function Categories({ catVideo }) { 
+  const [activeRow, setActiveRow] = useState(initialRow)
+  const {
+    category,
+    id
+  } = activeRow
+  const setActive = (activeRow) => {
+    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
+  }
   return (
     <div className='preview-categories-container'> 
       {
         catVideo.map((cat, index) =>  
-        <React.Fragment key={index}>  
-            {/** h3 should route to category page */}      
+        <React.Fragment key={index}>    
             <h3 key={cat.c_id}>{cat.c_title}</h3>
             <div className='entity'>
               <EntityProvider entity={cat.v_lists} setActive={setActive} category={cat.c_title} />
             </div>
+            { category===cat.c_title &&               
+            <DetailPane category={category} id={id} setActive={setActive}/>
+            }
         </React.Fragment>          
         )
       }
@@ -24,7 +40,7 @@ function Categories({catVideo , setActive}) {
 }
 
 function EntityProvider({ entity, setActive, category }) {
-  const [hovered, setHovered] = useState(false)
+  const [hovered, setHovered] = useState(false) 
 
   const handleHover = (e, id) => {
     e.type === 'mouseenter'
@@ -32,9 +48,8 @@ function EntityProvider({ entity, setActive, category }) {
       : setHovered(false)
   }
 
-  const getPos =  (e, id) => {
-    const pos = e.target.parentElement.getBoundingClientRect()
-    setActive({ category, pos, id })
+  const getActive =  (e, id) => {
+    setActive({ category, id })
   }
 
   return (
@@ -49,7 +64,7 @@ function EntityProvider({ entity, setActive, category }) {
         { list.id === hovered && (
           <div className='item__details'> 
             <FontAwesomeIcon icon={faPlay} className='Icon'></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getPos(e, list.id)} className='Icon'></FontAwesomeIcon>            
+            <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getActive(e, list.id)} className='Icon'></FontAwesomeIcon>            
           </div>
         )
         } 
