@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 import './Preview.css'
+import {Link} from 'react-router-dom'
 
 function Preview ({ randomUrl }) {   
   const [mute, setMute] = useState(1)
@@ -13,19 +14,19 @@ function Preview ({ randomUrl }) {
   const togglePlay = () => {
     setAutoPlay(Number(!autoPlay))
   }
-
+  console.log(randomUrl)
   return (
     <div className='preview-container'>
       <iframe title={randomUrl.title} src={`https://www.youtube.com/embed/${randomUrl.id}?vq=hd1080&controls=0&autoplay=${autoPlay}&loop=1&mute=${mute}&cc_load_policy=0&playlist=${randomUrl.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>
       <div className='preview-overlay'>
         <div className='preview-main-details'>
-          <h3>{randomUrl.title}</h3>
-          <p>Video Subtitle</p>
+          <div className='preview-overlay-detail'>
+            <h3>{randomUrl.channelTitle}</h3>
+            <p>{randomUrl.title}</p>
+          </div>
           <div className='preview-overlay-buttons'>
-            <button onClick={() => togglePlay()}>
-            { !autoPlay ? <FontAwesomeIcon icon={faPlay}></FontAwesomeIcon>
-              : <FontAwesomeIcon icon={faPause}></FontAwesomeIcon>
-            } 
+            <button onClick={() => togglePlay()} className='preview-play'>
+              <Link to={`/watch/${randomUrl.id}`}><FontAwesomeIcon icon={faPlay}></FontAwesomeIcon> Play</Link>
             </button>
             <button onClick={() => toggleMute()}> {
               (mute ? <FontAwesomeIcon icon={faVolumeMute}></FontAwesomeIcon>
