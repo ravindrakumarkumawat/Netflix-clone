@@ -1,7 +1,7 @@
 .playlists {
   display: flex;
   flex-direction: column;
-  padding: 10px 50px;
+  /* padding: 10px 50px; */
 }
 
 .videos {
@@ -9,6 +9,10 @@
   overflow-y: hidden;
   white-space: nowrap;
   border-radius: 8px;
+}
+
+.videos a {    
+  text-decoration: none;
 }
 
 .playlistItem-container {
@@ -30,6 +34,10 @@
   object-fit: cover;
 }
 
+.playlistItem-container img:hover {
+ opacity: .7;
+}
+
 .playlistItem-container .videoInfo span,
 .playlistItem-container .videoInfo h4 {
   color: #fff;
@@ -40,4 +48,9 @@
 .playlistItem-container .videoInfo {
   max-height: 130px;
   overflow-y: auto;
+}
+
+.playlistItem-container .videoInfo:hover {
+  text-decoration: underline;
+  color: #fff;
 }

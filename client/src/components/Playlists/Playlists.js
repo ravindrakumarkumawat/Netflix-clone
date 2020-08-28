@@ -27,7 +27,7 @@ function Playlists({ v_id }) {
     {
       lists.map((playlist) => 
         <div className='playlists' key={playlist.playlistId}>
-          <h3 key={playlist.playlistId}>{playlist.playlistTitle}</h3>
+          {/*<h3 key={playlist.playlistId}>{playlist.playlistTitle}</h3>*/}
           <PlaylistItems playlistId={playlist.playlistId} />
         </div>
       )
@@ -71,10 +71,10 @@ function PlaylistItemProvider({ videoId }) {
       <Link to={`/watch/${playItemVideo.id}`} key={playItemVideo.id}>
         <div className='playlistItem-container'>
           <div className='contents'>          
-            <img src={playItemVideo.thumbnail} alt={playItemVideo.title} title={playItemVideo.title} />
+            <img src={playItemVideo.thumbnail} alt={playItemVideo.title} />
             <div className='videoInfo'>
               <h4>{playItemVideo.title}</h4>
-              <span>{playItemVideo.description}</span>
+              {/*<span>{playItemVideo.description}</span>*/}
             </div>
           </div>
         </div> 

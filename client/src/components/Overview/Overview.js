@@ -3,13 +3,12 @@ import './Overview.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 
-function Overview() {
+function Overview({title}) {
 
   return (
     <div className='Overview-container'>
       <p>
-        All he wants to do is leave town and start over. But first, he needs to
-        deal with his ex, his new roomie and the enemies who want him dead.
+        {title}
       </p>
       <button>
       <FontAwesomeIcon icon={faPlay} className='Icon-play'></FontAwesomeIcon> Play

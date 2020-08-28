@@ -8,14 +8,18 @@ import DetailPane from '../DetailPane/DetailPane'
 
 const initialRow = {
   category: '',
-  id: ''
+  id: '',
+  title: '',
+  channelTitle: ''
 }
 
 function Categories({ catVideo }) { 
   const [activeRow, setActiveRow] = useState(initialRow)
   const {
     category,
-    id
+    id,
+    title,
+    channelTitle
   } = activeRow
   const setActive = (activeRow) => {
     activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
@@ -30,7 +34,7 @@ function Categories({ catVideo }) {
               <EntityProvider entity={cat.v_lists} setActive={setActive} category={cat.c_title} />
             </div>
             { category===cat.c_title &&               
-            <DetailPane category={category} id={id} setActive={setActive}/>
+            <DetailPane category={category} id={id} setActive={setActive} title={title} channelTitle={channelTitle}/>
             }
         </React.Fragment>          
         )
@@ -48,8 +52,8 @@ function EntityProvider({ entity, setActive, category }) {
       : setHovered(false)
   }
 
-  const getActive =  (e, id) => {
-    setActive({ category, id })
+  const getActive =  (e, id, title, channelTitle) => {
+    setActive({ category, id, title, channelTitle })
   }
 
   return (
@@ -64,7 +68,7 @@ function EntityProvider({ entity, setActive, category }) {
         { list.id === hovered && (
           <div className='item__details'> 
             <FontAwesomeIcon icon={faPlayCircle} className='Icon'></FontAwesomeIcon>
-            <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getActive(e, list.id)} className='Icon'></FontAwesomeIcon>            
+            <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getActive(e, list.id, list.title, list.channelTitle)} className='Icon'></FontAwesomeIcon>            
           </div>
         )
         } 

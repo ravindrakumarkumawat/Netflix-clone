@@ -9,8 +9,9 @@
   z-index: 99;
   margin-left: -25px;
 }
-.detailPane-container h1 {
-  color: white;
+.detailPane-container .pane-wrapper h3 {
+  color: #e50914;
+  margin: 15px 0;
 }
 .detailPane-container .Icon {
   font-size: 32px;
@@ -33,6 +34,6 @@
   max-width: 175px;
 }
 
-.detailPane-container .pane-wrapper img {
+.detailPane-container .pane-wrapper .pane-img {
   margin-bottom: 20px;
 }
