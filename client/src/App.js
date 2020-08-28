@@ -10,45 +10,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from 'react-router-dom' 
-
-const initialRow = {
-  category: '',
-  pos: {top: '', bottom: ''},
-  id: ''
-}
+} from 'react-router-dom'
 
 function App() {
   const [catVideo, setCatVideo] = useState([])
   const [randomUrl, setRandomUrl] = useState('')
-  const [activeRow, setActiveRow] = useState(initialRow)
-
-  const {
-    category,
-    pos: {top, bottom},
-    id
-  } = activeRow
-
-  const navRef = createRef()
-
+  
   useEffect(() => {   
     get_videos()  
   }, [])
-  
-  const setActive = (activeRow) => {
-    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
-  }
-
-  useEffect(() => {
-    if (!category) return
-    const navHeight = navRef.current.offsetHeight
-
-    window.scrollTo({
-      top: top + window.scrollY - navHeight,
-      left: 0,
-      behavior: 'smooth'
-    })
-  }, [category])
 
   const get_videos = async () => {
       const res = await fetch(`${videos}&maxResults=50`)
@@ -112,12 +82,12 @@ function App() {
 
   return (
     <Router>
-      <div className="App">  
-        <Navbar ref={navRef}/> 
+      <div className="App"> 
         <Switch>
           <Route path="/" exact>          
+            <Navbar/>         
             <Preview randomUrl={randomUrl} />
-            <Categories catVideo={catVideo} setActive={setActive} />
+            <Categories catVideo={catVideo} />
           </Route>
           {/*<Route path="/tv-shows" exact>  
             <h2 className='ErrorMessage'>This is tv-shows</h2> 
