@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 import './Categories.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
+import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 // import { videos, videoCategories } from '../../YoutubeApi'
 import { Link } from 'react-router-dom'
 import DetailPane from '../DetailPane/DetailPane'
@@ -63,7 +63,7 @@ function EntityProvider({ entity, setActive, category }) {
           onMouseLeave={handleHover}>
         { list.id === hovered && (
           <div className='item__details'> 
-            <FontAwesomeIcon icon={faPlay} className='Icon'></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faPlayCircle} className='Icon'></FontAwesomeIcon>
             <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getActive(e, list.id)} className='Icon'></FontAwesomeIcon>            
           </div>
         )

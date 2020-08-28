@@ -105,11 +105,11 @@ a h3:hover {
   top: 0;
   font-size: 10px;
   opacity: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+  /* background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); */
   transition: 450ms opacity;
 }
 
-.item__details:after
+/* .item__details:after
 .item__details:before{
   content: '';
   position: absolute;
@@ -128,7 +128,7 @@ a h3:hover {
   border-radius: 100%;
   background: rgba(0,0,0,0.5);
   z-index: 1;
-}
+} */
 
 .entity__inner:hover {
   transform: translate3d(-62.5px, 0, 0);
@@ -152,11 +152,14 @@ a h3:hover {
 .item .item__details {
   position: absolute;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   height: 100%;
   width: 100%;
-  justify-content: center;
-  transition: background-color ease 0.2s;  
+  flex-direction: column;  
+  margin-top: 70px;
+  margin-left: 8px;
+  /* justify-content: left; */
+  /* transition: background-color ease 0.2s;   */
 }
 
 .item:hover .item__details {
@@ -164,11 +167,10 @@ a h3:hover {
 }
 
 .item .item__details .Icon {
-  font-size: 32px;
+  font-size: 30px;
 }
 .item .item__details .Icon:first-of-type {
-  color: red;
-  margin-right: 25px;
+  color: #fff;
 }
 .item .item__details .Icon:last-of-type {
   color: white;
