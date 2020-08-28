@@ -45,11 +45,11 @@ a h3:hover {
   width: 6px;
 }
 
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background: rgba(14, 14, 14, 0.7); 
   border: 1px solid #e5e5e5;
   border-radius: 8px;
-}
+} */
 
 /* ::-webkit-scrollbar-thumb:hover {
   background: #f00; 
