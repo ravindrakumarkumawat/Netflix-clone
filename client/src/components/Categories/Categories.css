@@ -6,77 +6,35 @@ a h3:hover {
 }
 
 .preview-categories-container h3 {
-  /* border: 2px solid white; */
-  margin-bottom: -25px;
+  margin-bottom: -63px;
+  margin-top: -63px;
+}
+
+.preview-categories-container h3:first-child {
   position: relative;
 }
-/* .preview-categories-container{
-  padding: 0 50px;
-}
-
-.category {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-}
-
-.entity {
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;  
-  border-radius: 8px;
-}
-
-.entity .item{
-  width: 306px;
-  height: 171px;
-  display: inline-flex;  
-  margin-right: 8px; 
-}
-
-.entity img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 8px;
-} */
 
 ::-webkit-scrollbar {
   width: 6px;
 }
 
-/* ::-webkit-scrollbar-thumb {
-  background: rgba(14, 14, 14, 0.7); 
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
-} */
-
-/* ::-webkit-scrollbar-thumb:hover {
-  background: #f00; 
-} */
-
 .preview-categories-container {
-  /* ContentRow */
   padding-left: 50px;
   width: 100%;
   margin-top: -150px;
-  /* border: 2px solid red; */
 }
 
 .entity {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  /* border: 6px solid green; */
 }
 
 .entity__inner {
   transition: 450ms transform;
   font-size: 0;
   white-space: nowrap;
-  margin: 35px 0;
-  /* padding-bottom: 10px; */
-  /* border: 4px solid whitesmoke; */
+  margin: 90px 0;
 }
 
 .item {
@@ -89,7 +47,6 @@ a h3:hover {
   cursor: pointer;
   transition: 450ms all;
   transform-origin: center left;
-  /* border: 2px dashed black;  */
 }
 
 .item__img {
@@ -106,33 +63,11 @@ a h3:hover {
   top: 0;
   font-size: 10px;
   opacity: 0;
-  /* background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%); */
   transition: 450ms opacity;
 }
 
-/* .item__details:after
-.item__details:before{
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: black;
-}
-.item__details:after {
-  margin-top: -25px;
-  margin-left: -25px;
-  width: 50px;
-  height: 50px;
-  border: 3px solid #ecf0f1;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 1;
-} */
-
 .entity__inner:hover {
-  transform: translate3d(-62.5px, 0, 0);
+  transform: translate3d(-125px, 0, 0);
 }
 .entity__inner:hover .item {
 
@@ -140,27 +75,26 @@ a h3:hover {
   opacity: .3;
 }
   /* // And then grow the current tile and make it opaque again */
-  .entity__inner:hover .item:hover{
-    transform: scale(1.5);
+.entity__inner:hover .item:hover{
+    transform: scale(2);
     opacity: 1;
 }
 /* // And finally move all tiles right of the current tile to the right,
 // so its flush against the hovered tile */
 .item:hover ~ .item {
-  transform: translate3d(125px, 0, 0);
+  transform: translate3d(250px, 0, 0);
+}
+
+.entity__inner:hover:first-child {
+  transform: translate3d(0px, 0, 0);
 }
 
 .item .item__details {
   position: absolute;
   display: flex;
-  /* align-items: center; */
-  height: 100%;
-  width: 100%;
   flex-direction: column;  
   margin-top: 70px;
-  margin-left: 8px;
-  /* justify-content: left; */
-  /* transition: background-color ease 0.2s;   */
+  margin-left: 5px;
 }
 
 .item:hover .item__details {
@@ -169,6 +103,7 @@ a h3:hover {
 
 .item .item__details .Icon {
   font-size: 30px;
+  padding-bottom: 10px;
 }
 .item .item__details .Icon:first-of-type {
   color: #fff;
