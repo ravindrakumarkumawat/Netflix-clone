@@ -66,8 +66,8 @@ function EntityProvider({ entity, setActive, category }) {
           onMouseEnter={(e)=> handleHover(e, list.id)}
           onMouseLeave={handleHover}>
         { list.id === hovered && (
-          <div className='item__details'> 
-            <FontAwesomeIcon icon={faPlayCircle} className='Icon'></FontAwesomeIcon>
+          <div className='item__details'>
+            <Link to={`/watch/${list.id}`}><FontAwesomeIcon icon={faPlayCircle} className='Icon'></FontAwesomeIcon></Link>
             <FontAwesomeIcon icon={faInfoCircle} onClick={(e) => getActive(e, list.id, list.title, list.channelTitle)} className='Icon'></FontAwesomeIcon>            
           </div>
         )
