@@ -1,17 +1,19 @@
 .detailPane-container {
-  height: 480px;
+  height: 450px;
   /* background: black; */
   width: 100%;
   position: relative;
-  /* border: 2px solid white; */
+  border: 2px solid white;
   border-top: 2px solid red;
   border-bottom: 2px solid red;
-  z-index: 99;
+  z-index: 100;
   margin-left: -25px;
+  margin-top: -35px;
+  margin-bottom: 70px;
 }
 .detailPane-container .pane-wrapper h3 {
   color: #e50914;
-  margin: 15px 0;
+  margin: 0;
 }
 .detailPane-container .Icon {
   font-size: 32px;
