@@ -1,5 +1,16 @@
+.Overview-container a{
+  text-decoration: none;
+  color: #fff;  
+  display: block;  
+  padding: 10px 38px; 
+}
+
+.Overview-container a:hover{
+  color: #000;
+}
+
 .Overview-container {
-  max-width: 500px;
+  max-width: 40%;
   color: white;
   padding-top: 0.5vw;
 }
@@ -15,7 +26,6 @@
   color: #fff;
   border: 2px solid #fff;
   min-width: 150px;
-  padding: 0 38px;
   height: 50px;
   max-height: 50px;
   font-size: 18px;

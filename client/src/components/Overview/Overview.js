@@ -2,8 +2,9 @@ import React from 'react'
 import './Overview.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
+import {Link} from 'react-router-dom'
 
-function Overview({title}) {
+function Overview({title, id}) {
 
   return (
     <div className='Overview-container'>
@@ -11,7 +12,7 @@ function Overview({title}) {
         {title}
       </p>
       <button>
-      <FontAwesomeIcon icon={faPlay} className='Icon-play'></FontAwesomeIcon> Play
+      <Link to={`/watch/${id}`}><FontAwesomeIcon icon={faPlay} className='Icon-play'></FontAwesomeIcon> Play</Link>
       </button>
     </div>
 )}

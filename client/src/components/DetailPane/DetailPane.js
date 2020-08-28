@@ -30,7 +30,7 @@ function DetailPane ({ category, setActive, id, title, channelTitle }) {
             case 'Playlists':
               return <Playlists v_id={id}/>
             default:
-              return <Overview title={title}/>
+              return <Overview title={title} id={id} />
           }
         })()}
         <FontAwesomeIcon icon={faTimes} className='Icon' onClick={setActive}></FontAwesomeIcon>
