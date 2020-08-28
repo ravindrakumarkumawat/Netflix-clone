@@ -3,10 +3,8 @@ import './App.css'
 import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
 import Categories from './components/Categories/Categories'
-import Entity from './components/Entity/Entity'
 import Watch from './components/Watch/Watch'
 import Search from './components/Search/Search'
-// import DetailPane from './components/DetailPane/DetailPane'
 import { videos, videoCategories } from './YoutubeApi'
 import {
   BrowserRouter as Router,
@@ -119,8 +117,7 @@ function App() {
         <Switch>
           <Route path="/" exact>          
             <Preview randomUrl={randomUrl} />
-            <Categories catVideo={catVideo} setActive={setActive} /> 
-  {/*<DetailPane category={category} top={bottom+window.scrollY} id={id} setActive={setActive} />*/}
+            <Categories catVideo={catVideo} setActive={setActive} />
           </Route>
           {/*<Route path="/tv-shows" exact>  
             <h2 className='ErrorMessage'>This is tv-shows</h2> 
@@ -130,13 +127,13 @@ function App() {
           </Route>
           <Route path="/recently-added" exact>
             <h2 className='ErrorMessage'>This is recently page</h2>
-          </Route>*/}
+          </Route>
           <Route path="/details/:v_id" exact>                      
             <Entity />
           </Route>
           <Route path="/details" exact>                      
             <h2 className='ErrorMessage'>No id is passed in url</h2>
-          </Route>
+          </Route>*/}
           <Route path="/watch/:v_id" exact>                      
             <Watch />
           </Route>
