@@ -1,6 +1,6 @@
 .DetailPaneNav-ul {
   position: absolute;
-  bottom: 12px;
+  bottom: 0;
   width: 100%;
   color: white;
   display: flex;
@@ -16,7 +16,7 @@
   margin-right: 25px;
   color: white;
   letter-spacing: 0.5px;
-  padding-bottom: 5px;
+  padding-bottom: 0px;
   font-weight: 500;
   cursor: pointer;
 }
