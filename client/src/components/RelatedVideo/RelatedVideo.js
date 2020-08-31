@@ -12,20 +12,23 @@ function RelatedVideo({ related_vid }) {
     })
   }, [])
   return (
-    <div className='preview-categories-container noScroll'>
-      <div className='category'>
-        <h3>You might also like</h3>
-        <div className='entity'>
-          <div className='entity-provider-container small'>
-            {
-              related.map((list) => 
-                <Link to={`/watch/${list.id}`} key={list.id}>
+    <div className='playlists'>
+      <h3>You might also like</h3>
+      <div className='videos'>
+        {
+          related.map((list) => 
+            <Link to={`/watch/${list.id}`} key={list.id}>                
+              <div className='playlistItem-container'>
+                <div className='contents'>
                   <img src={list.thumbnail} alt={list.title} title={list.title} />
-                </Link>
-              )
-            }
-          </div>
-        </div>
+                  <div className='videoInfo'>
+                    <h4>{list.title}</h4>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          )
+        }
       </div>
     </div>
   )
