@@ -3,7 +3,6 @@
   /* background: black; */
   width: 100%;
   position: relative;
-  border: 2px solid white;
   border-top: 2px solid red;
   border-bottom: 2px solid red;
   z-index: 100;
