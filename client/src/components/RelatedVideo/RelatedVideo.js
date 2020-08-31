@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import './RelatedVideo.css'
-import { relatedVideo } from '../../YoutubeApi'
-import { Link } from 'react-router-dom'
+import {video, relatedVideo } from '../../YoutubeApi'
+import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
 
 function RelatedVideo({ related_vid }) {
   const [related, setRelated] = useState([])
   useEffect(() => {
     fetch(`${relatedVideo}${related_vid}`).then((responese) => responese.json()).then((res) => {
-      const videolist = res.items.map(item =>  {return {id: item.id.videoId, title: item.snippet.title, thumbnail: item.snippet.thumbnails.medium.url, channelId: item.snippet.channelId}})
+      const videolist = res.items.map(item =>  item.id.videoId)
       setRelated(videolist)
     })
   }, [])
@@ -17,16 +16,7 @@ function RelatedVideo({ related_vid }) {
       <div className='videos'>
         {
           related.map((list) => 
-            <Link to={`/watch/${list.id}`} key={list.id}>                
-              <div className='playlistItem-container'>
-                <div className='contents'>
-                  <img src={list.thumbnail} alt={list.title} title={list.title} />
-                  <div className='videoInfo'>
-                    <h4>{list.title}</h4>
-                  </div>
-                </div>
-              </div>
-            </Link>
+            <PlaylistItemProvider videoId={list} key={list} /> 
           )
         }
       </div>
