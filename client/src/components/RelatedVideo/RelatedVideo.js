@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {video, relatedVideo } from '../../YoutubeApi'
+import { relatedVideo } from '../../YoutubeApi'
 import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
 
 function RelatedVideo({ related_vid }) {
@@ -12,7 +12,6 @@ function RelatedVideo({ related_vid }) {
   }, [])
   return (
     <div className='playlists'>
-      <h3>You might also like</h3>
       <div className='videos'>
         {
           related.map((list) => 
