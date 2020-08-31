@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './Search.css'
 import { search, video, playlists, playlistItems } from '../../YoutubeApi'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 
 function Search() {
   const [results, setResults] = useState([])
@@ -43,17 +45,21 @@ function Search() {
   }
 
   return (
-    <>
-      <div className='textbox-container'>
-        <input 
-            className='search-input' 
-            type='text' 
-            placeholder='Search for something...'
-            value={input}
-            onChange={(event) => handleChange(event)}
-            onKeyPress={(event) => handleKeyPressed(event)} 
-            />
-      </div>
+    <div className='textbox-container'>
+      <div className='back-browser-link'>        
+        <Link to='/'>
+          <FontAwesomeIcon icon={faLongArrowAltLeft}></FontAwesomeIcon> Back to browser
+        </Link>
+      </div>     
+      <input
+          className='search-input' 
+          type='text' 
+          placeholder='Search for something...'
+          value={input}
+          onChange={(event) => handleChange(event)}
+          onKeyPress={(event) => handleKeyPressed(event)} 
+          />
+        
       <div className='results'> 
       {
             results.map((result, index) =>
@@ -61,7 +67,7 @@ function Search() {
             )
       }
       </div>
-    </>
+    </div>
   )
 }
 
