@@ -68,17 +68,19 @@ function PlaylistItemProvider({ videoId }) {
   return (
     <>
     {
-      <Link to={`/watch/${playItemVideo.id}`} key={playItemVideo.id}>
-        <div className='playlistItem-container'>
-          <div className='contents'>          
-            <img src={playItemVideo.thumbnail} alt={playItemVideo.title} />
-            <div className='videoInfo'>
-              <h4>{playItemVideo.title}</h4>
-              {/*<span>{playItemVideo.description}</span>*/}
+      playItemVideo.id && (
+        <Link to={`/watch/${playItemVideo.id}`}>
+          <div className='playlistItem-container'>
+            <div className='contents'>          
+              <img src={playItemVideo.thumbnail} alt={playItemVideo.title} title={playItemVideo.title} />
+              <div className='videoInfo'>
+                <h4>{playItemVideo.title}</h4>
+                {/*<span>{playItemVideo.description}</span> */}
+              </div>
             </div>
-          </div>
-        </div> 
-      </Link>
+          </div> 
+        </Link>
+      )
     }
     </>
   )
