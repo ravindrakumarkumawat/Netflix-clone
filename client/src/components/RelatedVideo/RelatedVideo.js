@@ -7,7 +7,7 @@ function RelatedVideo({ related_vid }) {
   const [related, setRelated] = useState([])
   useEffect(() => {
     fetch(`${relatedVideo}${related_vid}`).then((responese) => responese.json()).then((res) => {
-      const videolist = res.items.map(item =>  {return {id: item.id.videoId, title: item.snippet.title, thumbnail: item.snippet.thumbnails.high.url, channelId: item.snippet.channelId}})
+      const videolist = res.items.map(item =>  {return {id: item.id.videoId, title: item.snippet.title, thumbnail: item.snippet.thumbnails.medium.url, channelId: item.snippet.channelId}})
       setRelated(videolist)
     })
   }, [])

@@ -5,8 +5,9 @@ import Overview from '../Overview/Overview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Playlists from '../Playlists/Playlists'
+import RelatedVideo from '../RelatedVideo/RelatedVideo'
 
-const TABS = ['Overview', 'Playlists']
+const TABS = ['Overview', 'Playlists', 'More Like This']
 
 function DetailPane ({ category, setActive, id, title, channelTitle }) {
   const [tab, setTab] = useState()
@@ -29,6 +30,8 @@ function DetailPane ({ category, setActive, id, title, channelTitle }) {
           switch (tab) {
             case 'Playlists':
               return <Playlists v_id={id}/>
+            case 'More Like This':
+              return <RelatedVideo related_vid={id} />
             default:
               return <Overview title={title} id={id} />
           }
