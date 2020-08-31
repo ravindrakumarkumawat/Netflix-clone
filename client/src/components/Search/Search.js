@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import './Search.css'
-import { search, video } from '../../YoutubeApi'
+import { search, video, playlists, playlistItems } from '../../YoutubeApi'
 import { Link } from 'react-router-dom'
 
 function Search() {
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
-  useEffect(() => {
-    
-  }, [])
+  // useEffect(() => {
+  //    setResults([])
+  // }, [input])
 
   const handleChange = (event) => {
     setInput(event.target.value)
@@ -22,6 +22,7 @@ function Search() {
   }
 
   const handleSubmit = () => {
+    setResults([])
     const value = input
     if (value) {
       fetch(`${search}${value}`)
@@ -55,8 +56,8 @@ function Search() {
       </div>
       <div className='results'> 
       {
-            results.map((result) =>
-              <SearchProvider videoId={result.videoId} />
+            results.map((result, index) =>
+              <SearchProvider videoId={result.videoId} key={index}/>
             )
       }
       </div>
@@ -76,17 +77,19 @@ function SearchProvider({ videoId }) {
   return (
       <>
       {
-        <Link to={`/watch/${playItemVideo.id}`} key={playItemVideo.id}>
+        playItemVideo.id && (
+        <Link to={`/watch/${playItemVideo.id}`}>
           <div className='playlistItem-container'>
             <div className='contents'>          
               <img src={playItemVideo.thumbnail} alt={playItemVideo.title} title={playItemVideo.title} />
               <div className='videoInfo'>
                 <h4>{playItemVideo.title}</h4>
-                <span>{playItemVideo.description}</span>
+                {/*<span>{playItemVideo.description}</span> */}
               </div>
             </div>
           </div> 
         </Link>
+        )
       }
       </>
     )

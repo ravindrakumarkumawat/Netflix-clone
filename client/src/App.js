@@ -110,9 +110,10 @@ function App() {
           <Route path="/watch" exact>                      
             <h2 className='ErrorMessage'>No id is passed in url</h2>
           </Route>
-          {/*<Route path="/Search" exact>                      
+          <Route path="/Search" exact> 
+            <Navbar/>                      
             <Search />
-        </Route>*/}
+          </Route>
         </Switch>     
       </div>
     </Router>
