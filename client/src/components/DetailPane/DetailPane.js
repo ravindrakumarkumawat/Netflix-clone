@@ -24,7 +24,7 @@ function DetailPane ({ category, setActive, id, title, channelTitle }) {
     <div className='detailPane-container'>
       <div className='pane-wrapper'>
         <h3 style={{
-          'font-size': `${tab==='Overview' ? '70px' : '50px'}`
+          fontSize: `${tab==='Overview' ? '70px' : '50px'}`
         }}>{channelTitle}</h3>
         {(() => {
           switch (tab) {

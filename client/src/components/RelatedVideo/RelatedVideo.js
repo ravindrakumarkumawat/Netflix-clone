@@ -9,7 +9,7 @@ function RelatedVideo({ related_vid }) {
       const videolist = res.items.map(item =>  item.id.videoId)
       setRelated(videolist)
     })
-  }, [])
+  }, [related_vid])
   return (
     <div className='playlists'>
       <div className='videos'>

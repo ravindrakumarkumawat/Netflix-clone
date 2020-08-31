@@ -1,8 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import './Categories.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
-// import { videos, videoCategories } from '../../YoutubeApi'
 import { Link } from 'react-router-dom'
 import DetailPane from '../DetailPane/DetailPane'
 

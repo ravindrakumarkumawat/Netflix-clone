@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 import Preview from './components/Preview/Preview'
 import Navbar from './components/navbar/Navbar'
@@ -67,8 +67,7 @@ function App() {
 
   const get_categories = () => {
 
-    return fetch(videoCategories).then(response => response.json()).then(res => {      
-      console.log('videoCategories API...')
+    return fetch(videoCategories).then(response => response.json()).then(res => {
       return res.items.map((item) => {return {id: item.id, title:item.snippet.title}})
     }).catch(error => console.log(error))  
   }

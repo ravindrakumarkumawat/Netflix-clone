@@ -8,7 +8,7 @@ function PlaylistItemProvider({ videoId }) {
     fetch(`${video}${videoId}`).then((response)=> response.json()).then((res) => {
       setPlayItemVideo({id: res.items[0].id, title: res.items[0].snippet.title, thumbnail: res.items[0].snippet.thumbnails.high.url, channelId: res.items[0].snippet.channelId, description: res.items[0].snippet.description})
     })
-  }, [])
+  }, [videoId])
 
   return (
     <>

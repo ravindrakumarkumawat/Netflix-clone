@@ -7,10 +7,10 @@ function Playlists({ v_id }) {
   const [lists, setLists] = useState([])
 
   useEffect(() => {
-    get_playlist()
-  }, [])
+    get_playlist(v_id)
+  }, [v_id])
   
-  const get_playlist = async () => {
+  const get_playlist = async (v_id) => {
     const randomUrl = await fetch(`${video}${v_id}`).then((response)=> response.json()).then(res => {
       return {id: res.items[0].id, title: res.items[0].snippet.title, thumbnails: res.items[0].snippet.thumbnails.high, channelId: res.items[0].snippet.channelId}
     })
@@ -44,7 +44,7 @@ function PlaylistItems({ playlistId }) {
       const resPlayItemsVideo = res.items.map((item) => item.contentDetails.videoId)
       setItems(resPlayItemsVideo)
     })
-  }, [])
+  }, [playlistId])
 
   return (     
     <div className='videos'>

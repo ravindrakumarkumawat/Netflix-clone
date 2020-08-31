@@ -14,7 +14,6 @@ function Preview ({ randomUrl }) {
   const togglePlay = () => {
     setAutoPlay(Number(!autoPlay))
   }
-  console.log(randomUrl)
   return (
     <div className='preview-container'>
       <iframe title={randomUrl.title} src={`https://www.youtube.com/embed/${randomUrl.id}?vq=hd1080&controls=0&autoplay=${autoPlay}&loop=1&mute=${mute}&cc_load_policy=0&playlist=${randomUrl.id}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen ></iframe>

@@ -37,10 +37,9 @@ const Navbar = forwardRef((props, ref) => {
         <Link to="/Search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>        
-        {/*<Link to="/">
+        <Link to="/">
           <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
-        </Link>
-        */}        
+        </Link>        
       </div>
     </nav>
   )
