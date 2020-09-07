@@ -17,6 +17,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, .05)), url('https://res.cloudinary.com/diqcnmefm/image/upload/v1599485412/Jioflix/header-background_abuqje.jpg');
+  height: 100vh;
 }
 
 .column {
