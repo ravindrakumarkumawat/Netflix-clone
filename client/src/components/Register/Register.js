@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Register.css'
-import {Link} from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 const API_SIGN_UP = 'http://localhost:5000/register'
 
@@ -20,6 +20,8 @@ function Register (props) {
     email: '',
     password: ''
   })
+
+  const [login, setLogin] = useState(false)
 
   const updateUser = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value })
@@ -48,10 +50,13 @@ function Register (props) {
           email: '',
           password: ''
         })
+        setLogin(true)
       })
   }
 
-  return (
+  return login ? (
+    <Redirect to='/browse' />
+  ) : (
     <div className="Container">
         <div className="column">
           <div className="header">

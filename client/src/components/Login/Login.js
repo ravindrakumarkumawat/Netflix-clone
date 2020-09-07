@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './Login.css'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 function Login (props) {
-  return (
+  const [login, setLogin] = useState(false)
+
+  return login ? (
+    <Redirect to='/browse' />
+  ) : (
     <div className="Container">
     <div className="column">
       <div className="header"> 
