@@ -2,7 +2,7 @@ const express = require('express')
 const path = require('path')
 const cors = require('cors')
 
-const signupRouter = require('./routes/signup')
+const registerRouter = require('./routes/register')
 // const taskRouter = require('./routes/tasks')
 
 const app = express()
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES
-app.use('/signup', signupRouter)
+app.use('/register', registerRouter)
 // app.use('/lists/:id/tasks', taskRouter)
 
 // Start server

@@ -12,6 +12,9 @@ import {
   Route
 } from 'react-router-dom'
 
+import Login from './components/Login/Login'
+import Register from './components/Register/Register'
+
 function App() {
   const [catVideo, setCatVideo] = useState([])
   const [randomUrl, setRandomUrl] = useState('')
@@ -83,7 +86,13 @@ function App() {
     <Router>
       <div className="App"> 
         <Switch>
-          <Route path="/" exact>          
+          <Route path="/login" exact>
+            <Login />
+          </Route>
+          <Route path="/register" exact>
+            <Register />
+          </Route>
+          <Route path="/browse" exact>          
             <Navbar/>         
             <Preview randomUrl={randomUrl} />
             <Categories catVideo={catVideo} />
@@ -109,7 +118,7 @@ function App() {
           <Route path="/watch" exact>                      
             <h2 className='ErrorMessage'>No id is passed in url</h2>
           </Route>
-          <Route path="/Search" exact> 
+          <Route path="/search" exact> 
             <Navbar/>                      
             <Search />
           </Route>

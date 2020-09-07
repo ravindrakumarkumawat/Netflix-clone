@@ -22,7 +22,7 @@ const Navbar = forwardRef((props, ref) => {
   return (
     <nav className={`navigation top-bar ${show && 'scrolled'}`}>
       <div className='logo-container'>
-        <Link to="/">
+        <Link to="/browse">
           <img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/>
         </Link>
       </div>
@@ -34,10 +34,10 @@ const Navbar = forwardRef((props, ref) => {
       </ul>
   */}
       <div className='right-items'>
-        <Link to="/Search">
+        <Link to="/search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>        
-        <Link to="/">
+        <Link to="/browse">
           <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
         </Link>        
       </div>

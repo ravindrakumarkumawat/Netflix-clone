@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import './Signup.css'
+import './Register.css'
+import {Link} from 'react-router-dom'
 
-const API_SIGN_UP = 'http://localhost:5000/signup'
+const API_SIGN_UP = 'http://localhost:5000/register'
 
-function Signup (props) {
+function Register (props) {
   const [user, setUser] = useState({
     firstName: '', 
     lastName: '',
@@ -39,8 +40,7 @@ function Signup (props) {
       }
     })
       .then(response => response.json())
-      .then((res) => {
-         console.log({frontend: res})
+      .then(() => {
          setUser({
           firstName: '', 
           lastName: '',
@@ -128,7 +128,7 @@ function Signup (props) {
           </form>
 
           <div className="signup_link">
-            <span>Already have an account?<a href="#" className="signInMessage"> Sign in here!</a></span>
+            <span>Already have an account?<Link to="/login" className="signInMessage"> Sign in here!</Link></span>
           </div>
         </div>
 
@@ -136,4 +136,4 @@ function Signup (props) {
   )
 }
 
-export default Signup
+export default Register

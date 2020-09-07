@@ -1,16 +1,15 @@
 import React from 'react'
-import './Signin.css'
-import Jioflix from '../../assets/images/jioflix.png'
+import './Login.css'
+import {Link} from 'react-router-dom'
 
-function Signin (props) {
+function Login (props) {
   return (
     <div className="Container">
     <div className="column">
-      <div className="header">        
-        <img src={ Jioflix } title="logo" alt="logo" />
-        <h3>Sign In</h3>
+      <div className="header"> 
+        <h3>Let The Journey Begin !</h3>
       </div>
-      <form action="" method="POST">
+      <form>
         <div className="txt_field">          
           <input type="text" required />
           <span></span>
@@ -21,11 +20,10 @@ function Signin (props) {
           <span></span>
           <label>Password</label>
         </div>
-        <div className="pass">Forgot Password?</div>
         <input type="submit" value="Login" />
       </form>
       <div className="signin_link">
-        <a href="#" className="signInMessage">New to Netflix? Sign up now.</a>
+        <Link to="/register"><span className="signInMessage">New to Netflix? Sign up now.</span></Link>
       </div>
       
     </div>
@@ -33,4 +31,4 @@ function Signin (props) {
   )
 }
 
-export default Signin
+export default Login
