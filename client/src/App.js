@@ -12,8 +12,8 @@ import {
   Route
 } from 'react-router-dom'
 
-import Login from './components/Login/Login'
-import Register from './components/Register/Register'
+// import Login from './components/Login/Login'
+// import Register from './components/Register/Register'
 
 function App() {
   const [catVideo, setCatVideo] = useState([])
@@ -86,12 +86,15 @@ function App() {
     <Router>
       <div className="App"> 
         <Switch>
+         { /*
           <Route path="/login" exact>
             <Login />
           </Route>
           <Route path="/register" exact>
             <Register />
           </Route>
+          */           
+         } 
           <Route path="/browse" exact>          
             <Navbar/>         
             <Preview randomUrl={randomUrl} />
