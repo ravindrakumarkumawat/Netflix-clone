@@ -17,16 +17,16 @@
 }
 
 .logo-container {
-  height: 40px;
+  height: 45px;
 }
 
 .logo-container img{
   height: 100%;  
-  opacity: .7;
+  opacity: 1;
 }
 
 .logo-container img:hover {
-  opacity: 1;
+  opacity: .7;
 }
 
 .nav-links {

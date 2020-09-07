@@ -1,6 +1,6 @@
 import React, {useState, useEffect, forwardRef} from 'react'
 import './Navbar.css'
-import Jioflix from '../../assets/images/jioflix.png'
+import Wolfster from '../../assets/images/wolfster.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +23,7 @@ const Navbar = forwardRef((props, ref) => {
     <nav className={`navigation top-bar ${show && 'scrolled'}`}>
       <div className='logo-container'>
         <Link to="/browse">
-          <img src={Jioflix} title="logo" alt="logo" className="navbar-logo"/>
+          <img src={Wolfster} title="logo" alt="logo" className="navbar-logo"/>
         </Link>
       </div>
      {/* <ul className="navbar-right nav-links">
