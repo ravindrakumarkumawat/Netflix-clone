@@ -1,9 +1,15 @@
 const axios = require('axios')
+const { videos } = require('../YoutubeApi')
 
-exports.get_videos() = async (req, res) => {
+const get_videos = async (req, res) => {
   try {
-    const respose = await axios.get()
+    // const response = await axios.get(`${videos}&maxResults=50`)
+    res.send('response')
   } catch (err) {
     console.log(err.message)
   }
+}
+
+module.exports = { 
+  get_videos
 }
