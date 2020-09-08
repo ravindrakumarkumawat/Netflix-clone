@@ -4,6 +4,7 @@ const path = require('path')
 const cors = require('cors')
 
 const registerRouter = require('./routes/register')
+const loginRouter = require('./routes/login')
 const browseRouter = require('./routes/browse')
 // const taskRouter = require('./routes/tasks')
 
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ROUTES
 app.use('/register', registerRouter)
+app.use('/login', loginRouter)
 app.use('/browse', browseRouter)
 // app.use('/lists/:id/tasks', taskRouter)
 
