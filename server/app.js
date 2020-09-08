@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
-const axios = require('axios')
 
 const registerRouter = require('./routes/register')
 // const taskRouter = require('./routes/tasks')
