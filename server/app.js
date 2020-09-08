@@ -1,6 +1,8 @@
+require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
+const axios = require('axios')
 
 const registerRouter = require('./routes/register')
 // const taskRouter = require('./routes/tasks')
@@ -17,6 +19,5 @@ app.use('/register', registerRouter)
 // app.use('/lists/:id/tasks', taskRouter)
 
 // Start server
-app.listen(process.env.PORT || 5000, () => {
-    console.log(`Server listening`)
-})
+const port = process.env.PORT || 5000
+app.listen(port, () => console.log(`Server is started on ${port}`))
