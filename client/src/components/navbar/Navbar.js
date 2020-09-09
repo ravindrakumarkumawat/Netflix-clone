@@ -23,7 +23,8 @@ const Navbar = forwardRef((props, ref) => {
     <nav className={`navigation top-bar ${show && 'scrolled'}`}>
       <div className='logo-container'>
         <Link to="/browse">
-          <img src={Wolfster} title="logo" alt="logo" className="navbar-logo"/>
+          {/*<img src={Wolfster} title="logo" alt="logo" className="navbar-logo"/>*/}
+          <h1>Vivid</h1>
         </Link>
       </div>
      {/* <ul className="navbar-right nav-links">
