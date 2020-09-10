@@ -10,7 +10,7 @@ import {
   Route
 } from 'react-router-dom'
 
-// import Login from './components/Login/Login'
+import Login from './components/Login/Login1'
 import Register from './components/Register/Register1'
 
 function App() {
@@ -19,12 +19,10 @@ function App() {
     <Router>
       <div className="App"> 
         <Switch>
-         { /*
           <Route path="/login" exact>
             <Login />
           </Route>
-          */           
-         } 
+         
           <Route path="/register" exact>
             <Register />
           </Route>

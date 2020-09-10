@@ -3,7 +3,7 @@ import GoogleLogin from 'react-google-login'
 
 // const API_SIGN_UP = 'http://localhost:5000/register'
 
-function Register (props) {
+function Login (props) {
   const responseGoogle = async (res) => {
     await props.oauthGoogle(res.accessToken);
     if ( props.errorMessage) {
@@ -14,7 +14,7 @@ function Register (props) {
     <div className="col">
       <div className="text-center">
         <div className="alert alert-primary">
-          Or sign up using third-party services
+          Or sign in using third-party services
         </div>
         <GoogleLogin 
           clientId="number"
@@ -27,4 +27,4 @@ function Register (props) {
   )
 }
 
-export default Register
+export default Login
