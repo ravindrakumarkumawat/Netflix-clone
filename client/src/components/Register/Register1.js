@@ -1,11 +1,12 @@
 import React from 'react'
+import {CLIENT_ID} from '../../OAuth.config'
 
 import { GoogleLogin } from 'react-google-login'
 // refresh token
 import { refreshTokenSetup } from '../../utils/refreshToken'
 
-const clientId =
-  '91971589582-a9ss150kmto7a95s28grunb40dacrn7b.apps.googleusercontent.com'
+const clientId = CLIENT_ID
+  
 
 function Register() {
   const onSuccess = (res) => {
