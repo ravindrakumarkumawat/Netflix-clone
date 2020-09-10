@@ -1,30 +1,41 @@
-import React from 'react'
-import GoogleLogin from 'react-google-login'
+import React from 'react';
 
-// const API_SIGN_UP = 'http://localhost:5000/register'
+import { GoogleLogin } from 'react-google-login';
+// refresh token
+import { refreshTokenSetup } from '../../utils/refreshToken';
 
-function Register (props) {
-  const responseGoogle = async (res) => {
-    await props.oauthGoogle(res.accessToken);
-    if ( props.errorMessage) {
-     props.history.push('/browse');
-    }
-  }
+const clientId =
+  '707788443358-u05p46nssla3l8tmn58tpo9r5sommgks.apps.googleusercontent.com';
+
+function Register() {
+  const onSuccess = (res) => {
+    console.log('Login Success: currentUser:', res.profileObj);
+    alert(
+      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    );
+    refreshTokenSetup(res);
+  };
+
+  const onFailure = (res) => {
+    console.log('Login failed: res:', res);
+    alert(
+      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
+    );
+  };
+
   return (
-    <div className="col">
-      <div className="text-center">
-        <div className="alert alert-primary">
-          Or sign up using third-party services
-        </div>
-        <GoogleLogin 
-          clientId="number"
-          className="btn btn-outline-danger"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-        />
-      </div>
+    <div>
+      <GoogleLogin
+        clientId={clientId}
+        buttonText="Signup With Google"
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        cookiePolicy={'single_host_origin'}
+        style={{ marginTop: '100px' }}
+        isSignedIn={true}
+      />
     </div>
-  )
+  );
 }
 
-export default Register
+export default Register;
