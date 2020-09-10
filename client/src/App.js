@@ -11,7 +11,7 @@ import {
 } from 'react-router-dom'
 
 // import Login from './components/Login/Login'
-// import Register from './components/Register/Register'
+import Register from './components/Register/Register1'
 
 function App() {
   
@@ -23,11 +23,12 @@ function App() {
           <Route path="/login" exact>
             <Login />
           </Route>
+          */           
+         } 
           <Route path="/register" exact>
             <Register />
           </Route>
-          */           
-         } 
+          
           <Route path="/browse" exact>          
             <Navbar/>
             <Categories />
