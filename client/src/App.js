@@ -7,17 +7,18 @@ import Search from './components/Search/Search'
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route, Link
 } from 'react-router-dom'
 
 import Login from './components/Login/Login'
 import Register from './components/Register/Register'
+import Home from './components/Home/Home'
 
 function App() {
   
   return (
     <Router>
-      <div className="App"> 
+      <div className="App">         
         <Switch>
           <Route path="/login" exact>
             <Login />
@@ -55,6 +56,9 @@ function App() {
           <Route path="/search" exact> 
             <Navbar/>                      
             <Search />
+          </Route>
+          <Route path='/' exact>
+            <Home />
           </Route>
         </Switch>     
       </div>
