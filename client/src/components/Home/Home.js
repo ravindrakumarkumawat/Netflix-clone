@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom'
 
 function Home() {
   return (
-    <>
-    <div><Link to='/login'>Login</Link></div>
-    <div><Link to='/register'>Register</Link></div>
-    </>
-  );
+    <ul>            
+      <li><Link to='/login'>Login</Link></li>
+      <li><Link to='/register'>Register</Link></li>
+    </ul>
+  )
 }
 
 export default Home
