@@ -1,8 +1,7 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
 import {CLIENT_ID} from '../../OAuth.config'
-// refresh token
-import { refreshTokenSetup } from '../../utils/refreshToken';
+
 
 
 const clientId = CLIENT_ID
@@ -12,8 +11,7 @@ function Login() {
     console.log('Login Success: currentUser:', res.profileObj);
     alert(
       `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
-    refreshTokenSetup(res);
+    )
   };
 
   const onFailure = (res) => {
