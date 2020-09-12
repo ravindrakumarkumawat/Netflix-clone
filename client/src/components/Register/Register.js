@@ -1,5 +1,6 @@
 import React from 'react'
 import {CLIENT_ID} from '../../OAuth.config'
+import {Link} from 'react-router-dom'
 
 import { GoogleLogin } from 'react-google-login'
 
@@ -16,15 +17,23 @@ function Register() {
   }
 
   return (
-      <GoogleLogin
-        clientId={clientId}
-        buttonText="Signup With Google"
-        onSuccess={onSuccess}
-        onFailure={onFailure}
-        cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
-        isSignedIn={true}
-      />
+    <header>
+      <nav className='home-container'>
+        <Link to='/' className='logo'>Vivid</Link>     
+        <Link to='/login' className='signin'>Sign in</Link>
+      </nav>
+      <section className="pitch">      
+        <GoogleLogin
+          clientId={clientId}
+          buttonText="Sign Up With Google"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          cookiePolicy={'single_host_origin'}
+          style={{ marginTop: '100px' }}
+          isSignedIn={true}
+        />
+      </section>
+    </header>
   )
 }
 

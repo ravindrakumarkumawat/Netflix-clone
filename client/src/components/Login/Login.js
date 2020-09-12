@@ -1,6 +1,7 @@
-import React from 'react';
-import { GoogleLogin } from 'react-google-login';
+import React from 'react'
+import { GoogleLogin } from 'react-google-login'
 import {CLIENT_ID} from '../../OAuth.config'
+import {Link} from 'react-router-dom'
 
 
 
@@ -8,32 +9,32 @@ const clientId = CLIENT_ID
 
 function Login() {
   const onSuccess = (res) => {
-    console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    )
+    console.log('Login Success: currentUser:', res.profileObj)
   };
 
   const onFailure = (res) => {
-    console.log('Login failed: res:', res);
-    alert(
-      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
-    );
-  };
+    console.log('Login failed: res:', res)
+  }
 
   return (
-    <div>
-      <GoogleLogin
+    <header>
+      <nav className='home-container'>
+        <Link to='/' className='logo'>Vivid</Link>     
+        <Link to='/Register' className='signup'>Sign up</Link>
+      </nav>
+      <section className="pitch">      
+        <GoogleLogin
         clientId={clientId}
-        buttonText="Login With Google"
+        buttonText="Sign In With Google"
         onSuccess={onSuccess}
         onFailure={onFailure}
         cookiePolicy={'single_host_origin'}
         style={{ marginTop: '100px' }}
         isSignedIn={true}
       />
-    </div>
-  );
+      </section>
+    </header>
+  )
 }
 
 export default Login;
