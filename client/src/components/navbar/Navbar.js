@@ -3,7 +3,7 @@ import './Navbar.css'
 import Wolfster from '../../assets/images/wolfster.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faUser, faVideoPlus } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = forwardRef((props, ref) => {
   const [show, setShow] = useState(false)
@@ -35,6 +35,9 @@ const Navbar = forwardRef((props, ref) => {
       </ul>
   */}
       <div className='right-items'>
+        <Link to="/studio">
+          <FontAwesomeIcon icon={faVideoPlus}></FontAwesomeIcon>
+        </Link> 
         <Link to="/search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>        
