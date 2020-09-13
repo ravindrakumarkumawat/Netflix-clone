@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css'
-import Navbar from './components/navbar/Navbar'
+import Navbar from './components/Navbar/Navbar'
 import Categories from './components/Categories/Categories'
 import Watch from './components/Watch/Watch'
 import Search from './components/Search/Search'

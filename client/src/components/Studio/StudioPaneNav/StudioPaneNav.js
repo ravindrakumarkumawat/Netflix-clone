@@ -4,7 +4,7 @@ import './StudioPaneNav.css'
 const StudioPaneNav = ({ tab, tabs, setTab }) => {
 
   return (
-    <ul className='StudioPaneNav-ul'>
+    <ul className='DetailPaneNav-ul'>
       {tabs.map(tabName => (
         <li className={`${tabName === tab && 'border-bottom'}`}
           key={tabName} 

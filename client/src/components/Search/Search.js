@@ -44,7 +44,7 @@ function Search() {
   return (
     <div className='textbox-container'>
       <div className='back-browser-link'>        
-        <Link to='/'>
+        <Link to='/browse'>
           <FontAwesomeIcon icon={faLongArrowAltLeft}></FontAwesomeIcon> Back to browser
         </Link>
       </div>     
