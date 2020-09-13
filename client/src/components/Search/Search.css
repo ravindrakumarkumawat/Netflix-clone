@@ -15,18 +15,18 @@
 .results {
   margin-top: 2.5rem;
 }
-.back-browser-link { 
+.textbox-container .back-browser-link { 
   margin-top: -1.5rem; 
   margin-bottom: 1rem;
 }
-.back-browser-link a{
+.textbox-container .back-browser-link a{
   text-decoration: none;
   color: #fff;
   font-size: 1rem;
   opacity: 0.7;
 }
 
-.back-browser-link a:hover {
+.textbox-container .back-browser-link a:hover {
   text-decoration: underline;
   opacity: 1;
 }
