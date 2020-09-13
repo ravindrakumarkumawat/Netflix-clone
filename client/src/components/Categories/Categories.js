@@ -34,12 +34,12 @@ function Categories() {
   }, [])
 
   const get_videos = async () => {
-      const res = await fetch(`${videos}&maxResults=50`)
-                    .then(response => response.json())
-                    .then(res => res)
-                    .catch(error => console.log(error))
+      const response = await fetch(`${videos}&maxResults=50`)
+      const data = await response.json()
+      const res =  data
 
       let cat_videos = res.items
+      console.log(cat_videos)
       // let nextPageToken = res.nextPageToken
       // let count = 0
       // while(count < 3) {
