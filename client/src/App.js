@@ -4,6 +4,7 @@ import Navbar from './components/navbar/Navbar'
 import Categories from './components/Categories/Categories'
 import Watch from './components/Watch/Watch'
 import Search from './components/Search/Search'
+import Studio from './components/Studio/Studio'
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,6 +21,10 @@ function App() {
     <Router>
       <div className="App">         
         <Switch>
+          <Route path="/studio" exact>
+            <Studio />
+          </Route>
+
           <Route path="/login" exact>
             <Login />
           </Route>
