@@ -22,9 +22,9 @@ const Navbar = () => {
       </ul>
   */}
       <div className='right-items'>
-        <Link to="/studio">
-          <FontAwesomeIcon icon={faVideo}></FontAwesomeIcon>
-        </Link> 
+        <Link to='/studio'>
+          <FontAwesomeIcon icon={faVideo} title='Create Channel'></FontAwesomeIcon>
+        </Link>
         <Link to="/search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>        
