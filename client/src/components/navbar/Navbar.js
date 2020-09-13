@@ -3,7 +3,7 @@ import './Navbar.css'
 import Wolfster from '../../assets/images/wolfster.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faUser, faVideo } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
   return (
@@ -23,7 +23,7 @@ const Navbar = () => {
   */}
       <div className='right-items'>
         <Link to='/studio'>
-          <FontAwesomeIcon icon={faVideo} title='Create Channel'></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faUpload} title='Upload video'></FontAwesomeIcon>
         </Link>
         <Link to="/search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
