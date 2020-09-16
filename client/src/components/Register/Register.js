@@ -26,85 +26,103 @@ function Register() {
     window.gapi.load('client:auth2', initClient);
   }
 
-var GoogleAuth; // Google Auth object.
-var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly'; // Scope
-const initClient = () => {
+  var GoogleAuth; // Google Auth object.
+  var SCOPE = 'https://www.googleapis.com/auth/drive.metadata.readonly'; // Scope
+  const initClient = () => {
+    // Step: 1 Configure the client object
+    // Retrieve the discovery document for version 3 of Google Drive API.
+    // In practice, your app can retrieve one or more discovery documents.
+    var discoveryUrl = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
 
-  // Retrieve the discovery document for version 3 of Google Drive API.
-  // In practice, your app can retrieve one or more discovery documents.
-  var discoveryUrl = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+    // Initialize the gapi.client object, which app uses to make API requests.
+    // Get API key and client ID from API Console.
+    // 'scope' field specifies space-delimited list of access scopes.
+    window.gapi.client.init({
+        'apiKey': apiKey,
+        'clientId': clientId,
+        'scope': SCOPE,
+        'discoveryDocs': [discoveryUrl]
+    }).then(function () {
+        GoogleAuth = window.gapi.auth2.getAuthInstance()
 
-  // Initialize the gapi.client object, which app uses to make API requests.
-  // Get API key and client ID from API Console.
-  // 'scope' field specifies space-delimited list of access scopes.
-  window.gapi.client.init({
-      'apiKey': apiKey,
-      'clientId': clientId,
-      'scope': SCOPE,
-      'discoveryDocs': [discoveryUrl]
-  }).then(function () {
-      GoogleAuth = window.gapi.auth2.getAuthInstance();
+        // Listen for sign-in state changes.
+        GoogleAuth.isSignedIn.listen(updateSigninStatus)
 
-      // Listen for sign-in state changes.
-      GoogleAuth.isSignedIn.listen(updateSigninStatus);
-      console.log(GoogleAuth)
-
-      // Handle initial sign-in state. (Determine if user is already signed in.)
-      // var user = GoogleAuth.currentUser.get();
-      // setSigninStatus();
-  });
-}
-
-const handleAuthClick=()=> {
-  if (GoogleAuth.isSignedIn.get()) {
-    // User is authorized and has clicked "Sign out" button.
-    GoogleAuth.signOut();
-  } else {
-    // User is not signed in. Start Google auth flow.
-    GoogleAuth.signIn();
+        // Handle initial sign-in state. (Determine if user is already signed in.)
+        // var user = GoogleAuth.currentUser.get();
+        // setSigninStatus();
+    });
   }
-}
 
-const revokeAccess=()=> {
-  GoogleAuth.disconnect();
-}
-var isAuthorized;
-var currentApiRequest;
-
-/**
- * Store the request details. Then check to determine whether the user
- * has authorized the application.
- *   - If the user has granted access, make the API request.
- *   - If the user has not granted access, initiate the sign-in flow.
- */
-const sendAuthorizedApiRequest=(requestDetails)=> {
-  currentApiRequest = requestDetails;
-  if (isAuthorized) {
-    // Make API request
-    // gapi.client.request(requestDetails)
-
-    // Reset currentApiRequest variable.
-    currentApiRequest = {};
-  } else {
-    GoogleAuth.signIn();
-  }
-}
-
-/**
- * Listener called when user completes auth flow. If the currentApiRequest
- * variable is set, then the user was prompted to authorize the application
- * before the request executed. In that case, proceed with that API request.
- */
-const updateSigninStatus=(isSignedIn) =>{
-  if (isSignedIn) {
-    isAuthorized = true;
-    if (currentApiRequest) {
-      sendAuthorizedApiRequest(currentApiRequest);
+  const handleAuthClick=(res)=> {
+    if (GoogleAuth.isSignedIn.get()) {
+      // User is authorized and has clicked "Sign out" button.
+      GoogleAuth.signOut()
+    } else {
+      // User is not signed in. Start Google auth flow.
+      GoogleAuth.signIn()
     }
-  } else {
-    isAuthorized = false;
   }
-}
+
+  const revokeAccess=()=> {
+    GoogleAuth.disconnect();
+  }
+
+
+  var isAuthorized;
+  var currentApiRequest;
+
+  /**
+   * Store the request details. Then check to determine whether the user
+   * has authorized the application.
+   *   - If the user has granted access, make the API request.
+   *   - If the user has not granted access, initiate the sign-in flow.
+   */
+  const sendAuthorizedApiRequest=(requestDetails)=> {
+    currentApiRequest = requestDetails;
+    if (isAuthorized) {
+      // Make API request
+      // gapi.client.request(requestDetails)
+
+      // Example 2: Use gapi.client.request(args) function
+      // var request = gapi.client.request({
+      //   'method': 'GET',
+      //   'path': '/drive/v3/about',
+      //   'params': {'fields': 'user'}
+      // });
+      // // Execute the API request.
+      // request.execute(function(response) {
+      //   console.log(response);
+      // });
+
+      // Reset currentApiRequest variable.
+      currentApiRequest = {};
+    } else {
+      GoogleAuth.signIn();
+    }
+  }
+
+  /**
+   * Listener called when user completes auth flow. If the currentApiRequest
+   * variable is set, then the user was prompted to authorize the application
+   * before the request executed. In that case, proceed with that API request.
+   */
+  const updateSigninStatus=(isSignedIn) =>{
+    if (isSignedIn) {
+      isAuthorized = true;
+      if (currentApiRequest) {
+        sendAuthorizedApiRequest(currentApiRequest);
+      }
+    } else {
+      isAuthorized = false; 
+    }
+  }
+
+  useEffect(() => {
+    console.log('Loading')
+
+    insertGapiScript();
+  }, [])
 
   // const initializeGoogleSignIn = () => {
   //   window.gapi.load('auth2', () => {
@@ -126,11 +144,6 @@ const updateSigninStatus=(isSignedIn) =>{
   //     })
   //   })
   // }
-  useEffect(() => {
-    console.log('Loading')
-
-    insertGapiScript();
-  }, [])
 
   // const onSuccess = (res) => {
   //   console.log('Login Success: currentUser:', res)   
