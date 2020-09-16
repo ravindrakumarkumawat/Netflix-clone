@@ -39,7 +39,7 @@ function Categories() {
       const res =  data
 
       let cat_videos = res.items
-      console.log(cat_videos)
+      // console.log(cat_videos)
       // let nextPageToken = res.nextPageToken
       // let count = 0
       // while(count < 3) {
