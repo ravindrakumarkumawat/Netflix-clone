@@ -19,6 +19,7 @@ import Home from './components/Home/Home'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
+  const [idToken, setIdToken] = useState(null)
   const clientId = CLIENT_ID
   const apiKey = API_KEY
 
@@ -53,6 +54,7 @@ function App() {
       const isSignedIn = authInstance.isSignedIn.get()
       console.log('isSignedIn', isSignedIn)
       setIsSignedIn(isSignedIn)
+      setIdToken(authInstance.currentUser.get().getAuthResponse().id_token)
 
       authInstance.isSignedIn.listen(isSignedIn => {
         setIsSignedIn(isSignedIn)
