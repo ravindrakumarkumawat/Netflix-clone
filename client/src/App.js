@@ -51,20 +51,12 @@ function App() {
     }).then(() => {
       const authInstance = window.gapi.auth2.getAuthInstance()
       const isSignedIn = authInstance.isSignedIn.get()
+      console.log('isSignedIn', isSignedIn)
       setIsSignedIn(isSignedIn)
 
       authInstance.isSignedIn.listen(isSignedIn => {
         setIsSignedIn(isSignedIn)
       })
-
-      // Call handleAuthClick function when user clicks on
-      //      "Sign In/Authorize" button.
-      document.getElementById('loginButton').click(function() {
-        handleAuthClick(authInstance);
-      });
-      // $('#revoke-access-button').click(function() {
-      //   revokeAccess();
-      // });
     })
     
     window.gapi.load('signin2', () => {
@@ -83,17 +75,6 @@ function App() {
       }
       window.gapi.signin2.render('loginButton', params)
     })
-
-    const handleAuthClick = (authInstance) => {
-      if (authInstance.isSignedIn.get()) {
-        // User is authorized and has clicked "Sign out" button.
-        authInstance.signOut();
-      } else {
-        // User is not signed in. Start Google auth flow.
-        authInstance.signIn();
-      }
-    }
-
     //   // const authInstance = window.gapi.auth2.getAuthInstance()
     //   // const user = authInstance.currentUser.get()
     //   // const profile = user.getBasicProfile()
@@ -101,6 +82,15 @@ function App() {
     //   // const imageUrl = profile.getImageUrl()
     //   //onclick={authInstance.signOut}
     // })
+  }
+
+  
+  const handleAuthClick = (event) => {
+    window.gapi.auth2.getAuthInstance().signIn()
+  }
+
+  const handleSignoutClick = (event) => {
+    window.gapi.auth2.getAuthInstance().signOut()
   }
   
   return (
@@ -116,11 +106,11 @@ function App() {
           </Route>
          
           <Route path="/register" exact>
-            <Register />
+            <Register handleAuthClick={handleAuthClick}/>
           </Route>
           
           <Route path="/browse" exact>          
-            <Navbar/>
+            <Navbar handleSignoutClick={handleSignoutClick}/>
             <Categories />
           </Route>
 
@@ -133,7 +123,7 @@ function App() {
           </Route>
 
           <Route path="/search" exact> 
-            <Navbar/>                      
+            <Navbar handleSignoutClick={handleSignoutClick}/>                      
             <Search />
           </Route>
 

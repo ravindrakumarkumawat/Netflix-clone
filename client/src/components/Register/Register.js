@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'  
 
-function Register() {
+function Register({handleAuthClick}) {
 
   return (
     <header>
@@ -25,7 +25,7 @@ function Register() {
         <Link to='/login' className='signin'>Sign in</Link>
       </nav>
       <section className="pitch">      
-        <div id="loginButton"></div>
+        <div id="loginButton" onClick={() => handleAuthClick()}></div>
       </section>
     </header>
   )

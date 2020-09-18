@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
 
-const Navbar = () => {
+const Navbar = ({handleSignoutClick}) => {
   return (
     <nav className='navigation top-bar'>
       <div className='logo-container'>
@@ -27,9 +27,9 @@ const Navbar = () => {
         <Link to="/search">
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>        
-        <Link to="/browse">
-          <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
-        </Link>        
+        <Link to='/'>
+          <FontAwesomeIcon icon={faUser} title='Sign Out' onClick={() => handleSignoutClick()}></FontAwesomeIcon>
+        </Link>       
       </div>
     </nav>
   )
