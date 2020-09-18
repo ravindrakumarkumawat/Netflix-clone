@@ -17,11 +17,12 @@ import Login from './components/Login/Login'
 import Register from './components/Register/Register'
 import Home from './components/Home/Home'
 
-const clientId = CLIENT_ID
-const apiKey = API_KEY
-
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
+  const clientId = CLIENT_ID
+  const apiKey = API_KEY
+
+  const scopes = 'https://www.googleapis.com/auth/youtube.readonly'
  
   useEffect(() => {
     console.log('Loading')
@@ -31,52 +32,75 @@ function App() {
 
   const insertGapiScript = () => {
     const script = document.createElement('script')
-    script.src = 'https://apis.google.com/js/platform.js'
+    script.src = 'https://apis.google.com/js/api.js'
     script.onload = () => {
-      initializeGoogleSignIn()
+      handleClientLoad()
     }
     document.body.appendChild(script)
   }
 
-  const initializeGoogleSignIn = () => {
-    window.gapi.load('auth2', () => {
-      window.gapi.auth2.init({
-        client_id: clientId
-      }).then(()=> {
-        const authInstance = window.gapi.auth2.getAuthInstance()
-        const isSignedIn = authInstance.isSignedIn.get()
+  const handleClientLoad = () => {
+    window.gapi.load('auth2:client', initClient)
+  }
+
+  const initClient = () => {
+    window.gapi.client.init({
+      apiKey,
+      clientId,
+      scope: scopes
+    }).then(() => {
+      const authInstance = window.gapi.auth2.getAuthInstance()
+      const isSignedIn = authInstance.isSignedIn.get()
+      setIsSignedIn(isSignedIn)
+
+      authInstance.isSignedIn.listen(isSignedIn => {
         setIsSignedIn(isSignedIn)
-
-        authInstance.isSignedIn.listen(isSignedIn => {
-          setIsSignedIn(isSignedIn)
-        })
-      })
-      console.log('Api inited')
-
-      window.gapi.load('signin2', () => {
-        const params = {
-          scope: 'profile email',
-          width: 240,
-          height: 50,
-          longtitle: true,
-          theme: 'dark',
-          onsuccess: (res) => {
-            console.log('User has finished signing in!', res)
-          },
-          onfailure: (res) => {
-            console.log('Login failed: res:', res)
-          }
-        }
-        window.gapi.signin2.render('loginButton', params)
       })
 
-      // const authInstance = window.gapi.auth2.getAuthInstance()
-      // const user = authInstance.currentUser.get()
-      // const profile = user.getBasicProfile()
-      // const email = profile.getEmail()
-      // const imageUrl = profile.getImageUrl()
-      //onclick={authInstance.signOut}
+      // Call handleAuthClick function when user clicks on
+      //      "Sign In/Authorize" button.
+      document.getElementById('loginButton').click(function() {
+        handleAuthClick(authInstance);
+      });
+      // $('#revoke-access-button').click(function() {
+      //   revokeAccess();
+      // });
     })
+    
+    window.gapi.load('signin2', () => {
+      const params = {
+        scope: 'profile email',
+        width: 240,
+        height: 50,
+        longtitle: true,
+        theme: 'dark',
+        onsuccess: (res) => {
+          console.log('User has finished signing in!', res)
+        },
+        onfailure: (res) => {
+          console.log('Login failed: res:', res)
+        }
+      }
+      window.gapi.signin2.render('loginButton', params)
+    })
+
+    const handleAuthClick = (authInstance) => {
+      if (authInstance.isSignedIn.get()) {
+        // User is authorized and has clicked "Sign out" button.
+        authInstance.signOut();
+      } else {
+        // User is not signed in. Start Google auth flow.
+        authInstance.signIn();
+      }
+    }
+
+    //   // const authInstance = window.gapi.auth2.getAuthInstance()
+    //   // const user = authInstance.currentUser.get()
+    //   // const profile = user.getBasicProfile()
+    //   // const email = profile.getEmail()
+    //   // const imageUrl = profile.getImageUrl()
+    //   //onclick={authInstance.signOut}
+    // })
   }
   
   return (
@@ -112,7 +136,7 @@ function App() {
             <Navbar/>                      
             <Search />
           </Route>
-          
+
           <Route path='/' exact>
             <Home />
           </Route>
