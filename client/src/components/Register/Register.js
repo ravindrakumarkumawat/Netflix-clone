@@ -41,6 +41,11 @@ function Register() {
 
       window.gapi.load('signin2', () => {
         const params = {
+          scope: 'profile email',
+          width: 240,
+          height: 50,
+          longtitle: true,
+          theme: 'dark',
           onsuccess: (res) => {
             console.log('User has finished signing in!', res)
           },
