@@ -9,7 +9,6 @@ function Register({handleAuthClick, isSignedIn, idToken}) {
     <header>
       <nav className='home-container'>
         <Link to='/' className='logo'>Vivid</Link>     
-        <Link to='/register' className='signup'>Sign Up</Link>
       </nav>
       <section className="pitch">      
         <div id="loginButton" onClick={() => handleAuthClick()}></div>

@@ -15,7 +15,7 @@ const initialRow = {
   channelTitle: ''
 }
 
-function Categories({idToken, isSignedIn}) { 
+function Categories({accessToken, idToken, isSignedIn}) { 
   const [activeRow, setActiveRow] = useState(initialRow)
   const {
     category,
@@ -35,7 +35,7 @@ function Categories({idToken, isSignedIn}) {
   }, [])
 
   const get_videos = async () => {
-      const response = await fetch(`${videos}&maxResults=50&id_token=${idToken}`)
+      const response = await fetch(`${videos}&maxResults=50&access_token=${accessToken}`)
       const data = await response.json()
       const res =  data
 
