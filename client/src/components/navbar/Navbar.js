@@ -24,10 +24,10 @@ const Navbar = ({handleSignoutClick}) => {
         <Link to='/studio'>
           <FontAwesomeIcon icon={faUpload} title='Upload video'></FontAwesomeIcon>
         </Link>
-        <Link to="/search">
+        <Link to='/search'>
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>        
-        <Link to='/'>
+        <Link to='/register'>
           <FontAwesomeIcon icon={faUser} title='Sign Out' onClick={() => handleSignoutClick()}></FontAwesomeIcon>
         </Link>       
       </div>

@@ -14,9 +14,7 @@ import {
 
 
 import {CLIENT_ID, API_KEY} from './OAuth.config'
-import Login from './components/Login/Login'
 import Register from './components/Register/Register'
-import Home from './components/Home/Home'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
@@ -122,18 +120,14 @@ function App() {
           <Route path="/search" exact> 
             <Navbar handleSignoutClick={handleSignoutClick}/>                      
             <Search idToken={idToken} isSignedIn={isSignedIn}/>
-          </Route>
-          
-          <Route path="/login" exact>
-            <Login />
-          </Route>  
+          </Route> 
 
           <Route path="/register" exact>
             <Register handleAuthClick={handleAuthClick} idToken={idToken} isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path='/' exact>
-            <Home />
+            <Redirect to='/register' />
           </Route>
         </Switch>     
       </div>

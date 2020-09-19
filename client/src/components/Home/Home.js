@@ -7,8 +7,7 @@ function Home() {
     <header>
     <nav className='home-container'>
       <Link to='/' className='logo'>Vivid</Link>   
-      <Link to='/register' className='signup'>Sign up</Link>    
-      <Link to='/login' className='signin'>Sign in</Link>
+      <Link to='/register' className='signup'>Sign up</Link>
     </nav>
     <section className="pitch">
       <h1 className="pitch__title">Unlimited movies, TV shows and more.</h1>
