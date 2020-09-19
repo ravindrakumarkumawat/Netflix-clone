@@ -1,9 +1,12 @@
 import React from 'react'
 import './Studio.css'
 import UploadVideo from './UploadVideo/UploadVideo'
+import { Redirect } from 'react-router-dom'
 
-function Studio () {
-  return (        
+function Studio ({isSignedIn, idToken}) {
+  return (!isSignedIn && !idToken) ? (
+    <Redirect to='/register' />
+  ): (        
     <div className='studioPane-container'>
       <div className='pane-wrapper'>
         <div className='studioPane-overlay'>

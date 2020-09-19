@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import './Search.css'
 import { search } from '../../YoutubeApi'
 import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 
-function Search() {
+function Search({isSignedIn, idToken}) {
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
@@ -41,7 +41,9 @@ function Search() {
     }
   }
 
-  return (
+  return (!isSignedIn && !idToken) ? (
+    <Redirect to='/register' />
+  ):(
     <div className='textbox-container'>
       <div className='back-browser-link'>        
         <Link to='/browse'>
