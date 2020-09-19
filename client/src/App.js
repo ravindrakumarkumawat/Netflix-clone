@@ -8,7 +8,8 @@ import Studio from './components/Studio/Studio'
 import {
   BrowserRouter as Router,
   Switch,
-  Route, Link
+  Route, Link,
+  Redirect
 } from 'react-router-dom'
 
 
@@ -20,6 +21,7 @@ import Home from './components/Home/Home'
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
   const [idToken, setIdToken] = useState(null)
+  const [accessToken, setAccessToken] = useState(null)
   const clientId = CLIENT_ID
   const apiKey = API_KEY
 
@@ -29,7 +31,7 @@ function App() {
     console.log('Loading')
 
     insertGapiScript();
-  }, [])
+  }, [isSignedIn])
 
   const insertGapiScript = () => {
     const script = document.createElement('script')
@@ -55,7 +57,7 @@ function App() {
       console.log('isSignedIn', isSignedIn)
       setIsSignedIn(isSignedIn)
       setIdToken(authInstance.currentUser.get().getAuthResponse().id_token)
-
+      setAccessToken(authInstance.currentUser.get().getAuthResponse().access_token)
       authInstance.isSignedIn.listen(isSignedIn => {
         setIsSignedIn(isSignedIn)
       })
@@ -99,25 +101,18 @@ function App() {
     <Router>
       <div className="App">         
         <Switch>
+        
           <Route path="/studio" exact>
-            <Studio />
+            <Studio idToken={idToken} isSignedIn={isSignedIn}/>
           </Route>
 
-          <Route path="/login" exact>
-            <Login />
-          </Route>
-         
-          <Route path="/register" exact>
-            <Register handleAuthClick={handleAuthClick}/>
-          </Route>
-          
-          <Route path="/browse" exact>          
+          <Route path="/browse" exact>
             <Navbar handleSignoutClick={handleSignoutClick}/>
-            <Categories />
+            <Categories idToken={idToken} isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path="/watch/:v_id" exact>                      
-            <Watch />
+            <Watch idToken={idToken} isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path="/watch" exact>                      
@@ -126,7 +121,15 @@ function App() {
 
           <Route path="/search" exact> 
             <Navbar handleSignoutClick={handleSignoutClick}/>                      
-            <Search />
+            <Search idToken={idToken} isSignedIn={isSignedIn}/>
+          </Route>
+          
+          <Route path="/login" exact>
+            <Login />
+          </Route>  
+
+          <Route path="/register" exact>
+            <Register handleAuthClick={handleAuthClick} idToken={idToken} isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path='/' exact>

@@ -6,6 +6,7 @@ import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import DetailPane from '../DetailPane/DetailPane'
 import { videos, videoCategories } from '../../YoutubeApi'
+import {Redirect} from 'react-router-dom'
 
 const initialRow = {
   category: '',
@@ -14,7 +15,7 @@ const initialRow = {
   channelTitle: ''
 }
 
-function Categories() { 
+function Categories({idToken, isSignedIn}) { 
   const [activeRow, setActiveRow] = useState(initialRow)
   const {
     category,
@@ -34,7 +35,7 @@ function Categories() {
   }, [])
 
   const get_videos = async () => {
-      const response = await fetch(`${videos}&maxResults=50`)
+      const response = await fetch(`${videos}&maxResults=50&id_token=${idToken}`)
       const data = await response.json()
       const res =  data
 
@@ -98,7 +99,9 @@ function Categories() {
                     .catch(error => console.log(error))
   }
   
-  return (
+  return (!isSignedIn && !idToken) ? (
+    <Redirect to='/register' />
+  ):(
     <>
     <Preview randomUrl={randomUrl} />
     <div className='preview-categories-container'> 

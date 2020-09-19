@@ -1,9 +1,10 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'  
 
-function Register({handleAuthClick}) {
+function Register({handleAuthClick, isSignedIn, idToken}) {
 
-  return (
+  return (isSignedIn && idToken) ?(<Redirect to='/browse'/>):
+  (
     <header>
      {/* <nav className='home-container'>
         <Link to='/' className='logo'>Vivid</Link>     
