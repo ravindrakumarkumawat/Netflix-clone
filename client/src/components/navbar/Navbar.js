@@ -4,8 +4,9 @@ import Wolfster from '../../assets/images/wolfster.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
+import {NavDropdown} from 'react-bootstrap'
 
-const Navbar = ({handleSignoutClick}) => {
+const Navbar = ({handleSignoutClick, user}) => {
   return (
     <nav className='navigation top-bar'>
       <div className='logo-container'>
@@ -26,10 +27,14 @@ const Navbar = ({handleSignoutClick}) => {
         </Link>
         <Link to='/search'>
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
-        </Link>        
-        <Link to='/register'>
-          <FontAwesomeIcon icon={faUser} title='Sign Out' onClick={() => handleSignoutClick()}></FontAwesomeIcon>
-        </Link>       
+        </Link>     
+        <NavDropdown title={user.name} id="basic-nav-dropdown">
+          <img className="userImage" src={user.imageUrl}/>
+          <NavDropdown.Divider />
+          <NavDropdown.Item>{user.email}</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={() => handleSignoutClick()}>Sign Out</NavDropdown.Item>
+        </NavDropdown>     
       </div>
     </nav>
   )

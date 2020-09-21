@@ -20,6 +20,11 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
   const [idToken, setIdToken] = useState(null)
   const [accessToken, setAccessToken] = useState(null)
+  const [user, setUser] = useState({
+    name: '',
+    imageUrl: '',
+    email: ''
+  })
   const clientId = CLIENT_ID
   const apiKey = API_KEY
 
@@ -59,6 +64,12 @@ function App() {
       authInstance.isSignedIn.listen(isSignedIn => {
         setIsSignedIn(isSignedIn)
       })
+      const user = authInstance.currentUser.get()
+      const profile = user.getBasicProfile()
+      const name = profile.getName()
+      const email = profile.getEmail()
+      const imageUrl = profile.getImageUrl()
+      setUser({name, email, imageUrl})
     })
     
     window.gapi.load('signin2', () => {
@@ -77,13 +88,7 @@ function App() {
       }
       window.gapi.signin2.render('loginButton', params)
     })
-    //   // const authInstance = window.gapi.auth2.getAuthInstance()
-    //   // const user = authInstance.currentUser.get()
-    //   // const profile = user.getBasicProfile()
-    //   // const email = profile.getEmail()
-    //   // const imageUrl = profile.getImageUrl()
-    //   //onclick={authInstance.signOut}
-    // })
+    
   }
 
   
@@ -105,7 +110,7 @@ function App() {
           </Route>
 
           <Route path="/browse" exact>
-            <Navbar handleSignoutClick={handleSignoutClick}/>
+            <Navbar handleSignoutClick={handleSignoutClick} user={user}/>
             <Categories idToken={idToken} accessToken={accessToken} isSignedIn={isSignedIn}/>
           </Route>
 
@@ -118,7 +123,7 @@ function App() {
           </Route>
 
           <Route path="/search" exact> 
-            <Navbar handleSignoutClick={handleSignoutClick}/>                      
+            <Navbar handleSignoutClick={handleSignoutClick} user={user}/>                      
             <Search idToken={idToken} isSignedIn={isSignedIn}/>
           </Route> 
 

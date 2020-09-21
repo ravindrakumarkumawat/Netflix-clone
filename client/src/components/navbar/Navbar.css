@@ -29,20 +29,9 @@
   opacity: .7;
 }
 
-.nav-links {
-  display: flex;
-  list-style: none;
-}
-
-.nav-links a {
-  color: #fff;
-  font-size: 14px;
-  margin-left: 20px;
-}
-
 .right-items {
-  text-align: right;
-  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .right-items svg {
@@ -54,4 +43,10 @@
 
 .right-items svg:hover {
   opacity: 1;
+}
+
+.right-items .userImage {
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
 }
