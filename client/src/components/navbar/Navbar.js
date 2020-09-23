@@ -28,11 +28,9 @@ const Navbar = ({handleSignoutClick, user}) => {
         <Link to='/search'>
           <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>
         </Link>     
-        <NavDropdown title={user.name} id="basic-nav-dropdown">
+        <NavDropdown title={user.name} id="basic-nav-dropdown" className="nav-dropdown">
           <img className="userImage" src={user.imageUrl}/>
-          <NavDropdown.Divider />
           <NavDropdown.Item>{user.email}</NavDropdown.Item>
-          <NavDropdown.Divider />
           <NavDropdown.Item onClick={() => handleSignoutClick()}>Sign Out</NavDropdown.Item>
         </NavDropdown>     
       </div>

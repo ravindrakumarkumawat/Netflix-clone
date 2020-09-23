@@ -10,6 +10,7 @@
   min-width: 1050px;
   transition-timing-function: ease-in;
   transition: all 0.2s;
+  justify-content: space-between;
 }
 
 .scrolled {
@@ -20,24 +21,23 @@
   height: 45px;
 }
 
-.logo-container img{
-  height: 100%;  
+.logo-container img {
+  height: 100%;
   opacity: 1;
 }
 
 .logo-container img:hover {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .right-items {
   display: flex;
-  justify-content: flex-end;
 }
 
 .right-items svg {
   color: #fff;
   font-size: 20px;
-  margin-left: 30px;
+  margin-right: 30px;
   opacity: 0.7;
 }
 
@@ -48,5 +48,23 @@
 .right-items .userImage {
   width: 30px;
   height: 30px;
-  border-radius:50%;
+  border-radius: 50%;
+}
+
+.nav-dropdown a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-top: 1rem;
+  padding: 20px;
+}
+
+.dropdown-menu {
+  background: #141414;
+  opacity: 0.6;
 }
