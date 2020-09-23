@@ -28,7 +28,7 @@ function App() {
   const clientId = CLIENT_ID
   const apiKey = API_KEY
 
-  const scopes = 'https://www.googleapis.com/auth/youtube.readonly'
+  const scopes = 'https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtube.force-ssl'
  
   useEffect(() => {
     console.log('Loading')
