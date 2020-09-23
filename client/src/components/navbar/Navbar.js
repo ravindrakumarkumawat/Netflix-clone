@@ -1,6 +1,6 @@
 import React from 'react'
 import './Navbar.css'
-import Wolfster from '../../assets/images/wolfster.png'
+import Vivid from '../../assets/images/vivid.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -10,8 +10,8 @@ const Navbar = ({handleSignoutClick, user}) => {
   return (
     <nav className='navigation top-bar'>
       <div className='logo-container'>
-        <Link to="/browse">Vivid
-          {/*<h1>Vivid</h1>*/}
+        <Link to="/browse">
+          <img src={Vivid} title="logo" alt="logo" className="navbar-logo"/>
         </Link>
       </div>
      {/* <ul className="navbar-right nav-links">

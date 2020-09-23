@@ -8,6 +8,7 @@ export const playlists = `${baseUrl}/playlists?key=${key}&part=snippet,contentDe
 export const playlistItems = `${baseUrl}/playlistItems?key=${key}&part=snippet,contentDetails&maxResults=10&playlistId=`
 export const relatedVideo = `${baseUrl}/search?key=${key}&part=snippet&maxResults=10&type=video&relatedToVideoId=`
 export const search = `${baseUrl}/search?key=${key}&part=snippet&maxResults=10&q=`
+export const channelByMine  = `${baseUrl}/channels?key=${key}&part=snippet,contentDetails,statistics&mine=true`
 
 // const channelsById = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&id=UC_x5XG1OV2P6uZZ5FSM9Ttw'
 // const channelsByUsername = 'https://www.googleapis.com/youtube/v3/channels?key=&part=snippet,contentDetails,statistics&forUsername=GoogleDevelopers'
