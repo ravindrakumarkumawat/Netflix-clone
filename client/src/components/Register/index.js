@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import Vivid from '../../assets/images/vivid.png'
+import Zephyr from '../../assets/images/zephyr.png'
 import './index.css'  
 
 function Register({handleAuthClick, isSignedIn, idToken}) {
@@ -10,8 +10,8 @@ function Register({handleAuthClick, isSignedIn, idToken}) {
     <header>
       <nav className='home-container'>
         <Link to='/' className='logo'>
-          <img src={Vivid} title="logo" alt="logo" className="navbar-logo"/>
-        </Link>     
+          <img src={Zephyr} title="logo" alt="logo" className="navbar-logo"/>
+        </Link>    
       </nav>
       <section className="pitch">      
         <div id="loginButton" onClick={() => handleAuthClick()}></div>

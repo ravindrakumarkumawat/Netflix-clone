@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import Vivid from '../../assets/images/vivid.png'
+import Zephyr from '../../assets/images/zephyr.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faUpload, faUser } from '@fortawesome/free-solid-svg-icons'
@@ -11,7 +11,7 @@ const Navbar = ({handleSignoutClick, user}) => {
     <nav className='navigation top-bar'>
       <div className='logo-container'>
         <Link to="/browse">
-          <img src={Vivid} title="logo" alt="logo" className="navbar-logo"/>
+          <img src={Zephyr} title="logo" alt="logo" className="navbar-logo"/>
         </Link>
       </div>
      {/* <ul className="navbar-right nav-links">
