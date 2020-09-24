@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
-import Categories from './components/Categories/Categories'
+import Categories from './components/Categories'
 import Watch from './components/Watch/Watch'
 import Search from './components/Search/Search'
 import Studio from './components/Studio/Studio'

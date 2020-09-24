@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Categories.css'
+import './index.css'
 import Preview from '../Preview/Preview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
