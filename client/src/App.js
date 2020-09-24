@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom'
 
 
-import {CLIENT_ID, API_KEY} from './OAuth.config'
+import {CLIENT_ID, API_KEY, SCOPE} from './OAuth.config'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
@@ -24,7 +24,7 @@ function App() {
   const clientId = CLIENT_ID
   const apiKey = API_KEY
 
-  const scopes = 'https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtube.force-ssl'
+  const scopes = SCOPE
  
   useEffect(() => {
     console.log('Loading')
