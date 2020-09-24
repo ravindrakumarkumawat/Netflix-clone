@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import Vivid from '../../assets/images/vivid.png'
-import './Register.css'  
+import './index.css'  
 
 function Register({handleAuthClick, isSignedIn, idToken}) {
 

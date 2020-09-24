@@ -14,7 +14,7 @@ import {
 
 
 import {CLIENT_ID, API_KEY} from './OAuth.config'
-import Register from './components/Register/Register'
+import Register from './components/Register'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
