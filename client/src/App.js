@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
-import Categories from './components/Categories'
-import Watch from './components/Watch'
-import Search from './components/Search'
-import Studio from './components/Studio'
+import {Categories, Watch, Search, Studio, Register} from './components'
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +11,6 @@ import {
 
 
 import {CLIENT_ID, API_KEY} from './OAuth.config'
-import Register from './components/Register'
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(null)
