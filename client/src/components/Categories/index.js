@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './index.css'
-import Preview from '../Preview/Preview'
+import Preview from '../Preview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import DetailPane from '../DetailPane/DetailPane'
+import DetailPane from '../DetailPane'
 import { videos, videoCategories } from '../../YoutubeApi'
 import {Redirect} from 'react-router-dom'
 

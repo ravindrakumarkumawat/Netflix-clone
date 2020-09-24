@@ -1,6 +1,6 @@
 import React from 'react'
 import './index.css'
-import UploadVideo from './UploadVideo/UploadVideo'
+import UploadVideo from './UploadVideo'
 import { Redirect } from 'react-router-dom'
 
 function Studio ({isSignedIn, idToken}) {

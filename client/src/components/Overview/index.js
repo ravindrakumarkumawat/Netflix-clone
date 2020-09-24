@@ -1,5 +1,5 @@
 import React from 'react'
-import './Overview.css'
+import './index.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay } from '@fortawesome/free-solid-svg-icons'
 import {Link} from 'react-router-dom'

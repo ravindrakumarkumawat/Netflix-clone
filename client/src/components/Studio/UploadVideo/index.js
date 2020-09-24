@@ -1,5 +1,5 @@
 import React from 'react'
-import './UploadVideo.css'
+import './index.css'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import './Playlists.css'
+import './index.css'
 import { playlists, playlistItems, video } from '../../YoutubeApi'
 import PlaylistItemProvider from './PlaylistItemProvider'
 

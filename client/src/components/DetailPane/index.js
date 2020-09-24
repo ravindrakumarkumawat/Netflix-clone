@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import './DetailPane.css'
-import DetailPaneNav from '../DetailPaneNav/DetailPaneNav'
-import Overview from '../Overview/Overview'
+import './index.css'
+import DetailPaneNav from '../DetailPaneNav'
+import Overview from '../Overview'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import Playlists from '../Playlists/Playlists'
-import RelatedVideo from '../RelatedVideo/RelatedVideo'
+import Playlists from '../Playlists'
+import RelatedVideo from '../RelatedVideo'
 
 const TABS = ['Overview', 'Playlists', 'More Like This']
 

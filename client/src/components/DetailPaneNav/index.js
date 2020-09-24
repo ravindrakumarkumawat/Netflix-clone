@@ -1,5 +1,5 @@
 import React from 'react'
-import './DetailPaneNav.css'
+import './index.css'
 
 const DetailPaneNav = ({ tab, tabs, setTab }) => {
 

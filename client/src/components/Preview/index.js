@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
-import './Preview.css'
+import './index.css'
 import {Link} from 'react-router-dom'
 
 function Preview ({ randomUrl }) {   
