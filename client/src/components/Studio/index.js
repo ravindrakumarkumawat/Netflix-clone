@@ -1,5 +1,5 @@
 import React from 'react'
-import './Studio.css'
+import './index.css'
 import UploadVideo from './UploadVideo/UploadVideo'
 import { Redirect } from 'react-router-dom'
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Search.css'
+import './index.css'
 import { search } from '../../YoutubeApi'
 import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
 import { Link, Redirect } from 'react-router-dom'

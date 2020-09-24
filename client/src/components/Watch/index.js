@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams, Redirect, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
-import './Watch.css'
+import './index.css'
 
 function Watch({isSignedIn, idToken}) {
   const {v_id} = useParams()

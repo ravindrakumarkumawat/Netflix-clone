@@ -1,5 +1,5 @@
 import React from 'react'
-import './Navbar.css'
+import './index.css'
 import Vivid from '../../assets/images/vivid.png'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

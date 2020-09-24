@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import './App.css'
-import Navbar from './components/Navbar/Navbar'
+import Navbar from './components/Navbar'
 import Categories from './components/Categories'
-import Watch from './components/Watch/Watch'
-import Search from './components/Search/Search'
-import Studio from './components/Studio/Studio'
+import Watch from './components/Watch'
+import Search from './components/Search'
+import Studio from './components/Studio'
 import {
   BrowserRouter as Router,
   Switch,
