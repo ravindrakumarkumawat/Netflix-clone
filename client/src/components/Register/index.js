@@ -13,7 +13,12 @@ const Register = ({handleAuthClick, isSignedIn}) => {
           <img src={Zephyr} title="logo" alt="logo" className="navbar-logo"/>
         </Link>    
       </nav>
-      <section className="pitch">      
+      <section className="pitch">    
+        <div className="pitch-content">
+          <h1>Unlimited movies, TV shows and more.</h1>
+          <p>Watch anywhere. Cancel anytime.</p>
+          <h5>Ready to watch? Sign in or Sign Up to your Gmail Account. </h5> 
+        </div>
         <div id="loginButton" onClick={() => handleAuthClick()}></div>
       </section>
     </header>

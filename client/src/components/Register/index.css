@@ -7,39 +7,43 @@ header nav {
   height: 90px;
 }
 
-nav a.logo {
+nav .navbar-logo {
   display: inline-block;
-  line-height: 90px;
-  margin-left: 3%;  
-  font-weight: 800;
-  font-size: 30px;
+  margin-left: 3%; 
   color: white;
-  text-decoration: none;
-}
-
-nav .signup{
-  background-color: #e50914;
-  padding: 10px 27px;
-  font-weight: 400;
-  font-size: 16px;
-  float: right;
-  margin-right: 3%;
-  color: #fff;
-  border-radius: 3px;
-  margin-top: 28px;
-  text-decoration: none;
-  cursor: pointer;
+  margin-top: 30px;
+  width: 120px;
 }
 
 .pitch {
   width: 100%;
-  padding: 140px 0;
-  max-width: 950px;
-  margin:0 auto;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  font-size: 1.625rem;
   color: white;
+  display: flex;  
+  flex-direction: column; 
+  align-items: center;
+  margin-top: 20vh;
 }
 
+.pitch .pitch-content h1 {  
+  font-size: 3.625rem;
+  margin: 0;
+  padding: 0;
+  width: 600px;
+  text-align: center;
+}
+
+.pitch .pitch-content p {  
+  font-size: 1.8rem;
+  margin: 0;
+  padding: 0;
+  width: 600px;
+  text-align: center;
+}
+
+.pitch .pitch-content h5 {  
+  font-size: 1rem;
+  margin-top: 20px;
+  padding: 0;
+  width: 600px;
+  text-align: center;
+}
