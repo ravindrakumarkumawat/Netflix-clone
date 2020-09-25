@@ -7,11 +7,11 @@ header nav {
   height: 90px;
 }
 
-nav .navbar-logo {
+nav .navbar-logo1 {
   display: inline-block;
   margin-left: 3%; 
   color: white;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 120px;
 }
 

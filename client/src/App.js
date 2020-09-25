@@ -81,10 +81,10 @@ function App() {
         longtitle: true,
         theme: 'dark',
         onsuccess: (res) => {
-          console.log('User has finished signing in!', res)
+          console.log('User has finished signing in!')
         },
         onfailure: (res) => {
-          console.log('Login failed: res:', res)
+          console.log('Login failed')
         }
       }
       window.gapi.signin2.render('loginButton', params)

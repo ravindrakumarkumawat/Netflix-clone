@@ -10,7 +10,7 @@ const Register = ({handleAuthClick, isSignedIn}) => {
     <header>
       <nav className='home-container'>
         <Link to='/' className='logo'>
-          <img src={Zephyr} title="logo" alt="logo" className="navbar-logo"/>
+          <img src={Zephyr} title="logo" alt="logo" className="navbar-logo1"/>
         </Link>    
       </nav>
       <section className="pitch">    
