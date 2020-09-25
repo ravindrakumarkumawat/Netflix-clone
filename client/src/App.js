@@ -130,7 +130,7 @@ function App() {
           </Route> 
 
           <Route path="/register" exact>
-            <Register handleAuthClick={handleAuthClick} idToken={idToken} isSignedIn={isSignedIn}/>
+            <Register handleAuthClick={handleAuthClick} isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path='/' exact>

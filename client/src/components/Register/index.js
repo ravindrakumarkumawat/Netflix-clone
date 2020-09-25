@@ -3,9 +3,9 @@ import {Link, Redirect} from 'react-router-dom'
 import Zephyr from '../../assets/images/zephyr.png'
 import './index.css'  
 
-function Register({handleAuthClick, isSignedIn, idToken}) {
-
-  return (isSignedIn && idToken) ?(<Redirect to='/browse'/>):
+const Register = ({handleAuthClick, isSignedIn}) => {
+  return isSignedIn ?
+  (<Redirect to='/browse'/>):
   (
     <header>
       <nav className='home-container'>

@@ -30,12 +30,14 @@ function Categories({accessToken, idToken, isSignedIn}) {
   const [catVideo, setCatVideo] = useState([])
   const [randomUrl, setRandomUrl] = useState('')
   
-  useEffect(() => {   
-    get_videos()  
-  }, [])
+  useEffect(() => { 
+    if(accessToken && idToken && isSignedIn) {
+      get_videos() 
+    } 
+  }, [accessToken, idToken, isSignedIn])
 
   const get_videos = async () => {
-      const response = await fetch(`${videos}&maxResults=50&access_token=${accessToken}`)
+      const response = await fetch(`${videos}&maxResults=50`)
       const data = await response.json()
       const res =  data
 
