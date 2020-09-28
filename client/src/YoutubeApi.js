@@ -1,5 +1,7 @@
-export const baseUrl = 'https://www.googleapis.com/youtube/v3'
-export const key = 'AIzaSyC0-r1fHvo73SRv5VtmkZvA-TgTD9nVBY8'
+import {API_KEY} from './OAuth.config'
+
+const baseUrl = 'https://www.googleapis.com/youtube/v3'
+const key = API_KEY
 
 export const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snippet&h1=us&regionCode=US`
 export const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&h1=us&regionCode=US&chart=mostPopular`
