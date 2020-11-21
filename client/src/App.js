@@ -128,9 +128,9 @@ function App() {
             <h2 className='ErrorMessage'>No id is passed in url</h2>
           </Route>
 
-          <Route path="/search" exact> 
-            <Navbar handleSignoutClick={handleSignoutClick} user={user}/>                      
-            <Search idToken={idToken} isSignedIn={isSignedIn}/>
+          <Route path="/search" exact>                       
+            <Search idToken={idToken} isSignedIn={isSignedIn} handleSignoutClick={handleSignoutClick} 
+            user={user}/>
           </Route> 
 
           <Route path="/register" exact>

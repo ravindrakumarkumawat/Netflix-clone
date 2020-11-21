@@ -5,8 +5,9 @@ import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
 import { Link, Redirect } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
+import Navbar from '../Navbar'
 
-function Search({isSignedIn, idToken}) {
+function Search({isSignedIn, idToken, handleSignoutClick, user}) {
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
@@ -44,6 +45,8 @@ function Search({isSignedIn, idToken}) {
   return (!isSignedIn && !idToken) ? (
     <Redirect to='/register' />
   ):(
+    <>
+    <Navbar handleSignoutClick={handleSignoutClick} user={user}/>
     <div className='textbox-container'>
       <div className='back-browser-link'>        
         <Link to='/browse'>
@@ -67,6 +70,7 @@ function Search({isSignedIn, idToken}) {
       }
       </div>
     </div>
+    </>
   )
 }
 
