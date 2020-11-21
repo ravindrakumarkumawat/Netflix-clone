@@ -1,6 +1,6 @@
 import React, {useState, useEffect, Suspense, lazy} from 'react'
 import './App.css'
-// import {Navbar, Categories, Watch, Search, Studio, Register} from './components'
+// import { Categories, Watch, Search, Studio, Register} from './components'
 import {
   BrowserRouter as Router,
   Switch,
@@ -9,7 +9,6 @@ import {
 } from 'react-router-dom'
 import {CLIENT_ID, API_KEY, SCOPE} from './OAuth.config'
 
-const Navbar = lazy(() => import('./components/Navbar'))
 const Categories = lazy(() => import('./components/Categories'))
 const Watch = lazy(() => import('./components/Watch'))
 const Search = lazy(() => import('./components/Search'))
@@ -108,20 +107,18 @@ function App() {
         <Switch>
         
           <Route path="/studio" exact>
-            <Studio idToken={idToken} isSignedIn={isSignedIn}/>
+            <Studio isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path="/browse" exact>
-            <Categories 
-              idToken={idToken} 
-              accessToken={accessToken} 
+            <Categories
               isSignedIn={isSignedIn}
               handleSignoutClick={handleSignoutClick} 
               user={user} />
           </Route>
 
           <Route path="/watch/:v_id" exact>                      
-            <Watch idToken={idToken} isSignedIn={isSignedIn}/>
+            <Watch isSignedIn={isSignedIn}/>
           </Route>
 
           <Route path="/watch" exact>                      
@@ -129,7 +126,7 @@ function App() {
           </Route>
 
           <Route path="/search" exact>                       
-            <Search idToken={idToken} isSignedIn={isSignedIn} handleSignoutClick={handleSignoutClick} 
+            <Search isSignedIn={isSignedIn} handleSignoutClick={handleSignoutClick} 
             user={user}/>
           </Route> 
 

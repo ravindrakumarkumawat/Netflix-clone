@@ -14,7 +14,7 @@ const initialRow = {
   channelTitle: ''
 }
 
-function Categories({accessToken, idToken, isSignedIn, handleSignoutClick, user}) { 
+function Categories({ isSignedIn, handleSignoutClick, user}) { 
   const [activeRow, setActiveRow] = useState(initialRow)
   const {
     category,
@@ -30,10 +30,10 @@ function Categories({accessToken, idToken, isSignedIn, handleSignoutClick, user}
   const [randomUrl, setRandomUrl] = useState('')
   
   useEffect(() => { 
-    if(accessToken && idToken && isSignedIn) {
+    if(isSignedIn) {
       get_videos() 
     } 
-  }, [accessToken, idToken, isSignedIn])
+  }, [isSignedIn])
 
   const get_videos = async () => {
       const response = await fetch(`${videos}&maxResults=50`)
@@ -100,7 +100,7 @@ function Categories({accessToken, idToken, isSignedIn, handleSignoutClick, user}
                     .catch(error => console.log(error))
   }
   
-  return (!isSignedIn && !idToken) ? (
+  return (!isSignedIn) ? (
     <Redirect to='/register' />
   ):(
     <>  

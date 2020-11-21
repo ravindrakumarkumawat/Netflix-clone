@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import Navbar from '../Navbar'
 
-function Search({isSignedIn, idToken, handleSignoutClick, user}) {
+function Search({isSignedIn, handleSignoutClick, user}) {
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
@@ -42,7 +42,7 @@ function Search({isSignedIn, idToken, handleSignoutClick, user}) {
     }
   }
 
-  return (!isSignedIn && !idToken) ? (
+  return (!isSignedIn) ? (
     <Redirect to='/register' />
   ):(
     <>

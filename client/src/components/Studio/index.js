@@ -3,8 +3,8 @@ import './index.css'
 import UploadVideo from './UploadVideo'
 import { Redirect } from 'react-router-dom'
 
-function Studio ({isSignedIn, idToken}) {
-  return (!isSignedIn && !idToken) ? (
+function Studio ({isSignedIn}) {
+  return (!isSignedIn) ? (
     <Redirect to='/register' />
   ): (        
     <div className='studioPane-container'>

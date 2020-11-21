@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import './index.css'
 
-function Watch({isSignedIn, idToken}) {
+function Watch({isSignedIn}) {
   const {v_id} = useParams()
-  return (!isSignedIn && !idToken) ? (
+  return (!isSignedIn) ? (
     <Redirect to='/register' />
   ):(
     <div className='watch-container'>
