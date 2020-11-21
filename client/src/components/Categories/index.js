@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import DetailPane from '../DetailPane'
 import { videos, videoCategories } from '../../YoutubeApi'
 import {Redirect} from 'react-router-dom'
+import Navbar from '../Navbar'
 
 const initialRow = {
   category: '',
@@ -15,7 +16,7 @@ const initialRow = {
   channelTitle: ''
 }
 
-function Categories({accessToken, idToken, isSignedIn}) { 
+function Categories({accessToken, idToken, isSignedIn, handleSignoutClick, user}) { 
   const [activeRow, setActiveRow] = useState(initialRow)
   const {
     category,
@@ -104,7 +105,8 @@ function Categories({accessToken, idToken, isSignedIn}) {
   return (!isSignedIn && !idToken) ? (
     <Redirect to='/register' />
   ):(
-    <>
+    <>  
+    <Navbar handleSignoutClick={handleSignoutClick} user={user}/> 
     <Preview randomUrl={randomUrl} />
     <div className='preview-categories-container'> 
       {
@@ -138,7 +140,7 @@ function EntityProvider({ entity, setActive, category }) {
     setActive({ category, id, title, channelTitle })
   }
 
-  return (
+  return (    
     <div className='entity__inner'>
     {
       entity.map((list, index)=>
@@ -163,8 +165,7 @@ function EntityProvider({ entity, setActive, category }) {
         </div>  
       )
     }
-    </div> 
-    
+    </div>
   )
 } 
 

@@ -112,8 +112,12 @@ function App() {
           </Route>
 
           <Route path="/browse" exact>
-            <Navbar handleSignoutClick={handleSignoutClick} user={user}/>
-            <Categories idToken={idToken} accessToken={accessToken} isSignedIn={isSignedIn}/>
+            <Categories 
+              idToken={idToken} 
+              accessToken={accessToken} 
+              isSignedIn={isSignedIn}
+              handleSignoutClick={handleSignoutClick} 
+              user={user} />
           </Route>
 
           <Route path="/watch/:v_id" exact>                      
