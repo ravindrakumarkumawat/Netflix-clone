@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Suspense, lazy} from 'react'
+import React, {useState, useEffect, Suspense, lazy } from 'react'
 import './App.css'
 // import { Categories, Watch, Search, Studio, Register} from './components'
 import {
@@ -8,6 +8,8 @@ import {
   Redirect
 } from 'react-router-dom'
 import {CLIENT_ID, API_KEY, SCOPE} from './OAuth.config'
+import { VideoContextProvider } from './context/youTubeVideos/videoContextProvider'
+
 
 const Categories = lazy(() => import('./components/Categories'))
 const Watch = lazy(() => import('./components/Watch'))
@@ -101,6 +103,7 @@ function App() {
   }
   
   return (
+    <VideoContextProvider>
     <Router>
       <div className="App"> 
       <Suspense fallback={<div className='ErrorMessage'>Loading...</div>}>       
@@ -141,6 +144,7 @@ function App() {
         </Suspense>     
       </div>
     </Router>
+    </VideoContextProvider>
   );
 }
 
