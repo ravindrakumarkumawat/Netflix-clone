@@ -26,7 +26,7 @@ function Categories({ isSignedIn, handleSignoutClick, user}) {
     activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
   }
 
-  const {catVideo, randomUrl, get_videos} = useContext(VideoContext)
+  const {catVideo, get_videos} = useContext(VideoContext)
   
   useEffect(() => { 
     if(isSignedIn) {
@@ -40,7 +40,7 @@ function Categories({ isSignedIn, handleSignoutClick, user}) {
   ):(
     <>  
     <Navbar handleSignoutClick={handleSignoutClick} user={user}/> 
-    <Preview randomUrl={randomUrl} />
+    <Preview />
     <div className='preview-categories-container'> 
       {
         catVideo.map((cat, index) =>  

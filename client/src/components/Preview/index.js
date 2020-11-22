@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlay, faVolumeMute, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 import './index.css'
 import {Link} from 'react-router-dom'
+import { VideoContext } from '../../context/youTubeVideos/videoContextProvider'
 
-function Preview ({ randomUrl }) {   
+function Preview () {   
+  const { randomUrl } = useContext(VideoContext)
   const [mute, setMute] = useState(1)
   const [autoPlay, setAutoPlay] = useState(1)
 
