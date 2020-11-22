@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import Zephyr from '../../assets/images/zephyr.png'
-import './index.css'  
+import './index.css'
+import {AuthContext} from '../../context/authentication/authContextProvider'
 
-const Register = ({handleAuthClick, isSignedIn}) => {
+const Register = () => {
+  const {isSignedIn, signedIn } = useContext(AuthContext)
+
   return isSignedIn ?
   (<Redirect to='/browse'/>):
   (
@@ -19,7 +22,7 @@ const Register = ({handleAuthClick, isSignedIn}) => {
           <p>Watch anywhere. Cancel anytime.</p>
           <h5>Ready to watch? Sign in or Sign Up to your Gmail Account. </h5> 
         </div>
-        <div id="loginButton" onClick={() => handleAuthClick()}></div>
+        <div id="loginButton" onClick={() => signedIn()}></div>
       </section>
     </header>
   )

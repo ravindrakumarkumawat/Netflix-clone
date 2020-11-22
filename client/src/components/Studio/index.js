@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './index.css'
 import UploadVideo from './UploadVideo'
 import { Redirect } from 'react-router-dom'
-
-function Studio ({isSignedIn}) {
+import {AuthContext} from '../../context/authentication/authContextProvider'
+function Studio () {
+  const {isSignedIn} = useContext(AuthContext)
   return (!isSignedIn) ? (
     <Redirect to='/register' />
   ): (        

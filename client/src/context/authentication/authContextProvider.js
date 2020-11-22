@@ -8,32 +8,28 @@ const initialState = {
   isSignedIn: false,
   idToken: null,
   accessToken: null,
-  user: null
+  user: {
+    name: '',
+    imageUrl: '',
+    email: ''
+  }
 }
 
 export const AuthContext = createContext()
 
-export const AuthProvider = (props) => {
+export const AuthContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [data, setData] = useState({})
   
-  const [isSignedIn, setIsSignedIn] = useState(false)
-  const [idToken, setIdToken] = useState(null)
-  const [accessToken, setAccessToken] = useState(null)
-  const [user, setUser] = useState({
-    name: '',
-    imageUrl: '',
-    email: ''
-  })
-
   const clientId = CLIENT_ID
   const apiKey = API_KEY
 
   const scopes = SCOPE
   
   useEffect(() => {
-    insertGapiScript()
-  }, [isSignedIn])
-
+      insertGapiScript()
+  }, [state.isSignedIn])
+  
   const insertGapiScript = () => {
     const script = document.createElement('script')
     script.src = 'https://apis.google.com/js/api.js'
@@ -52,19 +48,21 @@ export const AuthProvider = (props) => {
       .then(() => {
         const authInstance = window.gapi.auth2.getAuthInstance()
         const isSignedIn = authInstance.isSignedIn.get()
-        console.log('isSignedIn', isSignedIn)
-        setIsSignedIn(isSignedIn)
-        setIdToken(authInstance.currentUser.get().getAuthResponse().id_token)
-        setAccessToken(authInstance.currentUser.get().getAuthResponse().access_token)
-        authInstance.isSignedIn.listen(isSignedIn => {
-          setIsSignedIn(isSignedIn)
-        })
+        const idToken = authInstance.currentUser.get().getAuthResponse().id_token
+        const accessToken = authInstance.currentUser.get().getAuthResponse().access_token
+        authInstance.isSignedIn.listen()
         const user = authInstance.currentUser.get()
         const profile = user.getBasicProfile()
         const name = profile.getName()
         const email = profile.getEmail()
         const imageUrl = profile.getImageUrl()
-        setUser({name, email, imageUrl})
+
+        setData({
+          isSignedIn, 
+          idToken,
+          accessToken,
+          user: {name, email, imageUrl}
+        })
       })
     
     window.gapi.load('signin2', () => {
@@ -82,8 +80,7 @@ export const AuthProvider = (props) => {
         }
       }
       window.gapi.signin2.render('loginButton', params)
-    })
-    
+    })   
   }
 
   
@@ -91,12 +88,7 @@ export const AuthProvider = (props) => {
     window.gapi.auth2.getAuthInstance().signIn()
     dispatch({
       type: SIGN_IN_USER,
-      payload: {
-        isSignedIn,
-        idToken,
-        accessToken,
-        user
-      }
+      payload: { ...data }
     })
   }
 
@@ -111,7 +103,6 @@ export const AuthProvider = (props) => {
               user: state.user,
               idToken: state.idToken,
               accessToken: state.accessToken,
-              insertGapiScript,
               signedIn,
               signedOut
             }}>{props.children}</AuthContext.Provider>

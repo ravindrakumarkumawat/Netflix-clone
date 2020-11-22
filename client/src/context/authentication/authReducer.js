@@ -13,7 +13,11 @@ export const reducer = (state, action) => {
         isSignedIn: false,
         idToken: null,
         accessToken: null,
-        user: null
+        user: {
+          name: '',
+          imageUrl: '',
+          email: ''
+        }
       }
     default:
       return state

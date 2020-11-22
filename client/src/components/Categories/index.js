@@ -6,9 +6,11 @@ import {Redirect} from 'react-router-dom'
 import Navbar from '../Navbar'
 import EntityProvider from './EntityProvider'
 import { VideoContext } from '../../context/youTubeVideos/videoContextProvider'
+import {AuthContext} from '../../context/authentication/authContextProvider'
 
-function Categories({ isSignedIn, handleSignoutClick, user}) { 
+function Categories() { 
   const {catVideo, get_videos, activePanel} = useContext(VideoContext)
+  const {isSignedIn, signedOut, user} = useContext(AuthContext)
   const {category} = activePanel
   useEffect(() => { 
     if(isSignedIn) {
@@ -21,7 +23,7 @@ function Categories({ isSignedIn, handleSignoutClick, user}) {
     <Redirect to='/register' />
   ):(
     <>  
-    <Navbar handleSignoutClick={handleSignoutClick} user={user}/> 
+    <Navbar handleSignoutClick={()=> signedOut()} user={user}/> 
     <Preview />
     <div className='preview-categories-container'> 
       {

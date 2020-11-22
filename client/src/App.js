@@ -1,4 +1,4 @@
-import React, {useState, useEffect, Suspense, lazy } from 'react'
+import React, {useState, useEffect, Suspense, lazy, useContext } from 'react'
 import './App.css'
 // import { Categories, Watch, Search, Studio, Register} from './components'
 import {
@@ -9,7 +9,7 @@ import {
 } from 'react-router-dom'
 import {CLIENT_ID, API_KEY, SCOPE} from './OAuth.config'
 import { VideoContextProvider } from './context/youTubeVideos/videoContextProvider'
-
+import { AuthContextProvider } from './context/authentication/authContextProvider'
 
 const Categories = lazy(() => import('./components/Categories'))
 const Watch = lazy(() => import('./components/Watch'))
@@ -18,112 +18,27 @@ const Studio = lazy(() => import('./components/Studio'))
 const Register = lazy(() => import('./components/Register'))
 
 
-function App() {
-  const [isSignedIn, setIsSignedIn] = useState(null)
-  const [idToken, setIdToken] = useState(null)
-  const [accessToken, setAccessToken] = useState(null)
-  const [user, setUser] = useState({
-    name: '',
-    imageUrl: '',
-    email: ''
-  })
-  const clientId = CLIENT_ID
-  const apiKey = API_KEY
-
-  const scopes = SCOPE
- 
-  useEffect(() => {
-    console.log('Loading')
-
-    insertGapiScript();
-  }, [isSignedIn])
-
-  const insertGapiScript = () => {
-    const script = document.createElement('script')
-    script.src = 'https://apis.google.com/js/api.js'
-    script.onload = () => {
-      handleClientLoad()
-    }
-    document.body.appendChild(script)
-  }
-
-  const handleClientLoad = () => {
-    window.gapi.load('auth2:client', initClient)
-  }
-
-  const initClient = () => {
-    window.gapi.client.init({
-      apiKey,
-      clientId,
-      scope: scopes
-    }).then(() => {
-      const authInstance = window.gapi.auth2.getAuthInstance()
-      const isSignedIn = authInstance.isSignedIn.get()
-      console.log('isSignedIn', isSignedIn)
-      setIsSignedIn(isSignedIn)
-      setIdToken(authInstance.currentUser.get().getAuthResponse().id_token)
-      setAccessToken(authInstance.currentUser.get().getAuthResponse().access_token)
-      authInstance.isSignedIn.listen(isSignedIn => {
-        setIsSignedIn(isSignedIn)
-      })
-      const user = authInstance.currentUser.get()
-      const profile = user.getBasicProfile()
-      const name = profile.getName()
-      const email = profile.getEmail()
-      const imageUrl = profile.getImageUrl()
-      setUser({name, email, imageUrl})
-    })
-    
-    window.gapi.load('signin2', () => {
-      const params = {
-        scope: 'profile email',
-        width: 240,
-        height: 50,
-        longtitle: true,
-        theme: 'dark',
-        onsuccess: (res) => {
-          console.log('User has finished signing in!')
-        },
-        onfailure: (res) => {
-          console.log('Login failed')
-        }
-      }
-      window.gapi.signin2.render('loginButton', params)
-    })
-    
-  }
-
-  
-  const handleAuthClick = (event) => {
-    window.gapi.auth2.getAuthInstance().signIn()
-  }
-
-  const handleSignoutClick = (event) => {
-    window.gapi.auth2.getAuthInstance().signOut()
-  }
+function App() { 
   
   return (
-    
+    <VideoContextProvider>
+    <AuthContextProvider>
     <Router>
       <div className="App"> 
       <Suspense fallback={<div className='ErrorMessage'>Loading...</div>}>       
         <Switch>
         
           <Route path="/studio" exact>
-            <Studio isSignedIn={isSignedIn}/>
+            <Studio />
           </Route>
 
           <Route path="/browse" exact>
-            <VideoContextProvider>
-              <Categories
-                isSignedIn={isSignedIn}
-                handleSignoutClick={handleSignoutClick} 
-                user={user} />
-            </VideoContextProvider>
+            
+              <Categories />
           </Route>
 
           <Route path="/watch/:v_id" exact>                      
-            <Watch isSignedIn={isSignedIn}/>
+            <Watch />
           </Route>
 
           <Route path="/watch" exact>                      
@@ -131,12 +46,11 @@ function App() {
           </Route>
 
           <Route path="/search" exact>                       
-            <Search isSignedIn={isSignedIn} handleSignoutClick={handleSignoutClick} 
-            user={user}/>
+            <Search />
           </Route> 
 
           <Route path="/register" exact>
-            <Register handleAuthClick={handleAuthClick} isSignedIn={isSignedIn}/>
+            <Register />
           </Route>
 
           <Route path='/' exact>
@@ -146,6 +60,8 @@ function App() {
         </Suspense>     
       </div>
     </Router>
+    </AuthContextProvider>
+    </VideoContextProvider>
   );
 }
 

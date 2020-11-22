@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { useParams, Redirect, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import './index.css'
-
-function Watch({isSignedIn}) {
+import {AuthContext} from '../../context/authentication/authContextProvider'
+function Watch() {
   const {v_id} = useParams()
+  const {isSignedIn} = useContext(AuthContext)
+
   return (!isSignedIn) ? (
     <Redirect to='/register' />
   ):(

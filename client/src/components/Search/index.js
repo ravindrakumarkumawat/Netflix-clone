@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './index.css'
 import { search } from '../../YoutubeApi'
 import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
@@ -6,8 +6,11 @@ import { Link, Redirect } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import Navbar from '../Navbar'
+import {AuthContext} from '../../context/authentication/authContextProvider'
 
-function Search({isSignedIn, handleSignoutClick, user}) {
+
+function Search() {
+  const {isSignedIn, signedOut, user} = useContext(AuthContext)
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
@@ -46,7 +49,7 @@ function Search({isSignedIn, handleSignoutClick, user}) {
     <Redirect to='/register' />
   ):(
     <>
-    <Navbar handleSignoutClick={handleSignoutClick} user={user}/>
+    <Navbar handleSignoutClick={() => signedOut()} user={user}/>
     <div className='textbox-container'>
       <div className='back-browser-link'>        
         <Link to='/browse'>
