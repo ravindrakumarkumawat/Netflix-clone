@@ -5,19 +5,14 @@ export const reducer = (state, action) => {
     case SIGN_IN_USER: 
       return {
         ...state,
-        ...action.payload
+        user: {...action.payload },
+        isSignedIn: true
       }
     case SIGN_OUT_USER:
       return {
         ...state,
         isSignedIn: false,
-        idToken: null,
-        accessToken: null,
-        user: {
-          name: '',
-          imageUrl: '',
-          email: ''
-        }
+        user: null
       }
     default:
       return state

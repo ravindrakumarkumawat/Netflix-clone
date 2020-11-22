@@ -10,7 +10,7 @@ import {AuthContext} from '../../context/authentication/authContextProvider'
 
 
 function Search() {
-  const {isSignedIn, signedOut, user} = useContext(AuthContext)
+  const { isSignedIn } = useContext(AuthContext)
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
@@ -49,7 +49,7 @@ function Search() {
     <Redirect to='/register' />
   ):(
     <>
-    <Navbar handleSignoutClick={() => signedOut()} user={user}/>
+    <Navbar />
     <div className='textbox-container'>
       <div className='back-browser-link'>        
         <Link to='/browse'>

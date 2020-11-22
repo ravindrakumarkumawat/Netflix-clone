@@ -47,3 +47,15 @@ nav .navbar-logo1 {
   width: 600px;
   text-align: center;
 }
+
+.pitch > button {
+  width: 300px;
+  background-color: #e50914;
+  color: #eff2f5;
+  font-weight: 800;
+}
+
+.pitch > button:hover {
+  color: #e50914;
+  background-color: #eff2f5;
+}

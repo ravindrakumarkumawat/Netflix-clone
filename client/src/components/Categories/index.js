@@ -10,7 +10,7 @@ import {AuthContext} from '../../context/authentication/authContextProvider'
 
 function Categories() { 
   const {catVideo, get_videos, activePanel} = useContext(VideoContext)
-  const {isSignedIn, signedOut, user} = useContext(AuthContext)
+  const { isSignedIn } = useContext(AuthContext)
   const {category} = activePanel
   useEffect(() => { 
     if(isSignedIn) {
@@ -23,7 +23,7 @@ function Categories() {
     <Redirect to='/register' />
   ):(
     <>  
-    <Navbar handleSignoutClick={()=> signedOut()} user={user}/> 
+    <Navbar /> 
     <Preview />
     <div className='preview-categories-container'> 
       {

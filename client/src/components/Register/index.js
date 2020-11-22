@@ -1,12 +1,16 @@
 import React, { useContext } from 'react'
+import { Button } from '@material-ui/core'
 import {Link, Redirect} from 'react-router-dom'
 import Zephyr from '../../assets/images/zephyr.png'
 import './index.css'
-import {AuthContext} from '../../context/authentication/authContextProvider'
+import { auth, provider } from '../../firebase'
+import { AuthContext } from '../../context/authentication/authContextProvider'
 
 const Register = () => {
-  const {isSignedIn, signedIn } = useContext(AuthContext)
-
+  const signIn = () => {
+    auth.signInWithPopup(provider).catch((error)=> alert(error.message))
+  }
+  const { isSignedIn } = useContext(AuthContext)
   return isSignedIn ?
   (<Redirect to='/browse'/>):
   (
@@ -22,7 +26,7 @@ const Register = () => {
           <p>Watch anywhere. Cancel anytime.</p>
           <h5>Ready to watch? Sign in or Sign Up to your Gmail Account. </h5> 
         </div>
-        <div id="loginButton" onClick={() => signedIn()}></div>
+        <Button onClick={signIn}>Sign In</Button>
       </section>
     </header>
   )
