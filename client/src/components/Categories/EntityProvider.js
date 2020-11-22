@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle, faPlayCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { VideoContext } from '../../context/youTubeVideos/videoContextProvider'
 
-const EntityProvider = ({ entity, setActive, category }) => {
+
+const EntityProvider = ({ entity, category }) => {
   const [hovered, setHovered] = useState(false) 
+  const {get_active_panel} = useContext(VideoContext)
 
   const handleHover = (e, id) => {
     e.type === 'mouseenter'
@@ -13,7 +16,7 @@ const EntityProvider = ({ entity, setActive, category }) => {
   }
 
   const getActive =  (e, id, title, channelTitle) => {
-    setActive({ category, id, title, channelTitle })
+    get_active_panel({ category, id, title, channelTitle })
   }
 
   return (    

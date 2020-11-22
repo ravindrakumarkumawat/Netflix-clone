@@ -7,27 +7,9 @@ import Navbar from '../Navbar'
 import EntityProvider from './EntityProvider'
 import { VideoContext } from '../../context/youTubeVideos/videoContextProvider'
 
-const initialRow = {
-  category: '',
-  id: '',
-  title: '',
-  channelTitle: ''
-}
-
 function Categories({ isSignedIn, handleSignoutClick, user}) { 
-  const [activeRow, setActiveRow] = useState(initialRow)
-  const {
-    category,
-    id,
-    title,
-    channelTitle
-  } = activeRow
-  const setActive = (activeRow) => {
-    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
-  }
-
-  const {catVideo, get_videos} = useContext(VideoContext)
-  
+  const {catVideo, get_videos, activePanel} = useContext(VideoContext)
+  const {category} = activePanel
   useEffect(() => { 
     if(isSignedIn) {
       get_videos() 
@@ -47,10 +29,10 @@ function Categories({ isSignedIn, handleSignoutClick, user}) {
         <React.Fragment key={index}>    
             <h3 key={cat.c_id}>{cat.c_title}</h3>
             <div className='entity'>
-              <EntityProvider entity={cat.v_lists} setActive={setActive} category={cat.c_title} />
+              <EntityProvider entity={cat.v_lists} category={cat.c_title} />
             </div>
             { category===cat.c_title &&               
-            <DetailPane category={category} id={id} setActive={setActive} title={title} channelTitle={channelTitle}/>
+            <DetailPane />
             }
         </React.Fragment>          
         )

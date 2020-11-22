@@ -1,4 +1,4 @@
-import { GET_ALL_CATEGORIES_VIDEOS } from './videoTypes'
+import { GET_ALL_CATEGORIES_VIDEOS, GET_ACTIVE_PANEL } from './videoTypes'
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -6,6 +6,11 @@ export const reducer = (state, action) => {
       return {
         ...state,
         ...action.payload
+      }
+    case GET_ACTIVE_PANEL:
+      return {
+        ...state,
+        activePanel: {...action.payload}
       }
     default:
       return state

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import './index.css'
 import DetailPaneNav from '../DetailPaneNav'
 import Overview from '../Overview'
@@ -6,12 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import Playlists from '../Playlists'
 import RelatedVideo from '../RelatedVideo'
+import { VideoContext } from '../../context/youTubeVideos/videoContextProvider'
+
 
 const TABS = ['Overview', 'Playlists', 'More Like This']
 
-function DetailPane ({ category, setActive, id, title, channelTitle }) {
+function DetailPane () {
   const [tab, setTab] = useState()
-
+  const {get_active_panel, activePanel} = useContext(VideoContext)
+  const { category, id, title, channelTitle } = activePanel
   useEffect(() => {
     setTab(TABS[0])
   }, [!category])
@@ -40,7 +43,7 @@ function DetailPane ({ category, setActive, id, title, channelTitle }) {
                 return <Overview title={title} id={id} />
             }
           })()}
-          <FontAwesomeIcon icon={faTimes} className='Icon' onClick={setActive}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faTimes} className='Icon' onClick={get_active_panel}></FontAwesomeIcon>
           <DetailPaneNav tabs={TABS} tab={tab} setTab={setTab}/>  
         </div>      
       </div>

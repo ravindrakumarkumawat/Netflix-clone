@@ -1,10 +1,17 @@
 import React, { createContext, useReducer } from 'react'
 import { reducer } from './videoReducer'
 import { videos, videoCategories } from '../../YoutubeApi'
+import { GET_ALL_CATEGORIES_VIDEOS, GET_ACTIVE_PANEL } from './videoTypes'
 
 const initialState = {
   catVideos: [],
-  randomUrl: ''
+  randomUrl: '',
+  activePanel: {
+    category: '',
+    id: '',
+    title: '',
+    channelTitle: ''
+  }
 }
 
 export const VideoContext = createContext()
@@ -60,7 +67,7 @@ export const VideoContextProvider = (props) => {
     const url = cat_video_list[Math.floor(Math.random() * cat_video_list.length)].v_lists
     // setRandomUrl(url[Math.floor(Math.random() * url.length)])
     // setCatVideo(cat_video_list)
-    dispatch({ type: 'GET_ALL_CATEGORIES_VIDEOS', payload: {catVideos: cat_video_list, randomUrl: url[Math.floor(Math.random() * url.length)]}})
+    dispatch({ type: GET_ALL_CATEGORIES_VIDEOS, payload: {catVideos: cat_video_list, randomUrl: url[Math.floor(Math.random() * url.length)]}})
   }
 
   const get_categories = () => {
@@ -77,10 +84,21 @@ export const VideoContextProvider = (props) => {
                     .catch(error => console.log(error))
   }
 
+  const get_active_panel = (panel = {
+    category: '',
+    id: '',
+    title: '',
+    channelTitle: ''
+  }) => {
+    dispatch({type: GET_ACTIVE_PANEL, payload: {...panel}})
+  }
+
   return <VideoContext.Provider 
   value={{ 
     catVideo: state.catVideos,
     randomUrl: state.randomUrl,
-    get_videos: get_all_categories_videos
+    get_videos: get_all_categories_videos,
+    get_active_panel: get_active_panel,
+    activePanel: state.activePanel
   }}>{props.children}</VideoContext.Provider>
 }
