@@ -103,7 +103,7 @@ function App() {
   }
   
   return (
-    <VideoContextProvider>
+    
     <Router>
       <div className="App"> 
       <Suspense fallback={<div className='ErrorMessage'>Loading...</div>}>       
@@ -114,10 +114,12 @@ function App() {
           </Route>
 
           <Route path="/browse" exact>
-            <Categories
-              isSignedIn={isSignedIn}
-              handleSignoutClick={handleSignoutClick} 
-              user={user} />
+            <VideoContextProvider>
+              <Categories
+                isSignedIn={isSignedIn}
+                handleSignoutClick={handleSignoutClick} 
+                user={user} />
+            </VideoContextProvider>
           </Route>
 
           <Route path="/watch/:v_id" exact>                      
@@ -144,7 +146,6 @@ function App() {
         </Suspense>     
       </div>
     </Router>
-    </VideoContextProvider>
   );
 }
 
