@@ -20,11 +20,13 @@ export const VideoContextProvider = (props) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const get_all_categories_videos = async () => {
+
     const response = await fetch(`${videos}&maxResults=50`)
     const data = await response.json()
     const res =  data
-    console.log(res)
+
     let cat_videos = res.items
+
     // let nextPageToken = res.nextPageToken
     // let count = 0
     // while(count < 3) {
@@ -34,7 +36,6 @@ export const VideoContextProvider = (props) => {
     //   count++ 
     // }
     
-    const categories = await get_categories()
     
     const vi = {}
     for(let item of cat_videos) {
@@ -52,6 +53,7 @@ export const VideoContextProvider = (props) => {
       }
     }
     
+    const categories = await get_categories()
     const cat_video_list = []
     for(let cat of categories) {
       if(vi.hasOwnProperty(cat.id)) {
@@ -64,24 +66,36 @@ export const VideoContextProvider = (props) => {
         }
       }
     }
+
     const url = cat_video_list[Math.floor(Math.random() * cat_video_list.length)].v_lists
-    // setRandomUrl(url[Math.floor(Math.random() * url.length)])
-    // setCatVideo(cat_video_list)
-    dispatch({ type: GET_ALL_CATEGORIES_VIDEOS, payload: {catVideos: cat_video_list, randomUrl: url[Math.floor(Math.random() * url.length)]}})
+    dispatch({ 
+      type: GET_ALL_CATEGORIES_VIDEOS, 
+      payload: {
+        catVideos: cat_video_list, 
+        randomUrl: url[Math.floor(Math.random() * url.length)]
+      }
+    })
   }
 
-  const get_categories = () => {
-
-    return fetch(videoCategories).then(response => response.json()).then(res => {
-      return res.items.map((item) => {return {id: item.id, title:item.snippet.title}})
-    }).catch(error => console.log(error))  
+  const get_categories = async () => {
+    try {
+      const response = await fetch(videoCategories)
+      const res = await response.json()
+      const data = res.items.map((item) =>  ({id: item.id, title:item.snippet.title}))
+      return data
+    } catch(err) {
+      console.log(err)
+    }
   }
 
-  const get_videos_by_pageToken = (nextPageToken) => {
-    return fetch(`${videos}&maxResults=50&pageToken=${nextPageToken}`)
-                    .then(response => response.json())
-                    .then(res => res)
-                    .catch(error => console.log(error))
+  const get_videos_by_pageToken = async (nextPageToken) => {
+    try {
+      const response = await fetch(`${videos}&maxResults=50&pageToken=${nextPageToken}`)
+      const res = response.json()
+      return res
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   const get_active_panel = (panel = {
