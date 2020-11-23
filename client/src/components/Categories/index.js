@@ -19,9 +19,7 @@ function Categories() {
   }, [isSignedIn])
 
   
-  return (!isSignedIn) ? (
-    <Redirect to='/register' />
-  ):(
+  return (
     <>  
     <Navbar /> 
     <Preview />

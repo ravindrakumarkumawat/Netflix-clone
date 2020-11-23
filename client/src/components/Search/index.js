@@ -1,16 +1,14 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import './index.css'
 import { search } from '../../YoutubeApi'
 import  PlaylistItemProvider from '../Playlists/PlaylistItemProvider'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 import Navbar from '../Navbar'
-import {AuthContext} from '../../context/authentication/authContextProvider'
 
 
 function Search() {
-  const { isSignedIn } = useContext(AuthContext)
   const [results, setResults] = useState([])
   const [input, setInput] = useState('')
 
@@ -45,9 +43,7 @@ function Search() {
     }
   }
 
-  return (!isSignedIn) ? (
-    <Redirect to='/register' />
-  ):(
+  return (
     <>
     <Navbar />
     <div className='textbox-container'>
