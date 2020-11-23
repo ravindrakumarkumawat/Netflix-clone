@@ -4,16 +4,14 @@ import { AuthContext } from '../context/authentication/authContextProvider'
 
 const ProtectedRoute = ({ component: Component, ...rest }) => {
   const {isSignedIn} = useContext(AuthContext)
-  return <>
-    {
-      <Route
-        render={props =>
-          isSignedIn ? <Component {...props} /> : <Redirect to="/" />
-        }
-        {...rest}
-      exact />
-    } 
-  </>
+  return (
+    <Route
+      render={props =>
+        isSignedIn ? <Component {...props} /> : <Redirect to="/" />
+      }
+      {...rest}
+    exact />
+  )
 }
 
 export default ProtectedRoute
