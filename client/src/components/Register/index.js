@@ -1,18 +1,21 @@
 import React, { useContext } from 'react'
 import { Button } from '@material-ui/core'
-import {Link, Redirect} from 'react-router-dom'
+import {Link, Redirect } from 'react-router-dom'
 import Zephyr from '../../assets/images/zephyr.png'
 import './index.css'
 import { auth, provider } from '../../firebase'
 import { AuthContext } from '../../context/authentication/authContextProvider'
 
-const Register = () => {
+const Register = (props) => {
   const signIn = () => {
     auth.signInWithPopup(provider).catch((error)=> alert(error.message))
   }
   const { isSignedIn } = useContext(AuthContext)
+
+  const { from } = props.location.state || {from: {pathname: '/'}}
+
   return isSignedIn ?
-  (<Redirect to='/browse'/>):
+  (<Redirect to={from}/>):
   (
     <header>
       <nav className='home-container'>
