@@ -1,16 +1,11 @@
 import React, { Suspense, lazy } from 'react'
 import './App.css'
-// import { Categories, Watch, Search, Register} from './components'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
 import { VideoContextProvider } from './context/youTubeVideos/videoContextProvider'
 import { AuthContextProvider } from './context/authentication/authContextProvider'
-import ProtectedRoute from './ProtectedRoute/ProtectedRoute'
 
+const ProtectedRoute = lazy(() => import('./ProtectedRoute/ProtectedRoute'))
 const Categories = lazy(() => import('./components/Categories'))
 const Watch = lazy(() => import('./components/Watch'))
 const Search = lazy(() => import('./components/Search'))
