@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom'
 import { VideoContextProvider } from './context/youTubeVideos/videoContextProvider'
 import { AuthContextProvider } from './context/authentication/authContextProvider'
+import PageNotFound from './components/PageNotFound'
 
 const Categories = lazy(() => import('./components/Categories'))
 const Watch = lazy(() => import('./components/Watch'))
@@ -32,11 +33,7 @@ function App() {
 
           <Route path="/watch/:v_id" exact>                      
             <Watch />
-          </Route>
-
-          <Route path="/watch" exact>                      
-            <h2 className='ErrorMessage'>No id is passed in url</h2>
-          </Route>
+          </Route>          
 
           <Route path="/search" exact>                       
             <Search />
@@ -48,6 +45,10 @@ function App() {
 
           <Route path='/' exact>
             <Redirect to='/register' />
+          </Route>
+
+          <Route>                      
+            <PageNotFound />
           </Route>
         </Switch> 
         </Suspense>     
