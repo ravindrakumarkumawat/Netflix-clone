@@ -13,14 +13,14 @@ const Register = (props) => {
   const { isSignedIn } = useContext(AuthContext)
 
   const { from } = props.location.state || {from: {pathname: '/'}}
-
-  if(isSignedIn) {
-    <Redirect to={from}/>
+ 
+  console.log(from)
+  
+  if(isSignedIn && from.pathname === '/') {
+    return <Redirect to='/browse' />
   }
 
-  return isSignedIn ?
-  (<Redirect to='/browse' />):
-  (
+  return isSignedIn ? <Redirect to={from} /> :(
     <header>
       <nav className='home-container'>
         <Link to='/' className='logo'>
