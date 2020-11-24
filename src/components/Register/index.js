@@ -14,8 +14,12 @@ const Register = (props) => {
 
   const { from } = props.location.state || {from: {pathname: '/'}}
 
+  if(isSignedIn) {
+    <Redirect to={from}/>
+  }
+
   return isSignedIn ?
-  (<Redirect to={from}/>):
+  (<Redirect to='/browse' />):
   (
     <header>
       <nav className='home-container'>
