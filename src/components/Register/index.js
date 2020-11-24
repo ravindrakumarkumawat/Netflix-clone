@@ -14,7 +14,6 @@ const Register = (props) => {
 
   const { from } = props.location.state || {from: {pathname: '/'}}
  
-  console.log(from)
   
   if(isSignedIn && from.pathname === '/') {
     return <Redirect to='/browse' />
