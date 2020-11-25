@@ -27,14 +27,14 @@ export const VideoContextProvider = (props) => {
 
     let cat_videos = res.items
 
-    // let nextPageToken = res.nextPageToken
-    // let count = 0
-    // while(count < 3) {
-    //   const res = await get_videos_by_pageToken(nextPageToken)
-    //   nextPageToken = res.nextPageToken
-    //   cat_videos = [...cat_videos, ...res.items]
-    //   count++ 
-    // }
+    let nextPageToken = res.nextPageToken
+    let count = 0
+    while(count < 3) {
+      const res = await get_videos_by_pageToken(nextPageToken)
+      nextPageToken = res.nextPageToken
+      cat_videos = [...cat_videos, ...res.items]
+      count++ 
+    }
     
     
     const vi = {}

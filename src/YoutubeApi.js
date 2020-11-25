@@ -7,8 +7,8 @@ export const videoCategories = `${baseUrl}/videoCategories?key=${key}&part=snipp
 export const videos = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&h1=us&regionCode=US&chart=mostPopular`
 export const video = `${baseUrl}/videos?key=${key}&part=snippet,contentDetails,statistics&id=`
 export const playlists = `${baseUrl}/playlists?key=${key}&part=snippet,contentDetails&maxResults=1&channelId=`
-export const playlistItems = `${baseUrl}/playlistItems?key=${key}&part=snippet,contentDetails&maxResults=10&playlistId=`
-export const relatedVideo = `${baseUrl}/search?key=${key}&part=snippet&maxResults=10&type=video&relatedToVideoId=`
+export const playlistItems = `${baseUrl}/playlistItems?key=${key}&part=snippet,contentDetails&maxResults=4&playlistId=`
+export const relatedVideo = `${baseUrl}/search?key=${key}&part=snippet&maxResults=4&type=video&relatedToVideoId=`
 export const search = `${baseUrl}/search?key=${key}&part=snippet&maxResults=10&q=`
 export const channelByMine  = `${baseUrl}/channels?key=${key}&part=snippet,contentDetails,statistics&mine=true`
 
